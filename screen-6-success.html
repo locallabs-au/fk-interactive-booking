@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FK Repairs · Booking confirmed</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/fk-config.js"></script>
+  <link rel="stylesheet" href="assets/fk-base.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <style>
+    @keyframes fk-pop { 0% { transform: scale(0); } 60% { transform: scale(1.15); } 100% { transform: scale(1); } }
+    .fk-success-pop { animation: fk-pop 600ms cubic-bezier(.2,.9,.3,1.2) both; }
+    @keyframes fk-confetti { 0% { transform: translateY(-20px) rotate(0); opacity: 1; } 100% { transform: translateY(120vh) rotate(720deg); opacity: 0; } }
+    .fk-confetti span {
+      position: absolute; top: -20px; width: 10px; height: 14px; border-radius: 2px;
+      animation: fk-confetti 4s linear forwards;
+    }
+  </style>
+</head>
+<body class="bg-fk-grey-50 text-fk-black">
+  <a href="#main" class="fk-skip-link">Skip to content</a>
+
+  <!-- Confetti decoration -->
+  <div class="fk-confetti pointer-events-none fixed inset-0 overflow-hidden" aria-hidden="true"></div>
+
+  <header class="bg-white border-b border-fk-grey-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-3">
+        <span class="inline-flex items-center justify-center w-12 h-12 bg-fk-yellow rounded-btn font-anybody font-extrabold text-xl">FK</span>
+        <span class="hidden sm:inline font-anybody font-bold text-h4">Fone King</span>
+      </a>
+      <span id="statusBadge" class="fk-badge fk-badge--active">Soft-Reserved</span>
+    </div>
+  </header>
+
+  <main id="main" class="max-w-2xl mx-auto px-4 sm:px-6 py-12 md:py-16 text-center">
+
+    <!-- Success indicator -->
+    <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-fk-yellow shadow-fk-medium fk-success-pop" aria-hidden="true">
+      <svg viewBox="0 0 48 48" class="w-10 h-10"><path d="M10 24l10 10 18-20" fill="none" stroke="#000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+
+    <h1 class="font-anybody font-bold text-[36px] leading-[44px] md:text-h1 mt-6">Your booking is in motion!</h1>
+    <p class="text-body-lg text-fk-grey-700 mt-3" id="walkinNote">Your part is currently <strong class="text-fk-black">soft-reserved</strong>. Store staff will confirm physical part availability shortly.</p>
+
+    <!-- Reference -->
+    <div class="mt-8 fk-summary text-left max-w-md mx-auto">
+      <p class="text-body-xs uppercase tracking-widest text-fk-grey-700 font-medium">Reference number</p>
+      <div class="mt-2 flex items-center justify-between gap-3">
+        <span id="refNum" class="font-mono font-bold text-[28px] leading-9 tracking-wider">RPTUG112345</span>
+        <button id="copyBtn" class="fk-btn-icon" aria-label="Copy reference number">
+          <i data-lucide="copy" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <p id="copiedTip" class="hidden text-body-sm text-fk-success mt-2 inline-flex items-center gap-1"><i data-lucide="check" class="w-4 h-4"></i>Copied to clipboard</p>
+    </div>
+
+    <!-- Summary -->
+    <section class="mt-6 fk-summary text-left">
+      <dl class="grid sm:grid-cols-2 gap-4 text-body-sm">
+        <div>
+          <dt class="text-fk-grey-700 text-body-xs uppercase tracking-widest">Device</dt>
+          <dd class="font-medium mt-1">iPhone 16 PRO MAX</dd>
+        </div>
+        <div>
+          <dt class="text-fk-grey-700 text-body-xs uppercase tracking-widest">Issues</dt>
+          <dd class="font-medium mt-1">Screen Trauma · Power Drained</dd>
+        </div>
+      </dl>
+
+      <div class="mt-5 border-t border-fk-grey-200 pt-5 space-y-2 text-body">
+        <div class="flex items-center justify-between"><span>Estimated cost</span><span class="font-medium">$200-430</span></div>
+        <div id="depositRow" class="flex items-center justify-between"><span>Deposit paid</span><span class="font-medium inline-flex items-center gap-1 text-fk-success">$69.00 <i data-lucide="check" class="w-4 h-4"></i></span></div>
+        <div class="flex items-center justify-between border-t-2 border-fk-black pt-3 mt-3"><span class="font-medium">Balance due in-store</span><span id="balanceDue" class="font-anybody font-bold text-h4">$131-361</span></div>
+      </div>
+
+      <hr class="border-fk-grey-200 my-6" />
+
+      <ul class="space-y-3 text-body">
+        <li class="flex items-center gap-3"><i data-lucide="calendar" class="w-5 h-5 text-fk-grey-700"></i> Wednesday, 10 April 2026</li>
+        <li class="flex items-center gap-3"><i data-lucide="clock" class="w-5 h-5 text-fk-grey-700"></i> 5:45 PM</li>
+        <li class="flex items-center gap-3"><i data-lucide="map-pin" class="w-5 h-5 text-fk-grey-700"></i> <span id="successStoreLine">FK Miranda</span></li>
+      </ul>
+
+      <p id="partsReserved" class="mt-5 text-body-sm font-medium bg-fk-yellow-tint rounded-btn p-3 inline-flex items-center gap-2"><i data-lucide="package-check" class="w-4 h-4"></i> Part hold countdown active: <strong>7 days from booking</strong></p>
+    </section>
+
+    <!-- What happens next -->
+    <section class="mt-10 text-left">
+      <h3 class="font-anybody font-semibold text-h3">What happens next</h3>
+
+      <div class="mt-5 space-y-5">
+        <div class="flex gap-4">
+          <div class="w-10 h-10 rounded-btn bg-fk-yellow flex items-center justify-center shrink-0"><i data-lucide="mail" class="w-5 h-5"></i></div>
+          <div>
+            <p class="font-anybody font-semibold text-h4">Check your email</p>
+            <p class="text-body-sm text-fk-grey-700 mt-1">We've sent confirmation to <strong class="text-fk-black">john@email.com</strong> including your portal access link.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="w-10 h-10 rounded-btn bg-fk-yellow flex items-center justify-center shrink-0"><i data-lucide="smartphone" class="w-5 h-5"></i></div>
+          <div>
+            <p class="font-anybody font-semibold text-h4">Prepare your device</p>
+            <p class="text-body-sm text-fk-grey-700 mt-1">Back up your data before the appointment. Remove case and screen protector if possible.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="w-10 h-10 rounded-btn bg-fk-yellow flex items-center justify-center shrink-0"><i data-lucide="bell" class="w-5 h-5"></i></div>
+          <div>
+            <p class="font-anybody font-semibold text-h4">We'll remind you</p>
+            <p class="text-body-sm text-fk-grey-700 mt-1">SMS reminder 2 hours before your appointment.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-8 fk-summary text-left">
+      <h3 class="font-anybody font-semibold text-h4">Automated follow-ups</h3>
+      <ul class="mt-3 text-body-sm text-fk-grey-700 space-y-2">
+        <li>T+1hr: Thank-you email with warranty details</li>
+        <li>T+24hrs: Satisfaction survey</li>
+        <li>T+6 months: Health check offer</li>
+        <li>T+11 months: Warranty expiry warning</li>
+      </ul>
+    </section>
+
+    <!-- Primary actions -->
+    <div class="mt-10 grid gap-3">
+      <a href="#" class="fk-btn-primary w-full text-[18px] py-5"><i data-lucide="user-circle" class="w-5 h-5"></i> Access your portal</a>
+      <a id="addCal" href="#" class="fk-btn-secondary w-full text-[18px] py-5"><i data-lucide="calendar-plus" class="w-5 h-5"></i> Add to calendar</a>
+    </div>
+
+    <!-- Secondary -->
+    <p class="mt-8 text-body-sm text-fk-grey-700">Need to reschedule? <a href="#" class="underline text-fk-black hover:text-fk-yellow-dark">Manage booking</a> · <a href="#" class="underline text-fk-black hover:text-fk-yellow-dark">Cancel booking</a></p>
+    <p class="mt-2 text-body-sm text-fk-grey-700">Questions? <a href="tel:1800357326" class="underline text-fk-black hover:text-fk-yellow-dark">Call us: 1800 FK REBORN</a></p>
+  </main>
+
+  <footer class="border-t border-fk-grey-200 mt-16 py-8 text-center text-body-sm text-fk-grey-700">
+    Fone King · 22 years of phone resurrection · Lifetime warranty on every repair
+  </footer>
+
+  <script>
+    (function () {
+      try {
+        const b = JSON.parse(localStorage.getItem('fkBooking') || '{}');
+        const store = (b.customer && b.customer.store) || localStorage.getItem('fkStore') || 'Miranda';
+        const el = document.getElementById('successStoreLine');
+        if (el) el.textContent = 'FK ' + store;
+      } catch {}
+    })();
+
+    /* Walk-in mode adjusts copy + summary to reflect zero deposit. */
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('walkin') === '1') {
+        document.getElementById('walkinNote').innerHTML =
+          'You\'re booked in as a walk-in. No part guarantee is applied until technician confirmation.';
+        document.getElementById('depositRow').style.display = 'none';
+        document.getElementById('balanceDue').textContent = '$200-430';
+        document.getElementById('partsReserved').innerHTML =
+          '<i data-lucide="info" class="w-4 h-4"></i> Walk-in: part availability checked on arrival.';
+      }
+      if (params.get('status') === 'confirmed') {
+        document.getElementById('statusBadge').className = 'fk-badge fk-badge--success';
+        document.getElementById('statusBadge').textContent = 'Confirmed';
+        document.getElementById('walkinNote').innerHTML =
+          'Part is <strong class="text-fk-black">hard-reserved</strong>. Confirmation email sent.';
+      }
+    })();
+
+    /* Copy reference */
+    const copyBtn = document.getElementById('copyBtn');
+    const copiedTip = document.getElementById('copiedTip');
+    copyBtn.addEventListener('click', async () => {
+      const ref = document.getElementById('refNum').textContent.trim();
+      try { await navigator.clipboard.writeText(ref); }
+      catch { /* clipboard may be unavailable in file:// contexts */ }
+      copiedTip.classList.remove('hidden');
+      copiedTip.classList.add('inline-flex');
+      setTimeout(() => { copiedTip.classList.add('hidden'); copiedTip.classList.remove('inline-flex'); }, 2000);
+    });
+
+    /* Add-to-calendar generates an .ics file on the fly */
+    document.getElementById('addCal').addEventListener('click', (e) => {
+      e.preventDefault();
+      const ics = [
+        'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Fone King//Booking//EN','BEGIN:VEVENT',
+        'UID:RPTUG112345@foneking.com.au',
+        'DTSTAMP:20260410T084500Z',
+        'DTSTART:20260410T084500Z',
+        'DTEND:20260410T094500Z',
+        'SUMMARY:FK Phone Repair: iPhone 16 PRO MAX',
+        'LOCATION:FK Miranda, Westfield',
+        'DESCRIPTION:Your resurrection appointment. Reference RPTUG112345',
+        'END:VEVENT','END:VCALENDAR'
+      ].join('\r\n');
+      const blob = new Blob([ics], { type: 'text/calendar' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'fk-appointment.ics'; a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    /* Subtle confetti */
+    (function () {
+      const root = document.querySelector('.fk-confetti');
+      const colors = ['#FFEB00','#000','#FFFEF5','#E6D300'];
+      for (let i = 0; i < 40; i++) {
+        const s = document.createElement('span');
+        s.style.left = Math.random() * 100 + 'vw';
+        s.style.background = colors[i % colors.length];
+        s.style.animationDelay = (Math.random() * 1.5) + 's';
+        s.style.animationDuration = (3 + Math.random() * 2) + 's';
+        root.appendChild(s);
+      }
+    })();
+
+    if (window.lucide) lucide.createIcons();
+  </script>
+</body>
+</html>

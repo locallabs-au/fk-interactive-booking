@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FK Repairs · Booking flow: overview</title>
+  <meta name="description" content="Six-screen Fone King booking flow plus design system. Click any screen to open it." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/fk-config.js"></script>
+  <link rel="stylesheet" href="assets/fk-base.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body class="bg-fk-grey-50 text-fk-black">
+
+  <header class="bg-fk-black text-white">
+    <div class="max-w-6xl mx-auto px-6 py-12 md:py-16">
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center justify-center w-12 h-12 bg-fk-yellow rounded-btn font-anybody font-extrabold text-xl text-fk-black">FK</span>
+        <span class="font-anybody font-bold text-h3">Fone King</span>
+      </div>
+      <h1 class="font-anybody font-bold text-[40px] leading-[48px] md:text-h1 mt-8">Your Phone <span class="text-fk-yellow">Reborn</span>: Booking Flow</h1>
+      <p class="text-body-lg text-fk-grey-200 mt-4 max-w-2xl">Six interactive screens plus a full design system. Open any screen to walk through it, or load <a href="design-system.html" class="text-fk-yellow underline">design-system.html</a> to see every component on one page.</p>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 py-12 md:py-16">
+
+    <section>
+      <h2 class="font-anybody font-bold text-h2 mb-6">The 6 booking screens</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <a href="screen-1-device.html" class="fk-card group">
+          <div class="aspect-[4/3] -m-6 mb-4 bg-fk-black rounded-t-card overflow-hidden flex items-center justify-center text-white relative">
+            <span class="absolute top-3 left-3 fk-badge fk-badge--active">Step 1</span>
+            <div class="text-center px-6">
+              <div class="text-5xl mb-3">📱</div>
+              <p class="font-anybody font-bold text-h4 text-white">Your Phone Reborn</p>
+              <p class="text-body-sm text-fk-grey-300 mt-1">Pick device + store</p>
+            </div>
+          </div>
+          <h3 class="font-anybody font-semibold text-h4">Device &amp; store</h3>
+          <p class="text-body-sm text-fk-grey-700 mt-1">Hero, category &amp; brand pills, scrollable device list.</p>
+        </a>
+
+        <a href="screen-2-symptoms-v2.html" class="fk-card group">
+          <div class="aspect-[4/3] -m-6 mb-4 bg-fk-yellow-tint rounded-t-card border-b border-fk-grey-200 flex items-center justify-center relative">
+            <span class="absolute top-3 left-3 fk-badge fk-badge--active">Step 2</span>
+            <div class="text-center px-6">
+              <div class="flex justify-center gap-2 mb-3 text-3xl">▼ 📋</div>
+              <p class="font-anybody font-bold text-h4">Symptom dropdown</p>
+              <p class="text-body-sm text-fk-grey-700 mt-1">Category tabs + &lt;select&gt;, detail panel, add</p>
+            </div>
+          </div>
+          <h3 class="font-anybody font-semibold text-h4">Symptoms &amp; parts (v2)</h3>
+          <p class="text-body-sm text-fk-grey-700 mt-1">Easier BE mapping: one control per category list.</p>
+        </a>
+
+        <a href="screen-3-details.html" class="fk-card group">
+          <div class="aspect-[4/3] -m-6 mb-4 bg-white rounded-t-card border-b border-fk-grey-200 p-6 flex flex-col justify-center relative">
+            <span class="absolute top-3 left-3 fk-badge fk-badge--active">Step 3</span>
+            <div class="space-y-2">
+              <div class="h-3 w-2/3 bg-fk-grey-100 rounded"></div>
+              <div class="h-9 bg-fk-grey-100 rounded-input"></div>
+              <div class="h-3 w-1/2 bg-fk-grey-100 rounded"></div>
+              <div class="h-9 bg-fk-grey-100 rounded-input"></div>
+              <div class="h-9 bg-fk-yellow rounded-btn w-1/2 ml-auto"></div>
+            </div>
+          </div>
+          <h3 class="font-anybody font-semibold text-h4">Begin the resurrection</h3>
+          <p class="text-body-sm text-fk-grey-700 mt-1">Contact form with conditional fields &amp; live validation.</p>
+        </a>
+
+        <a href="screen-4-schedule.html" class="fk-card group">
+          <div class="aspect-[4/3] -m-6 mb-4 bg-white rounded-t-card border-b border-fk-grey-200 p-6 flex items-center justify-center relative">
+            <span class="absolute top-3 left-3 fk-badge fk-badge--active">Step 4</span>
+            <div class="grid grid-cols-3 gap-1.5 w-full">
+              <div class="h-8 bg-fk-grey-100 rounded"></div>
+              <div class="h-8 bg-fk-grey-100 rounded"></div>
+              <div class="h-8 bg-fk-grey-100 rounded"></div>
+              <div class="h-8 bg-fk-yellow border-2 border-fk-black rounded"></div>
+              <div class="h-8 bg-fk-grey-100 rounded"></div>
+              <div class="h-8 bg-fk-grey-200 rounded"></div>
+              <div class="h-8 bg-fk-grey-100 rounded"></div>
+              <div class="h-8 bg-fk-grey-100 rounded"></div>
+              <div class="h-8 bg-fk-grey-100 rounded"></div>
+            </div>
+          </div>
+          <h3 class="font-anybody font-semibold text-h4">Schedule appointment</h3>
+          <p class="text-body-sm text-fk-grey-700 mt-1">Date dropdown + 15-min time slot grid.</p>
+        </a>
+
+        <a href="screen-5-confirmation.html" class="fk-card group">
+          <div class="aspect-[4/3] -m-6 mb-4 bg-fk-yellow-tint rounded-t-card border-b border-fk-yellow flex items-center justify-center relative">
+            <span class="absolute top-3 left-3 fk-badge fk-badge--active">Step 5</span>
+            <div class="text-center px-6">
+              <div class="inline-flex w-12 h-12 rounded-btn bg-fk-yellow items-center justify-center mb-3"><i data-lucide="credit-card" class="w-6 h-6"></i></div>
+              <p class="font-anybody font-bold text-h4">Pay $69 deposit</p>
+              <p class="text-body-sm text-fk-grey-700 mt-1">Refundable · reserves your slot</p>
+            </div>
+          </div>
+          <h3 class="font-anybody font-semibold text-h4">Confirm &amp; pay</h3>
+          <p class="text-body-sm text-fk-grey-700 mt-1">Booking summary, deposit highlight, payment modal.</p>
+        </a>
+
+        <a href="screen-6-success.html" class="fk-card group">
+          <div class="aspect-[4/3] -m-6 mb-4 bg-fk-yellow rounded-t-card flex items-center justify-center relative">
+            <span class="absolute top-3 left-3 fk-badge fk-badge--default">Step 6</span>
+            <svg viewBox="0 0 48 48" class="w-16 h-16"><path d="M10 24l10 10 18-20" fill="none" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="font-anybody font-semibold text-h4">Confirmation</h3>
+          <p class="text-body-sm text-fk-grey-700 mt-1">Reference number, what-happens-next, calendar download.</p>
+        </a>
+      </div>
+      <p class="text-body-sm text-fk-grey-700 mt-6 max-w-3xl">
+        <strong class="font-medium text-fk-black">Step 2 alternate:</strong>
+        card-grid prototype (<a href="screen-2-symptoms.html" class="underline font-medium text-fk-black">screen-2-symptoms.html</a>).
+      </p>
+    </section>
+
+    <!-- Quick links -->
+    <section class="mt-16">
+      <h2 class="font-anybody font-bold text-h2 mb-6">Reference</h2>
+      <div class="grid sm:grid-cols-2 gap-6">
+        <a href="design-system.html" class="fk-card flex items-start gap-4">
+          <div class="w-12 h-12 rounded-btn bg-fk-yellow flex items-center justify-center shrink-0"><i data-lucide="palette" class="w-6 h-6"></i></div>
+          <div>
+            <h3 class="font-anybody font-semibold text-h4">Design system</h3>
+            <p class="text-body-sm text-fk-grey-700 mt-1">Colors, type, buttons, inputs, cards, badges, alerts: all in one screenshottable page.</p>
+          </div>
+        </a>
+        <div class="fk-card flex items-start gap-4">
+          <div class="w-12 h-12 rounded-btn bg-fk-yellow flex items-center justify-center shrink-0"><i data-lucide="info" class="w-6 h-6"></i></div>
+          <div>
+            <h3 class="font-anybody font-semibold text-h4">How to use</h3>
+            <p class="text-body-sm text-fk-grey-700 mt-1">Open any HTML file directly in a browser. Resize the window between 375 px (mobile) and 1440 px (desktop) to verify responsive behaviour.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Specs at a glance -->
+    <section class="mt-16">
+      <h2 class="font-anybody font-bold text-h2 mb-6">At a glance</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="fk-card"><p class="text-body-xs uppercase tracking-widest text-fk-grey-700 font-medium">Brand colors</p><p class="font-anybody font-bold text-h4 mt-2">2 + greys</p><p class="text-body-sm text-fk-grey-700 mt-1">FK Yellow #FFEB00, FK Black, 6 greys, 3 feedback colors.</p></div>
+        <div class="fk-card"><p class="text-body-xs uppercase tracking-widest text-fk-grey-700 font-medium">Type families</p><p class="font-anybody font-bold text-h4 mt-2">Anybody · Inter</p><p class="text-body-sm text-fk-grey-700 mt-1">Anybody for headings, Inter for body.</p></div>
+        <div class="fk-card"><p class="text-body-xs uppercase tracking-widest text-fk-grey-700 font-medium">Spacing grid</p><p class="font-anybody font-bold text-h4 mt-2">8px base</p><p class="text-body-sm text-fk-grey-700 mt-1">8 / 16 / 24 / 32 / 40 / 48 / 64 / 80.</p></div>
+        <div class="fk-card"><p class="text-body-xs uppercase tracking-widest text-fk-grey-700 font-medium">Breakpoints</p><p class="font-anybody font-bold text-h4 mt-2">375 → 1440</p><p class="text-body-sm text-fk-grey-700 mt-1">Tailwind sm / md / lg / xl prefixes used throughout.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-fk-grey-200 mt-20 py-10 text-center text-body-sm text-fk-grey-700">
+    Fone King · 22 years of phone resurrection · 7,000+ five-star reviews · Lifetime warranty
+  </footer>
+
+  <script>if (window.lucide) lucide.createIcons();</script>
+</body>
+</html>

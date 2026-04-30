@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FK Repairs · Step 3: Your details</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/fk-config.js"></script>
+  <link rel="stylesheet" href="assets/fk-base.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="assets/fk-stores.js"></script>
+</head>
+<body class="bg-fk-grey-50 text-fk-black">
+  <a href="#main" class="fk-skip-link">Skip to content</a>
+
+  <header class="bg-white border-b border-fk-grey-200 sticky top-0 z-30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-3">
+        <span class="inline-flex items-center justify-center w-12 h-12 bg-fk-yellow rounded-btn font-anybody font-extrabold text-xl">FK</span>
+        <span class="hidden sm:inline font-anybody font-bold text-h4">Fone King</span>
+      </a>
+      <a href="screen-2-symptoms-v2.html" class="fk-btn-icon" aria-label="Back to symptoms"><i data-lucide="arrow-left" class="w-5 h-5"></i></a>
+    </div>
+
+    <nav aria-label="Booking progress" class="border-t border-fk-grey-200 bg-white">
+      <ol class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center gap-3 sm:gap-6 overflow-x-auto fk-scroll text-body-xs">
+        <li class="fk-step fk-step--done"><span class="fk-step__num">1</span><a href="screen-1-device.html" class="hover:underline">Device</a></li>
+        <li class="text-fk-grey-300">/</li>
+        <li class="fk-step fk-step--done"><span class="fk-step__num">2</span><a href="screen-2-symptoms-v2.html" class="hover:underline">Symptoms</a></li>
+        <li class="text-fk-grey-300">/</li>
+        <li class="fk-step fk-step--current"><span class="fk-step__num">3</span> Details</li>
+        <li class="text-fk-grey-300">/</li>
+        <li class="fk-step"><span class="fk-step__num">4</span> Schedule</li>
+        <li class="text-fk-grey-300">/</li>
+        <li class="fk-step"><span class="fk-step__num">5</span> Confirm</li>
+      </ol>
+    </nav>
+  </header>
+
+  <main id="main" class="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+    <div class="grid lg:grid-cols-[3fr_2fr] gap-10 items-start">
+
+      <!-- LEFT: form -->
+      <section>
+        <h1 class="font-anybody font-bold text-[36px] leading-[44px] md:text-h1">Begin the <span class="fk-display-stroke">Resurrection</span></h1>
+        <p class="text-body-lg text-fk-grey-700 mt-4 max-w-xl">Share your details so we can send confirmations, reminders, and booking updates.</p>
+
+        <!-- Mobile-first summary block based on scamps -->
+        <article class="mt-6 fk-summary lg:hidden">
+          <div class="flex items-center justify-between gap-3 mb-4">
+            <button type="button" class="fk-btn-ghost !px-4 !py-2">Change store</button>
+            <p class="font-anybody font-semibold text-h4" id="mobileStoreName">Miranda</p>
+          </div>
+          <h2 class="font-anybody font-semibold text-h4">Selected symptoms</h2>
+          <div class="mt-3 border border-fk-grey-200 rounded-btn overflow-hidden">
+            <table class="w-full text-body-sm">
+              <tbody id="mobileSymptomsTable">
+                <tr class="border-b border-fk-grey-200"><td class="px-3 py-2">Screen Trauma</td><td class="px-3 py-2 text-right font-medium">$140</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p id="mobilePartsStockLine" class="mt-3 text-body-sm font-medium text-fk-success">Parts confirmed in store for your selection.</p>
+        </article>
+
+        <form id="detailsForm" class="mt-10 bg-white rounded-card border border-fk-grey-200 shadow-fk-light p-6 sm:p-8 space-y-6" novalidate>
+
+          <div id="staffFollowUpBanner" class="hidden fk-alert fk-alert--warning">
+            <i data-lucide="package-search" class="w-5 h-5 shrink-0"></i>
+            <p class="text-body-sm">A selected repair line <strong>needs ordering</strong>. Submit your details. We’ll confirm the part and timing; your earliest booking slot will align with expected stock.</p>
+          </div>
+
+          <!-- Name -->
+          <div>
+            <label class="fk-label" for="fName">Your name <span class="text-fk-error" aria-hidden="true">*</span></label>
+            <input id="fName" name="name" required class="fk-input fk-focusable" placeholder="John Citizen" autocomplete="name" />
+            <p class="hidden text-body-sm text-fk-error mt-1 inline-flex items-center gap-1" data-error-for="fName"><i data-lucide="alert-circle" class="w-4 h-4"></i><span>Please enter your name</span></p>
+          </div>
+
+          <!-- Phone -->
+          <div>
+            <label class="fk-label" for="fPhone">Contact phone number <span class="text-fk-error" aria-hidden="true">*</span></label>
+            <input id="fPhone" name="phone" required type="tel" inputmode="tel" autocomplete="tel" class="fk-input fk-focusable" placeholder="0412 345 678" />
+            <p class="text-body-sm text-fk-grey-700 mt-1">We'll call you within 2 hours.</p>
+            <p class="hidden text-body-sm text-fk-error mt-1 inline-flex items-center gap-1" data-error-for="fPhone"><i data-lucide="alert-circle" class="w-4 h-4"></i><span>Enter a valid Australian phone number</span></p>
+
+            <label class="flex items-start gap-3 mt-4 cursor-pointer group fk-focusable rounded-btn p-2 -m-2 hover:bg-fk-grey-50">
+              <input type="checkbox" id="fNoCalls" class="mt-0.5 h-5 w-5 shrink-0 rounded border-2 border-fk-grey-200 text-fk-black focus:ring-2 focus:ring-offset-0 focus:ring-fk-yellow checked:bg-fk-yellow checked:border-fk-black" aria-describedby="fPhoneHelp">
+              <span id="fPhoneHelp" class="text-body-sm pt-0.5">This number can't receive calls. We'll use your email or alternate number.</span>
+            </label>
+
+            <div id="altPhoneWrap" class="hidden mt-4 overflow-hidden">
+              <label class="fk-label" for="fAltPhone">Alternative contact number <span class="text-fk-error" aria-hidden="true">*</span></label>
+              <input id="fAltPhone" name="altPhone" type="tel" class="fk-input fk-focusable" placeholder="0498 765 432" />
+              <p class="hidden text-body-sm text-fk-error mt-1 inline-flex items-center gap-1" data-error-for="fAltPhone"><i data-lucide="alert-circle" class="w-4 h-4"></i><span>Please enter an alternative number</span></p>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label class="fk-label" for="fEmail">Email address <span class="text-fk-error" aria-hidden="true">*</span></label>
+            <input id="fEmail" name="email" required type="email" autocomplete="email" class="fk-input fk-focusable" placeholder="you@example.com" />
+            <p class="hidden text-body-sm text-fk-error mt-1 inline-flex items-center gap-1" data-error-for="fEmail"><i data-lucide="alert-circle" class="w-4 h-4"></i><span>Enter a valid email address</span></p>
+          </div>
+
+          <!-- Store -->
+          <div>
+            <label class="fk-label" for="fStore">Preferred Resurrection Center <span class="text-fk-error" aria-hidden="true">*</span></label>
+            <span class="relative block">
+              <select id="fStore" name="store" required class="fk-input pr-10 appearance-none fk-focusable"></select>
+              <i data-lucide="chevron-down" class="w-4 h-4 absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+            </span>
+          </div>
+
+          <!-- Story textarea -->
+          <div>
+            <label class="fk-label" for="fStory">Tell us your device's story <span class="text-fk-grey-700 font-normal">(optional)</span></label>
+            <textarea id="fStory" name="story" maxlength="500" rows="4" class="fk-input fk-focusable" placeholder="What happened? Anything we should know before opening it up?"></textarea>
+            <p class="text-body-sm text-fk-grey-700 mt-1 text-right"><span id="storyCount">0</span>/500</p>
+          </div>
+
+          <!-- Terms -->
+          <label class="flex items-start gap-3 cursor-pointer group fk-focusable rounded-btn p-2 -m-2 hover:bg-fk-grey-50">
+            <input id="fTerms" type="checkbox" required
+              class="mt-0.5 h-5 w-5 shrink-0 rounded border-2 border-fk-grey-200 text-fk-black focus:ring-2 focus:ring-offset-0 focus:ring-fk-yellow checked:bg-fk-yellow checked:border-fk-black">
+            <span class="text-body-sm">I agree to the <a class="underline hover:text-fk-yellow-dark" href="#">terms and conditions</a> and FK's <a class="underline hover:text-fk-yellow-dark" href="#">privacy policy</a>.</span>
+          </label>
+
+          <!-- Footer nav -->
+          <div class="pt-4 border-t border-fk-grey-200 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3">
+            <a href="screen-2-symptoms-v2.html" class="fk-btn-ghost"><i data-lucide="arrow-left" class="w-5 h-5"></i> Back</a>
+            <button id="scheduleBtn" type="submit" class="fk-btn-primary opacity-50 pointer-events-none" aria-disabled="true">Schedule time <i data-lucide="arrow-right" class="w-5 h-5"></i></button>
+          </div>
+        </form>
+      </section>
+
+      <!-- RIGHT: booking summary + trust -->
+      <aside class="lg:sticky lg:top-32 space-y-6" aria-label="Booking summary">
+        <div class="fk-summary">
+          <h2 class="font-anybody font-bold text-h4">Your resurrection summary</h2>
+
+          <div class="mt-4 space-y-4 text-body-sm">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-btn bg-fk-yellow flex items-center justify-center text-xl" aria-hidden="true">📱</div>
+              <div>
+              <p class="text-fk-grey-700 text-body-xs uppercase tracking-widest">Device</p>
+              <p class="font-medium" id="summaryDevice">iPhone 16 PRO MAX</p>
+              </div>
+            </div>
+
+            <div class="border-t border-fk-grey-200 pt-4">
+              <p class="text-fk-grey-700 text-body-xs uppercase tracking-widest mb-2">Selected symptoms</p>
+              <ul id="desktopSymptomsList" class="space-y-1.5 text-body-sm text-fk-grey-700">
+                <li>Complete step 2 to see your selected symptoms here.</li>
+              </ul>
+            </div>
+
+            <div class="border-t-2 border-fk-black pt-4 flex items-center justify-between">
+              <span class="font-medium">Estimated total</span>
+              <span class="font-anybody font-bold text-h4" id="summaryTotal">$140</span>
+            </div>
+
+            <div class="border-t border-fk-grey-200 pt-4">
+              <p class="text-fk-grey-700 text-body-xs uppercase tracking-widest">Store</p>
+              <p class="font-medium" id="summaryStore">Miranda</p>
+            </div>
+            <div class="border-t border-fk-grey-200 pt-4">
+              <p class="text-fk-grey-700 text-body-xs uppercase tracking-widest">Booking path</p>
+              <p class="font-medium" id="summaryPath">Reserve with deposit</p>
+            </div>
+          </div>
+
+          <div id="partsStockSuccess" class="fk-alert fk-alert--success mt-5">
+            <i data-lucide="check-circle-2" class="w-5 h-5 shrink-0"></i>
+            <p>Parts confirmed in store for your selected lines and part quality.</p>
+          </div>
+          <div id="partsStockWarning" class="hidden fk-alert fk-alert--warning mt-5">
+            <i data-lucide="package-search" class="w-5 h-5 shrink-0"></i>
+            <p>At least one selected line <strong>needs ordering</strong>. We’ll confirm parts before your visit. Your schedule will start from the expected in-stock date.</p>
+          </div>
+        </div>
+
+        <ul class="text-body-sm text-fk-grey-700 space-y-3 px-2">
+          <li class="flex items-center gap-3"><i data-lucide="timer" class="w-5 h-5"></i> Usually revived in 1 hour</li>
+          <li class="flex items-center gap-3"><i data-lucide="shield-check" class="w-5 h-5"></i> Resurrection guarantee</li>
+          <li class="flex items-center gap-3"><i data-lucide="lock" class="w-5 h-5"></i> Your memories stay safe</li>
+        </ul>
+      </aside>
+    </div>
+  </main>
+
+  <script>
+    const form = document.getElementById('detailsForm');
+    const noCalls = document.getElementById('fNoCalls');
+    const altWrap = document.getElementById('altPhoneWrap');
+    const altInput = document.getElementById('fAltPhone');
+    const story = document.getElementById('fStory');
+    const storyCount = document.getElementById('storyCount');
+    const scheduleBtn = document.getElementById('scheduleBtn');
+    const storeSelect = document.getElementById('fStore');
+    const summaryStore = document.getElementById('summaryStore');
+    const summaryDevice = document.getElementById('summaryDevice');
+    const summaryPath = document.getElementById('summaryPath');
+    const summaryTotal = document.getElementById('summaryTotal');
+    const mobileStoreName = document.getElementById('mobileStoreName');
+    const mobileSymptomsTable = document.getElementById('mobileSymptomsTable');
+    const mobilePartsStockLine = document.getElementById('mobilePartsStockLine');
+    const desktopSymptomsList = document.getElementById('desktopSymptomsList');
+    const partsStockSuccess = document.getElementById('partsStockSuccess');
+    const partsStockWarning = document.getElementById('partsStockWarning');
+
+    if (typeof fkPopulateStoreSelect === 'function') {
+      fkPopulateStoreSelect(storeSelect, {
+        placeholder: 'Select a store…',
+        selected: localStorage.getItem('fkStore') || 'Miranda'
+      });
+      if (storeSelect.value) summaryStore.textContent = storeSelect.value;
+      if (storeSelect.value && mobileStoreName) mobileStoreName.textContent = storeSelect.value;
+    }
+
+    try {
+      const booking = JSON.parse(localStorage.getItem('fkBooking') || '{}');
+      const device = localStorage.getItem('fkDevice');
+      if (device) summaryDevice.textContent = device;
+      if (booking.path) {
+        summaryPath.textContent =
+          booking.path === 'walkin' ? 'Walk-in (no guarantee)' : 'Reserve with deposit';
+      }
+      if (booking.total) summaryTotal.textContent = `$${booking.total}`;
+      if (mobileSymptomsTable && Array.isArray(booking.symptoms) && booking.symptoms.length) {
+        const each = Math.round((booking.total || 0) / booking.symptoms.length);
+        mobileSymptomsTable.innerHTML = booking.symptoms.map(function (s, idx) {
+          const isLast = idx === booking.symptoms.length - 1;
+          return '<tr' + (isLast ? '' : ' class="border-b border-fk-grey-200"') + '><td class="px-3 py-2">' + s + '</td><td class="px-3 py-2 text-right font-medium">$' + each + '</td></tr>';
+        }).join('');
+      }
+      if (booking.needsOrdering || booking.needsStaffFollowUp) {
+        const b = document.getElementById('staffFollowUpBanner');
+        if (b) b.classList.remove('hidden');
+      }
+
+      const needsOrd = !!(booking.needsOrdering || booking.needsStaffFollowUp);
+      if (partsStockSuccess && partsStockWarning) {
+        partsStockSuccess.classList.toggle('hidden', needsOrd);
+        partsStockWarning.classList.toggle('hidden', !needsOrd);
+      }
+      if (mobilePartsStockLine) {
+        if (needsOrd) {
+          mobilePartsStockLine.textContent = 'At least one part needs ordering. We will confirm before your visit.';
+          mobilePartsStockLine.className = 'mt-3 text-body-sm font-medium text-fk-warning';
+        } else {
+          mobilePartsStockLine.textContent = 'Parts confirmed in store for your selection.';
+          mobilePartsStockLine.className = 'mt-3 text-body-sm font-medium text-fk-success';
+        }
+      }
+
+      if (desktopSymptomsList && Array.isArray(booking.symptoms) && booking.symptoms.length && booking.total) {
+        const n = booking.symptoms.length;
+        const each = Math.round((booking.total || 0) / n);
+        desktopSymptomsList.innerHTML = booking.symptoms.map(function (s) {
+          return '<li class="flex items-center justify-between gap-2"><span>' + s + '</span><span class="font-medium">$' + each + '</span></li>';
+        }).join('');
+      }
+    } catch {}
+
+    noCalls.addEventListener('change', () => {
+      if (noCalls.checked) {
+        altWrap.classList.remove('hidden');
+        altWrap.classList.add('fk-slide-in');
+        altInput.required = true;
+      } else {
+        altWrap.classList.add('hidden');
+        altInput.required = false;
+        altInput.value = '';
+        clearError(altInput);
+      }
+      validate();
+    });
+
+    story.addEventListener('input', () => storyCount.textContent = story.value.length);
+    storeSelect.addEventListener('change', () => {
+      summaryStore.textContent = storeSelect.value || 'Not selected';
+      if (mobileStoreName) mobileStoreName.textContent = storeSelect.value || 'Not selected';
+      if (storeSelect.value) localStorage.setItem('fkStore', storeSelect.value);
+    });
+
+    /* Validation helpers */
+    const showError = (input) => {
+      input.classList.add('fk-input--error');
+      const err = document.querySelector(`[data-error-for="${input.id}"]`);
+      if (err) { err.classList.remove('hidden'); err.classList.add('inline-flex'); }
+    };
+    const clearError = (input) => {
+      input.classList.remove('fk-input--error');
+      const err = document.querySelector(`[data-error-for="${input.id}"]`);
+      if (err) { err.classList.add('hidden'); err.classList.remove('inline-flex'); }
+    };
+
+    const isEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    const isPhone = v => /^[\d\s+()\-]{8,}$/.test(v);
+
+    const validators = {
+      fName:  v => v.trim().length >= 2,
+      fPhone: v => isPhone(v),
+      fEmail: v => isEmail(v),
+      fAltPhone: v => !noCalls.checked || isPhone(v),
+    };
+
+    function validate() {
+      const allValid =
+        validators.fName(form.fName.value) &&
+        validators.fPhone(form.fPhone.value) &&
+        validators.fEmail(form.fEmail.value) &&
+        validators.fAltPhone(form.fAltPhone.value) &&
+        storeSelect.value &&
+        document.getElementById('fTerms').checked;
+
+      if (allValid) { scheduleBtn.classList.remove('opacity-50','pointer-events-none'); scheduleBtn.removeAttribute('aria-disabled'); }
+      else { scheduleBtn.classList.add('opacity-50','pointer-events-none'); scheduleBtn.setAttribute('aria-disabled','true'); }
+    }
+
+    ['fName','fPhone','fEmail','fAltPhone'].forEach(id => {
+      const input = document.getElementById(id);
+      input.addEventListener('blur', () => {
+        if (input.value && !validators[id](input.value)) showError(input); else clearError(input);
+        validate();
+      });
+      input.addEventListener('input', () => { clearError(input); validate(); });
+    });
+    storeSelect.addEventListener('change', validate);
+    document.getElementById('fTerms').addEventListener('change', validate);
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let ok = true;
+      ['fName','fPhone','fEmail'].forEach(id => {
+        const input = document.getElementById(id);
+        if (!validators[id](input.value)) { showError(input); ok = false; }
+      });
+      if (noCalls.checked && !validators.fAltPhone(altInput.value)) { showError(altInput); ok = false; }
+      if (ok) {
+        const booking = JSON.parse(localStorage.getItem('fkBooking') || '{}');
+        booking.customer = { name: form.fName.value, email: form.fEmail.value, phone: form.fPhone.value, store: storeSelect.value };
+        if (storeSelect.value) localStorage.setItem('fkStore', storeSelect.value);
+        localStorage.setItem('fkBooking', JSON.stringify(booking));
+        window.location.href = 'screen-4-schedule.html';
+      }
+    });
+
+    if (window.lucide) lucide.createIcons();
+  </script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FK Repairs · Step 5: Confirm &amp; pay deposit</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/fk-config.js"></script>
+  <link rel="stylesheet" href="assets/fk-base.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body class="bg-fk-grey-50 text-fk-black">
+  <a href="#main" class="fk-skip-link">Skip to content</a>
+
+  <header class="bg-white border-b border-fk-grey-200 sticky top-0 z-30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-3">
+        <span class="inline-flex items-center justify-center w-12 h-12 bg-fk-yellow rounded-btn font-anybody font-extrabold text-xl">FK</span>
+        <span class="hidden sm:inline font-anybody font-bold text-h4">Fone King</span>
+      </a>
+      <a href="screen-4-schedule.html" class="fk-btn-icon" aria-label="Back to schedule"><i data-lucide="arrow-left" class="w-5 h-5"></i></a>
+    </div>
+
+    <nav aria-label="Booking progress" class="border-t border-fk-grey-200 bg-white">
+      <ol class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center gap-3 sm:gap-6 overflow-x-auto fk-scroll text-body-xs">
+        <li class="fk-step fk-step--done"><span class="fk-step__num">1</span><a href="screen-1-device.html" class="hover:underline">Device</a></li>
+        <li class="text-fk-grey-300">/</li>
+        <li class="fk-step fk-step--done"><span class="fk-step__num">2</span><a href="screen-2-symptoms-v2.html" class="hover:underline">Symptoms</a></li>
+        <li class="text-fk-grey-300">/</li>
+        <li class="fk-step fk-step--done"><span class="fk-step__num">3</span><a href="screen-3-details.html" class="hover:underline">Details</a></li>
+        <li class="text-fk-grey-300">/</li>
+        <li class="fk-step fk-step--done"><span class="fk-step__num">4</span><a href="screen-4-schedule.html" class="hover:underline">Schedule</a></li>
+        <li class="text-fk-grey-300">/</li>
+        <li class="fk-step fk-step--current"><span class="fk-step__num">5</span> Confirm</li>
+      </ol>
+    </nav>
+  </header>
+
+  <main id="main" class="max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+
+    <header class="text-center max-w-2xl mx-auto">
+      <h1 class="font-anybody font-bold text-[36px] leading-[44px] md:text-h1">Thank you and what happens next</h1>
+      <p class="text-body-lg text-fk-grey-700 mt-4">Your booking is created with <strong>part soft-reservation</strong> pending store confirmation.</p>
+    </header>
+
+    <!-- Booking summary -->
+    <section class="mt-10 fk-summary p-6 sm:p-8" aria-label="Booking summary">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <h2 class="font-anybody font-bold text-h3">Your resurrection request</h2>
+        <span class="fk-badge fk-badge--active">Soft-Reserved</span>
+      </div>
+
+      <div class="mt-4 bg-fk-grey-50 rounded-btn p-4 flex items-center justify-between gap-3">
+        <div>
+          <p class="text-body-xs uppercase tracking-widest text-fk-grey-700">Reference</p>
+          <p class="font-mono font-semibold tracking-wide text-h4 mt-1">RPTUG112345</p>
+        </div>
+        <button class="fk-btn-icon" aria-label="Copy reference number"><i data-lucide="copy" class="w-5 h-5"></i></button>
+      </div>
+
+      <dl class="mt-6 grid sm:grid-cols-2 gap-4 text-body-sm">
+        <div>
+          <dt class="text-fk-grey-700 text-body-xs uppercase tracking-widest">Device</dt>
+          <dd class="font-medium mt-1">iPhone 16 PRO MAX</dd>
+        </div>
+        <div>
+          <dt class="text-fk-grey-700 text-body-xs uppercase tracking-widest">Issues</dt>
+          <dd class="font-medium mt-1">Screen Trauma · Power Drained</dd>
+        </div>
+        <div>
+          <dt class="text-fk-grey-700 text-body-xs uppercase tracking-widest">Estimated cost</dt>
+          <dd class="font-anybody font-bold text-h4 mt-1" id="estCost">$140</dd>
+        </div>
+        <div>
+          <dt class="text-fk-grey-700 text-body-xs uppercase tracking-widest">Deposit (refundable)</dt>
+          <dd class="font-anybody font-bold text-h4 mt-1">$59-$69</dd>
+        </div>
+      </dl>
+
+      <hr class="border-fk-grey-200 my-6" />
+
+      <h3 class="font-anybody font-semibold text-h4 mb-3">Appointment details</h3>
+      <ul class="space-y-2 text-body">
+        <li class="flex items-center gap-3"><i data-lucide="calendar" class="w-5 h-5 text-fk-grey-700"></i> <span id="sumDay">Wednesday, 10 April 2026</span></li>
+        <li class="flex items-center gap-3"><i data-lucide="clock" class="w-5 h-5 text-fk-grey-700"></i> <span id="sumTime">5:45 PM</span></li>
+        <li class="flex items-start gap-3">
+          <i data-lucide="map-pin" class="w-5 h-5 mt-1 text-fk-grey-700"></i>
+          <span><strong id="confirmStoreTitle">FK Miranda</strong><br><span class="text-fk-grey-700 text-body-sm">Full street address is in your confirmation email.</span></span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Deposit highlight -->
+    <section id="depositSection" class="mt-8 rounded-card border-l-4 border-fk-yellow bg-fk-yellow-tint p-6 sm:p-8" aria-label="Reserve your slot with a deposit">
+      <h2 class="font-anybody font-bold text-h3 flex items-center gap-3">
+        <span class="inline-flex w-10 h-10 rounded-btn bg-fk-yellow items-center justify-center" aria-hidden="true">
+          <i data-lucide="credit-card" class="w-5 h-5"></i>
+        </span>
+        Pay deposit to reserve parts and time
+      </h2>
+      <p class="text-body text-fk-grey-700 mt-3">Secure your appointment with a <strong class="text-fk-black">$59-$69 refundable deposit</strong>. The amount comes off your final bill.</p>
+
+      <ul class="mt-5 space-y-3 text-body">
+        <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 mt-0.5 text-fk-success"></i> Your parts will be put aside</li>
+        <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 mt-0.5 text-fk-success"></i> <span id="depositExpectLine">Your store will be expecting you at your chosen time.</span></li>
+        <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 mt-0.5 text-fk-success"></i> Deposit comes off your final bill</li>
+        <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 mt-0.5 text-fk-success"></i> Fully refundable if you cancel</li>
+      </ul>
+
+      <div class="mt-6 flex flex-col gap-3">
+        <button id="payBtn" class="fk-btn-primary text-[18px] py-5"><i data-lucide="lock" class="w-5 h-5"></i> Pay deposit now</button>
+        <a href="screen-6-success.html?walkin=1" class="fk-btn-ghost">Skip deposit, walk in instead</a>
+      </div>
+    </section>
+
+    <div class="fk-summary mt-8">
+      <h3 class="font-anybody font-semibold text-h4">Manage booking</h3>
+      <p class="text-body-sm text-fk-grey-700 mt-1">From your portal you can cancel or reschedule before the booking window closes.</p>
+      <div class="mt-4 flex flex-wrap gap-3">
+        <a href="#" class="fk-btn-ghost">Cancel booking</a>
+        <a href="#" class="fk-btn-ghost">Reschedule</a>
+      </div>
+    </div>
+
+    <p class="text-center mt-8 text-body-sm text-fk-grey-700">By continuing you agree to our <a href="#" class="underline hover:text-fk-black">terms and conditions</a>.</p>
+
+    <div class="mt-8">
+      <a href="screen-4-schedule.html" class="fk-btn-ghost"><i data-lucide="arrow-left" class="w-5 h-5"></i> Back</a>
+    </div>
+  </main>
+
+  <!-- ─── PAYMENT MODAL ─────────────────────────────── -->
+  <div id="payModal" class="hidden fk-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="payTitle">
+    <div class="fk-modal-card fk-modal-card-enter">
+      <div class="flex items-center justify-between gap-4">
+        <h2 id="payTitle" class="font-anybody font-bold text-h3">Take CC payment</h2>
+        <button id="closePay" class="fk-btn-icon" aria-label="Close payment dialog"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+
+      <p class="text-body-sm text-fk-grey-700 mt-3">
+        Payment reserves your parts. You don't have to pay now if you'd rather just turn up.
+      </p>
+      <p class="text-body-xs text-fk-grey-700 mt-1">If payment is not completed, we can send a reminder email with links to continue or switch to walk-in.</p>
+
+      <div class="mt-6 flex items-end justify-between bg-fk-yellow-tint rounded-btn p-4 border border-fk-yellow">
+        <div>
+          <p class="text-body-xs uppercase tracking-widest text-fk-grey-700">Amount</p>
+          <p class="font-anybody font-bold text-[32px] leading-9 mt-1">$69.00</p>
+        </div>
+        <span class="text-body-sm text-fk-grey-700">AUD · Refundable</span>
+      </div>
+
+      <!-- Payment fields placeholder -->
+      <div class="mt-6 space-y-4">
+        <label class="fk-label" for="ccName">Cardholder name
+          <input id="ccName" class="fk-input fk-focusable" placeholder="Name on card" />
+        </label>
+        <label class="fk-label" for="ccNumber">Card number
+          <span class="relative block">
+            <input id="ccNumber" inputmode="numeric" autocomplete="cc-number" class="fk-input fk-focusable pl-12" placeholder="1234 5678 9012 3456" />
+            <i data-lucide="credit-card" class="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-fk-grey-700"></i>
+          </span>
+        </label>
+        <div class="grid grid-cols-2 gap-4">
+          <label class="fk-label" for="ccExp">Expiry
+            <input id="ccExp" class="fk-input fk-focusable" placeholder="MM/YY" inputmode="numeric" />
+          </label>
+          <label class="fk-label" for="ccCvv">CVC
+            <input id="ccCvv" class="fk-input fk-focusable" placeholder="123" inputmode="numeric" />
+          </label>
+        </div>
+      </div>
+
+      <button id="takePayment" class="fk-btn-primary w-full mt-6 text-[18px] py-5">
+        <span class="take-payment-label inline-flex items-center gap-2"><i data-lucide="lock" class="w-5 h-5"></i> Take payment</span>
+        <span class="take-payment-loading hidden inline-flex items-center gap-2">
+          <svg class="animate-spin w-5 h-5" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="3" stroke-opacity=".25"/><path d="M21 12a9 9 0 0 0-9-9" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+          Processing…
+        </span>
+      </button>
+
+      <p class="text-body-xs text-fk-grey-700 mt-4 flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4"></i> Secure payment via Eway / Square. Confirmation email sent immediately after payment.</p>
+      <p id="abandonHint" class="hidden text-body-xs text-fk-warning mt-2">Draft booking saved. Reminder email trigger queued for ~15 minutes if no payment.</p>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('payModal');
+    const openBtn = document.getElementById('payBtn');
+    const closeBtn = document.getElementById('closePay');
+    const takeBtn = document.getElementById('takePayment');
+
+    const open = () => {
+      modal.classList.remove('hidden');
+      modal.classList.add('fk-modal-enter');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('ccName').focus();
+    };
+    const close = () => {
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+      const abandonHint = document.getElementById('abandonHint');
+      if (abandonHint) abandonHint.classList.remove('hidden');
+    };
+
+    openBtn.addEventListener('click', open);
+    closeBtn.addEventListener('click', close);
+    modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.classList.contains('hidden')) close(); });
+
+    takeBtn.addEventListener('click', () => {
+      takeBtn.disabled = true;
+      takeBtn.querySelector('.take-payment-label').classList.add('hidden');
+      takeBtn.querySelector('.take-payment-loading').classList.remove('hidden');
+      setTimeout(() => { window.location.href = 'screen-6-success.html?status=pending'; }, 1400);
+    });
+
+    try {
+      const booking = JSON.parse(localStorage.getItem('fkBooking') || '{}');
+      if (booking.total) document.getElementById('estCost').textContent = `$${booking.total}`;
+      if (booking.day) document.getElementById('sumDay').textContent = booking.day;
+      if (booking.time) document.getElementById('sumTime').textContent = booking.time;
+      const storeLabel = (booking.customer && booking.customer.store) || localStorage.getItem('fkStore') || 'Miranda';
+      const titleEl = document.getElementById('confirmStoreTitle');
+      if (titleEl) titleEl.textContent = 'FK ' + storeLabel;
+      const expectEl = document.getElementById('depositExpectLine');
+      if (expectEl && booking.time) {
+        expectEl.textContent = 'FK ' + storeLabel + ' will be expecting you at ' + booking.time + '.';
+      } else if (expectEl) {
+        expectEl.textContent = 'FK ' + storeLabel + ' will be expecting you at your chosen time.';
+      }
+      if (booking.path === 'walkin') {
+        document.getElementById('depositSection').classList.add('hidden');
+      }
+    } catch {}
+
+    if (window.lucide) lucide.createIcons();
+  </script>
+</body>
+</html>

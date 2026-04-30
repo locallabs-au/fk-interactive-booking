@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FK Repairs · Device not listed</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/fk-config.js"></script>
+  <link rel="stylesheet" href="assets/fk-base.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body class="bg-fk-grey-50 text-fk-black">
+  <main class="min-h-screen flex items-center justify-center px-4">
+    <section class="max-w-xl w-full fk-summary">
+      <h1 class="font-anybody font-bold text-h2">Device not listed yet</h1>
+      <p class="text-body text-fk-grey-700 mt-3">No stress: our technicians can still help. Send your details and we will call you back with sourcing options and next steps.</p>
+      <div class="fk-alert fk-alert--warning mt-5">
+        <i data-lucide="info" class="w-5 h-5 shrink-0"></i>
+        <p>Edge case routed inline: unknown models / unsupported parts / international variants.</p>
+      </div>
+      <form class="mt-6 space-y-4">
+        <label class="fk-label">Name<input class="fk-input" required placeholder="Your name"></label>
+        <label class="fk-label">Phone<input class="fk-input" required placeholder="0412 345 678"></label>
+        <label class="fk-label">Email<input class="fk-input" type="email" required placeholder="you@example.com"></label>
+        <label class="fk-label">Model details<textarea class="fk-input min-h-[120px]" placeholder="Brand, model number, issue"></textarea></label>
+        <div class="flex gap-3">
+          <a href="screen-1-device.html" class="fk-btn-ghost">Back</a>
+          <a href="screen-6-success.html?callback=1" class="fk-btn-primary">Submit callback request</a>
+        </div>
+      </form>
+    </section>
+  </main>
+  <script>if(window.lucide) lucide.createIcons();</script>
+</body>
+</html>

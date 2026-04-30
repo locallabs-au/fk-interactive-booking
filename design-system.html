@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FK Repairs · Design System</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/fk-config.js"></script>
+  <link rel="stylesheet" href="assets/fk-base.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="assets/fk-stores.js"></script>
+</head>
+<body class="bg-fk-grey-50 text-fk-black">
+
+  <a href="#main" class="fk-skip-link">Skip to content</a>
+
+  <!-- Page header -->
+  <header class="bg-white border-b border-fk-grey-200">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <span class="inline-flex items-center justify-center w-12 h-12 bg-fk-yellow rounded-btn font-anybody font-extrabold text-xl">FK</span>
+        <span class="font-anybody font-bold text-lg leading-tight">Fone King<br><span class="font-inter font-medium text-body-sm text-fk-grey-700">Design System</span></span>
+      </a>
+      <nav class="text-body-sm font-medium flex gap-6">
+        <a href="index.html" class="hover:underline">Booking flow</a>
+        <a href="#tokens" class="hover:underline">Tokens</a>
+        <a href="#components" class="hover:underline">Components</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="max-w-7xl mx-auto px-6 py-16 space-y-20">
+
+    <!-- Hero -->
+    <section>
+      <p class="font-inter font-medium text-fk-grey-700 uppercase tracking-widest text-body-xs mb-3">Brand identity</p>
+      <h1 class="font-anybody font-bold text-h1">Your Phone Reborn: Design System</h1>
+      <p class="text-body-lg text-fk-grey-700 max-w-2xl mt-4">
+        Reusable building blocks for the FK booking flow. Every component on this page
+        appears across the six screens. Tokens map 1:1 to Tailwind utilities so the
+        same code can be re-traced in Figma.
+      </p>
+    </section>
+
+    <!-- Tokens -->
+    <section id="tokens" class="space-y-12">
+      <div>
+        <h2 class="font-anybody font-bold text-h2 mb-2">Color tokens</h2>
+        <p class="text-fk-grey-700 mb-6">Brand, neutral and feedback colors. Use yellow only for emphasis.</p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          <!-- swatches -->
+          <div><div class="h-24 rounded-card bg-fk-yellow border border-fk-grey-200"></div><p class="mt-2 font-medium">FK Yellow</p><p class="text-body-sm text-fk-grey-700">#FFEB00</p></div>
+          <div><div class="h-24 rounded-card bg-fk-black"></div><p class="mt-2 font-medium">FK Black</p><p class="text-body-sm text-fk-grey-700">#000000</p></div>
+          <div><div class="h-24 rounded-card bg-fk-grey-100 border border-fk-grey-200"></div><p class="mt-2 font-medium">Grey 100</p><p class="text-body-sm text-fk-grey-700">#F5F5F5</p></div>
+          <div><div class="h-24 rounded-card bg-fk-grey-200"></div><p class="mt-2 font-medium">Grey 200</p><p class="text-body-sm text-fk-grey-700">#E0E0E0</p></div>
+          <div><div class="h-24 rounded-card bg-fk-grey-300"></div><p class="mt-2 font-medium">Grey 300</p><p class="text-body-sm text-fk-grey-700">#BDBDBD</p></div>
+          <div><div class="h-24 rounded-card bg-fk-grey-700"></div><p class="mt-2 font-medium text-white">Grey 700</p><p class="text-body-sm text-fk-grey-700">#757575</p></div>
+          <div><div class="h-24 rounded-card bg-fk-success"></div><p class="mt-2 font-medium">Success</p><p class="text-body-sm text-fk-grey-700">#4CAF50</p></div>
+          <div><div class="h-24 rounded-card bg-fk-error"></div><p class="mt-2 font-medium">Error</p><p class="text-body-sm text-fk-grey-700">#F44336</p></div>
+          <div><div class="h-24 rounded-card bg-fk-warning"></div><p class="mt-2 font-medium">Warning</p><p class="text-body-sm text-fk-grey-700">#FF9800</p></div>
+          <div><div class="h-24 rounded-card bg-fk-yellow-tint border border-fk-grey-200"></div><p class="mt-2 font-medium">Yellow tint</p><p class="text-body-sm text-fk-grey-700">#FFFEF5</p></div>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="font-anybody font-bold text-h2 mb-2">Typography</h2>
+        <p class="text-fk-grey-700 mb-6">Anybody for headings. Inter for everything else.</p>
+        <div class="bg-white rounded-card border border-fk-grey-200 p-8 space-y-6 shadow-fk-light">
+          <div><span class="text-body-xs uppercase tracking-widest text-fk-grey-700">Anybody Bold · 48 / 56</span><h1 class="font-anybody font-bold text-h1">Your Phone Reborn</h1></div>
+          <div><span class="text-body-xs uppercase tracking-widest text-fk-grey-700">Anybody Bold · 36 / 44</span><h2 class="font-anybody font-bold text-h2">Begin the resurrection</h2></div>
+          <div><span class="text-body-xs uppercase tracking-widest text-fk-grey-700">Anybody Semibold · 24 / 32</span><h3 class="font-anybody font-semibold text-h3">Screen Trauma</h3></div>
+          <div><span class="text-body-xs uppercase tracking-widest text-fk-grey-700">Anybody Semibold · 18 / 26</span><h4 class="font-anybody font-semibold text-h4">Power Drained</h4></div>
+          <div><span class="text-body-xs uppercase tracking-widest text-fk-grey-700">Inter Regular · 18 / 28</span><p class="text-body-lg">We don't just fix phones. We bring them back to life.</p></div>
+          <div><span class="text-body-xs uppercase tracking-widest text-fk-grey-700">Inter Regular · 16 / 24</span><p class="text-body">22 years of phone resurrection. 7,000+ five-star reviews. Lifetime warranty on every repair.</p></div>
+          <div><span class="text-body-xs uppercase tracking-widest text-fk-grey-700">Inter Regular · 14 / 20</span><p class="text-body-sm text-fk-grey-700">We'll call you within 2 hours to confirm pricing and timing.</p></div>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="font-anybody font-bold text-h2 mb-2">Spacing, radius &amp; shadow</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-white rounded-card border border-fk-grey-200 p-6 shadow-fk-light"><h4 class="font-anybody font-semibold text-h4 mb-3">Spacing scale</h4><p class="text-body-sm text-fk-grey-700">8px base grid: 8, 16, 24, 32, 40, 48, 64, 80.</p></div>
+          <div class="bg-white rounded-card border border-fk-grey-200 p-6 shadow-fk-light"><h4 class="font-anybody font-semibold text-h4 mb-3">Border radius</h4><div class="flex gap-3 flex-wrap text-body-sm"><span class="px-3 py-2 bg-fk-grey-100 rounded-btn">btn 8</span><span class="px-3 py-2 bg-fk-grey-100 rounded-input">input 8</span><span class="px-3 py-2 bg-fk-grey-100 rounded-card">card 12</span><span class="px-3 py-2 bg-fk-grey-100 rounded-modal">modal 16</span></div></div>
+          <div class="bg-white rounded-card border border-fk-grey-200 p-6 shadow-fk-light"><h4 class="font-anybody font-semibold text-h4 mb-3">Elevation</h4><div class="space-y-3"><div class="bg-white rounded-btn shadow-fk-light p-3 text-body-sm">Light · 2/4</div><div class="bg-white rounded-btn shadow-fk-medium p-3 text-body-sm">Medium · 4/8</div><div class="bg-white rounded-btn shadow-fk-heavy p-3 text-body-sm">Heavy · 8/24</div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Components -->
+    <section id="components" class="space-y-16">
+
+      <!-- Buttons -->
+      <div>
+        <h2 class="font-anybody font-bold text-h2 mb-6">Buttons</h2>
+        <div class="bg-white rounded-card border border-fk-grey-200 p-8 shadow-fk-light grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="space-y-3"><p class="font-medium">Primary</p>
+            <button class="fk-btn-primary w-full">Book Repair</button>
+            <button class="fk-btn-primary w-full" disabled>Disabled</button>
+          </div>
+          <div class="space-y-3"><p class="font-medium">Secondary</p>
+            <button class="fk-btn-secondary w-full">Call us now</button>
+            <button class="fk-btn-secondary w-full" disabled>Disabled</button>
+          </div>
+          <div class="space-y-3"><p class="font-medium">Ghost</p>
+            <button class="fk-btn-ghost w-full">Back</button>
+            <button class="fk-btn-ghost w-full" disabled>Disabled</button>
+          </div>
+          <div class="space-y-3"><p class="font-medium">Icon</p>
+            <div class="flex gap-3">
+              <button aria-label="Search" class="fk-btn-icon"><i data-lucide="search" class="w-5 h-5"></i></button>
+              <button aria-label="Close"  class="fk-btn-icon"><i data-lucide="x" class="w-5 h-5"></i></button>
+              <button aria-label="Phone"  class="fk-btn-icon"><i data-lucide="phone" class="w-5 h-5"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form fields -->
+      <div>
+        <h2 class="font-anybody font-bold text-h2 mb-6">Form fields</h2>
+        <div class="bg-white rounded-card border border-fk-grey-200 p-8 shadow-fk-light grid md:grid-cols-2 gap-8">
+          <div class="space-y-5">
+            <label class="fk-label">Default input
+              <input class="fk-input" placeholder="Your name" />
+            </label>
+            <label class="fk-label">Focus state (click me)
+              <input class="fk-input" value="iPhone 16 PRO MAX" />
+            </label>
+            <label class="fk-label">Error
+              <input class="fk-input fk-input--error" value="not-an-email" />
+              <span class="text-body-sm text-fk-error mt-1 inline-flex items-center gap-1"><i data-lucide="alert-circle" class="w-4 h-4"></i>Enter a valid email address</span>
+            </label>
+            <label class="fk-label">Success
+              <span class="relative block">
+                <input class="fk-input fk-input--success" value="john@email.com" />
+                <i data-lucide="check" class="w-5 h-5 text-fk-success absolute right-4 top-1/2 -translate-y-1/2"></i>
+              </span>
+            </label>
+            <label class="fk-label">Disabled
+              <input class="fk-input" value="Disabled value" disabled />
+            </label>
+          </div>
+          <div class="space-y-5">
+            <label class="fk-label">Dropdown
+              <span class="relative block">
+                <select id="dsStoreSelect" class="fk-input pr-10 appearance-none" aria-label="Example store dropdown"></select>
+                <i data-lucide="chevron-down" class="w-4 h-4 absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+              </span>
+            </label>
+            <label class="fk-label">Textarea
+              <textarea class="fk-input min-h-[120px]" placeholder="Tell us your device's story…"></textarea>
+            </label>
+            <div class="space-y-3">
+              <label class="fk-check">
+                <input type="checkbox" class="sr-only" checked>
+                <span class="fk-check__box"><svg viewBox="0 0 20 20" fill="none" class="w-3.5 h-3.5 opacity-0 transition-opacity"><path d="M4 10l4 4 8-8" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span>I agree to the terms and conditions</span>
+              </label>
+              <label class="fk-radio">
+                <input type="radio" name="ds-radio" class="sr-only" checked>
+                <span class="fk-radio__box"></span><span>Bring it in to the store</span>
+              </label>
+              <label class="fk-radio">
+                <input type="radio" name="ds-radio" class="sr-only">
+                <span class="fk-radio__box"></span><span>Mail-in repair</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cards -->
+      <div>
+        <h2 class="font-anybody font-bold text-h2 mb-6">Cards</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <article class="fk-card">
+            <h3 class="font-anybody font-semibold text-h3 mb-2">Basic card</h3>
+            <p class="text-fk-grey-700">Container for grouped content. Hover lifts the card.</p>
+          </article>
+          <article class="fk-card-selectable" data-selected="false" tabindex="0">
+            <h3 class="font-anybody font-semibold text-h3 mb-2">Selectable</h3>
+            <p class="text-fk-grey-700">Click to toggle the selected state.</p>
+          </article>
+          <article class="fk-card-selectable" data-selected="true" tabindex="0">
+            <h3 class="font-anybody font-semibold text-h3 mb-2">Selected</h3>
+            <p class="text-fk-grey-700">Yellow border + tinted background.</p>
+          </article>
+        </div>
+      </div>
+
+      <!-- Badges & pills -->
+      <div>
+        <h2 class="font-anybody font-bold text-h2 mb-6">Badges &amp; pills</h2>
+        <div class="bg-white rounded-card border border-fk-grey-200 p-8 shadow-fk-light space-y-6">
+          <div class="flex flex-wrap gap-3">
+            <span class="fk-badge fk-badge--default">Default</span>
+            <span class="fk-badge fk-badge--active">Active</span>
+            <span class="fk-badge fk-badge--success">In stock</span>
+            <span class="fk-badge fk-badge--error">Out of stock</span>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <button class="fk-pill" aria-pressed="false">Phones</button>
+            <button class="fk-pill" aria-pressed="true">Computers</button>
+            <button class="fk-pill" aria-pressed="false">Tablets</button>
+            <button class="fk-pill" aria-pressed="false" disabled>Wearables</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alerts -->
+      <div>
+        <h2 class="font-anybody font-bold text-h2 mb-6">Alerts</h2>
+        <div class="space-y-4">
+          <div class="fk-alert fk-alert--success"><i data-lucide="check-circle-2" class="w-5 h-5 shrink-0"></i><p>Parts confirmed in stock at your selected FK store.</p></div>
+          <div class="fk-alert fk-alert--warning"><i data-lucide="alert-triangle" class="w-5 h-5 shrink-0"></i><p>Battery part has a 2 to 3 day wait before your repair can begin.</p></div>
+          <div class="fk-alert fk-alert--error"><i data-lucide="alert-circle" class="w-5 h-5 shrink-0"></i><p>We couldn't process that payment. Please check your card details and try again.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-fk-grey-200 mt-24 py-10 text-center text-body-sm text-fk-grey-700">
+    Fone King · Design System v1 · 22 years of phone resurrection
+  </footer>
+
+  <script>
+    if (typeof fkPopulateStoreSelect === 'function') {
+      fkPopulateStoreSelect(document.getElementById('dsStoreSelect'), { selected: 'Bondi Junction' });
+    }
+    if (window.lucide) lucide.createIcons();
+
+    document.querySelectorAll('.fk-card-selectable').forEach(card => {
+      const toggle = () => card.dataset.selected = card.dataset.selected === 'true' ? 'false' : 'true';
+      card.addEventListener('click', toggle);
+      card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+    });
+
+    document.querySelectorAll('.fk-pill').forEach(p => {
+      p.addEventListener('click', () => p.setAttribute('aria-pressed', p.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'));
+    });
+
+    document.querySelectorAll('.fk-check input').forEach(cb => {
+      const sync = () => {
+        const svg = cb.nextElementSibling.querySelector('svg');
+        if (svg) svg.style.opacity = cb.checked ? '1' : '0';
+      };
+      cb.addEventListener('change', sync); sync();
+    });
+  </script>
+</body>
+</html>

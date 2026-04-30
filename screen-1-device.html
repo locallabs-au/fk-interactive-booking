@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FK Repairs · Step 1: Choose your device</title>
+  <meta name="description" content="Pick your device to start a Fone King repair booking. Choose your store on the details step." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/fk-config.js"></script>
+  <link rel="stylesheet" href="assets/fk-base.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body class="bg-fk-grey-50 text-fk-black">
+  <a href="#main" class="fk-skip-link">Skip to content</a>
+
+  <!-- ─── HEADER ─────────────────────────────────────────── -->
+  <header class="bg-white border-b border-fk-grey-200 sticky top-0 z-30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-3" aria-label="Fone King home">
+        <span class="inline-flex items-center justify-center w-12 h-12 bg-fk-yellow rounded-btn font-anybody font-extrabold text-xl">FK</span>
+        <span class="hidden sm:inline font-anybody font-bold text-h4">Fone King</span>
+      </a>
+    </div>
+
+    <!-- Stepper -->
+    <nav aria-label="Booking progress" class="border-t border-fk-grey-200 bg-white">
+      <ol class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center gap-3 sm:gap-6 overflow-x-auto fk-scroll text-body-xs">
+        <li class="fk-step fk-step--current"><span class="fk-step__num">1</span> Device</li>
+        <li class="text-fk-grey-300">/</li>
+        <li class="fk-step"><span class="fk-step__num">2</span> Symptoms</li>
+        <li class="text-fk-grey-300">/</li>
+        <li class="fk-step"><span class="fk-step__num">3</span> Details</li>
+        <li class="text-fk-grey-300">/</li>
+        <li class="fk-step"><span class="fk-step__num">4</span> Schedule</li>
+        <li class="text-fk-grey-300">/</li>
+        <li class="fk-step"><span class="fk-step__num">5</span> Confirm</li>
+      </ol>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ─── HERO ─────────────────────────────────────────── -->
+    <section class="bg-fk-black text-white relative overflow-hidden">
+      <div class="absolute -top-24 -right-24 w-96 h-96 bg-fk-yellow rounded-full opacity-10 blur-3xl"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-20 relative">
+        <p class="font-inter font-medium text-fk-yellow uppercase tracking-widest text-body-xs mb-4">Phone repairs · Australia-wide</p>
+        <h1 class="font-anybody font-bold text-[40px] leading-[48px] md:text-h1">Your Phone <span class="text-fk-yellow">Reborn</span></h1>
+        <p class="text-body-lg text-fk-grey-200 max-w-2xl mt-4">We don't just fix phones. We bring them back to life.</p>
+
+        <ul class="mt-8 flex flex-wrap items-center gap-3 sm:gap-6 text-body-sm">
+          <li class="inline-flex items-center gap-2"><i data-lucide="award" class="w-5 h-5 text-fk-yellow"></i>22 years</li>
+          <li class="hidden sm:inline text-fk-grey-700">·</li>
+          <li class="inline-flex items-center gap-2"><i data-lucide="star" class="w-5 h-5 text-fk-yellow"></i>7,000+ reviews</li>
+          <li class="hidden sm:inline text-fk-grey-700">·</li>
+          <li class="inline-flex items-center gap-2"><i data-lucide="shield-check" class="w-5 h-5 text-fk-yellow"></i>Lifetime warranty</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ─── DEVICE SELECTION ─────────────────────────────── -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-20 space-y-10">
+
+      <!-- Category -->
+      <div>
+        <h2 class="font-anybody font-bold text-h3 md:text-h2">Select a category of your device</h2>
+        <div class="mt-4 flex flex-wrap gap-3" role="group" aria-label="Device category">
+          <button class="fk-pill fk-focusable" aria-pressed="true"  data-category="phones"><span aria-hidden="true">📱</span> Phones</button>
+          <button class="fk-pill fk-focusable" aria-pressed="false" data-category="computers"><span aria-hidden="true">💻</span> Computers</button>
+          <button class="fk-pill fk-focusable" aria-pressed="false" data-category="tablets"><span aria-hidden="true">📲</span> Tablets</button>
+          <button class="fk-pill fk-focusable" aria-pressed="false" data-category="wearables"><span aria-hidden="true">⌚</span> Wearables</button>
+        </div>
+      </div>
+
+      <!-- Brand -->
+      <div>
+        <h3 class="font-anybody font-semibold text-h3">Select from major brands</h3>
+        <div class="mt-4 flex flex-wrap gap-3" role="group" aria-label="Device brand">
+          <button class="fk-pill fk-focusable" aria-pressed="true"  data-brand="apple">Apple</button>
+          <button class="fk-pill fk-focusable" aria-pressed="false" data-brand="google">Google</button>
+          <button class="fk-pill fk-focusable" aria-pressed="false" data-brand="samsung">Samsung</button>
+          <button class="fk-pill fk-focusable" aria-pressed="false" data-brand="other">Other</button>
+        </div>
+      </div>
+
+      <!-- Filter -->
+      <div>
+        <label class="fk-label !mb-0 block">
+          <span class="sr-only">Filter device list</span>
+          <span class="relative block w-full">
+            <i data-lucide="search" class="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-fk-grey-700"></i>
+            <input id="deviceFilter" class="fk-input !mt-0 pl-12" type="search" placeholder="Filter (e.g. iPhone 15)" />
+          </span>
+        </label>
+      </div>
+
+      <!-- Device not listed: own row, mutually exclusive with picking from the list -->
+      <div class="py-2 border-b border-fk-grey-200">
+        <label class="flex items-start gap-3 cursor-pointer">
+          <input type="checkbox" id="notListed"
+            class="mt-0.5 h-5 w-5 shrink-0 rounded border-2 border-fk-grey-200 text-fk-black focus:ring-2 focus:ring-offset-0 focus:ring-fk-yellow checked:bg-fk-yellow checked:border-fk-black">
+          <span class="font-medium text-body">My device is not listed</span>
+        </label>
+      </div>
+
+      <!-- Device list -->
+      <div>
+        <h3 class="font-anybody font-semibold text-h4 mb-3 flex items-center justify-between">
+          <span>Choose your model</span>
+          <span class="text-body-sm font-inter font-normal text-fk-grey-700"><span id="deviceCount">14</span> models</span>
+        </h3>
+        <div id="deviceListWrap" class="bg-white rounded-card border border-fk-grey-200 shadow-fk-light overflow-hidden transition-opacity">
+          <ul id="deviceList" class="max-h-[400px] overflow-y-auto fk-scroll divide-y divide-fk-grey-200" role="listbox" aria-label="Devices"></ul>
+        </div>
+      </div>
+
+      <!-- Selected device -->
+      <div id="selectedDeviceCard" class="hidden">
+        <div class="fk-summary border-l-4 border-fk-yellow flex items-start gap-4">
+          <div class="w-12 h-12 rounded-btn bg-fk-yellow flex items-center justify-center text-2xl shrink-0" aria-hidden="true">📱</div>
+          <div class="flex-1">
+            <p class="text-body-xs uppercase tracking-widest text-fk-grey-700 font-medium">Your selected device</p>
+            <p id="selectedDeviceName" class="font-anybody font-bold text-h4 mt-1">iPhone 16 PRO MAX</p>
+            <p class="text-body-sm text-fk-grey-700 mt-1">Apple · Lifetime warranty on parts &amp; labour</p>
+          </div>
+          <button id="clearDevice" class="fk-btn-icon" aria-label="Clear selected device"><i data-lucide="x" class="w-5 h-5"></i></button>
+        </div>
+      </div>
+
+      <div id="deviceEdgeAlert" class="hidden fk-alert fk-alert--warning">
+        <i data-lucide="alert-triangle" class="w-5 h-5 shrink-0"></i>
+        <p>Device not listed. Continue and our technicians will contact you to source parts and confirm next steps.</p>
+      </div>
+
+      <!-- Footer nav -->
+      <div class="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-4 border-t border-fk-grey-200">
+        <a href="index.html" class="fk-btn-ghost"><i data-lucide="arrow-left" class="w-5 h-5"></i> Back</a>
+        <a id="nextBtn" href="screen-2-symptoms-v2.html" class="fk-btn-primary opacity-50 pointer-events-none" aria-disabled="true">Next <i data-lucide="arrow-right" class="w-5 h-5"></i></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-fk-grey-200 mt-10 py-8 text-center text-body-sm text-fk-grey-700">
+    Need help? <a class="underline hover:text-fk-black" href="tel:1800357326">Call 1800 FK REBORN</a>
+  </footer>
+
+  <script>
+    const devicesByBrand = {
+      apple: ['iPhone 16 PRO MAX','iPhone 16 PRO','iPhone 16 Plus','iPhone 16','iPhone 15 PRO MAX','iPhone 15 PRO','iPhone 15 Plus','iPhone 15','iPhone 14 PRO MAX','iPhone 14 PRO','iPhone 14','iPhone 13','iPhone 12','iPhone SE (3rd gen)'],
+      google: ['Pixel 9 Pro XL','Pixel 9 Pro','Pixel 9','Pixel 8 Pro','Pixel 8','Pixel 8a','Pixel 7'],
+      samsung:['Galaxy S25 Ultra','Galaxy S25+','Galaxy S25','Galaxy S24 Ultra','Galaxy S24','Galaxy Z Fold6','Galaxy Z Flip6','Galaxy A55'],
+      other:  ['OnePlus 12','Xiaomi 14','Oppo Find X7','Nothing Phone (2)','Motorola Edge 50']
+    };
+
+    const list = document.getElementById('deviceList');
+    const filter = document.getElementById('deviceFilter');
+    const selectedCard = document.getElementById('selectedDeviceCard');
+    const selectedName = document.getElementById('selectedDeviceName');
+    const clearBtn = document.getElementById('clearDevice');
+    const nextBtn = document.getElementById('nextBtn');
+    const deviceCount = document.getElementById('deviceCount');
+    const notListed = document.getElementById('notListed');
+    const deviceEdgeAlert = document.getElementById('deviceEdgeAlert');
+    const deviceListWrap = document.getElementById('deviceListWrap');
+
+    let currentBrand = 'apple';
+    let selectedDevice = null;
+    /** When true, user chose “not listed”: list is inactive and Next goes to callback flow. */
+    let notListedMode = false;
+
+    /** @param {boolean} interactive - false greys out list when “not listed” is checked */
+    function setListInteractive(interactive) {
+      deviceListWrap.classList.toggle('opacity-50', !interactive);
+      deviceListWrap.classList.toggle('pointer-events-none', !interactive);
+    }
+
+    function updateNextButton() {
+      const ok = notListedMode || (selectedDevice !== null);
+      if (ok) {
+        nextBtn.classList.remove('opacity-50','pointer-events-none');
+        nextBtn.removeAttribute('aria-disabled');
+      } else {
+        nextBtn.classList.add('opacity-50','pointer-events-none');
+        nextBtn.setAttribute('aria-disabled','true');
+      }
+    }
+
+    function renderList() {
+      const q = filter.value.trim().toLowerCase();
+      const all = devicesByBrand[currentBrand] || [];
+      const filtered = q ? all.filter(d => d.toLowerCase().includes(q)) : all;
+      deviceCount.textContent = filtered.length;
+      list.innerHTML = filtered.length
+        ? filtered.map(name => `
+            <li>
+              <button type="button" role="option" aria-selected="${selectedDevice === name}"
+                class="w-full flex items-center justify-between gap-4 text-left px-5 py-4 hover:bg-fk-yellow-tint focus:bg-fk-yellow-tint focus:outline-none transition-colors ${selectedDevice === name ? 'bg-fk-yellow-tint' : ''}"
+                data-device="${name}">
+                <span class="flex items-center gap-3">
+                  <span class="text-xl" aria-hidden="true">📱</span>
+                  <span class="font-medium">${name}</span>
+                </span>
+                ${selectedDevice === name
+                  ? '<span class="fk-badge fk-badge--active">Selected</span>'
+                  : '<i data-lucide="chevron-right" class="w-5 h-5 text-fk-grey-300"></i>'}
+              </button>
+            </li>`).join('')
+        : `<li class="px-5 py-10 text-center text-fk-grey-700">
+              <i data-lucide="search-x" class="w-8 h-8 mx-auto mb-2 text-fk-grey-300"></i>
+              <p>No devices match "<strong>${q}</strong>".</p>
+              <p class="text-body-sm mt-1">Tick "My device is not listed" below to continue.</p>
+           </li>`;
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function setSelected(name) {
+      selectedDevice = name;
+      notListedMode = false;
+      notListed.checked = false;
+      notListed.disabled = !!name;
+      setListInteractive(true);
+      deviceEdgeAlert.classList.add('hidden');
+      nextBtn.setAttribute('href', 'screen-2-symptoms-v2.html');
+
+      if (name) {
+        selectedCard.classList.remove('hidden');
+        selectedName.textContent = name;
+        localStorage.setItem('fkDevice', name);
+      } else {
+        selectedCard.classList.add('hidden');
+        localStorage.removeItem('fkDevice');
+      }
+      updateNextButton();
+      renderList();
+    }
+
+    list.addEventListener('click', (e) => {
+      if (notListedMode) return;
+      const btn = e.target.closest('[data-device]');
+      if (!btn) return;
+      setSelected(btn.dataset.device);
+    });
+    clearBtn.addEventListener('click', () => {
+      notListed.disabled = false;
+      setSelected(null);
+    });
+    filter.addEventListener('input', renderList);
+
+    document.querySelectorAll('[data-brand]').forEach(p => {
+      p.addEventListener('click', () => {
+        document.querySelectorAll('[data-brand]').forEach(x => x.setAttribute('aria-pressed','false'));
+        p.setAttribute('aria-pressed','true');
+        currentBrand = p.dataset.brand;
+        notListedMode = false;
+        notListed.checked = false;
+        notListed.disabled = false;
+        setSelected(null);
+      });
+    });
+    document.querySelectorAll('[data-category]').forEach(p => {
+      p.addEventListener('click', () => {
+        document.querySelectorAll('[data-category]').forEach(x => x.setAttribute('aria-pressed','false'));
+        p.setAttribute('aria-pressed','true');
+        notListedMode = false;
+        notListed.checked = false;
+        notListed.disabled = false;
+        setSelected(null);
+      });
+    });
+
+    notListed.addEventListener('change', () => {
+      if (notListed.checked) {
+        selectedDevice = null;
+        notListedMode = true;
+        selectedCard.classList.add('hidden');
+        localStorage.removeItem('fkDevice');
+        nextBtn.setAttribute('href', 'screen-edge-callback.html');
+        deviceEdgeAlert.classList.remove('hidden');
+        setListInteractive(false);
+        updateNextButton();
+        renderList();
+      } else {
+        notListedMode = false;
+        deviceEdgeAlert.classList.add('hidden');
+        setListInteractive(true);
+        updateNextButton();
+        renderList();
+      }
+    });
+
+    renderList();
+    updateNextButton();
+    setListInteractive(true);
+    if (window.lucide) lucide.createIcons();
+  </script>
+</body>
+</html>
