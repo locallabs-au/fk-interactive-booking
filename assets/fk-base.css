@@ -173,8 +173,13 @@ textarea.fk-input{height:auto;min-height:120px;resize:vertical}
 /* Outlined yellow headline: readable on light backgrounds */
 .fk-display-stroke{
   color:#FFEB00;
-  -webkit-text-stroke:.6px #000;
-  text-shadow:none;
+  /* Use shadow-based outline for cleaner rendering on Windows. */
+  -webkit-text-stroke:0;
+  text-shadow:
+    1px 0 0 #000,
+    -1px 0 0 #000,
+    0 1px 0 #000,
+    0 -1px 0 #000;
 }
 
 /* Stepper / breadcrumb */
