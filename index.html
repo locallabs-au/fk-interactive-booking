@@ -31,7 +31,15 @@
   <main class="max-w-6xl mx-auto px-6 py-12 md:py-16">
 
     <section>
-      <h2 class="font-anybody font-bold text-h2 mb-6">The 6 booking screens</h2>
+      <h2 class="font-anybody font-bold text-h2 mb-4">The 6 booking screens</h2>
+      <div class="mb-8 p-6 bg-white rounded-card border border-fk-grey-200 shadow-sm">
+        <p class="text-body-xs uppercase tracking-widest text-fk-grey-700 font-medium">Step 2 · symptoms</p>
+        <p class="text-body-sm text-fk-grey-700 mt-1 mb-4">Open either build without hunting through the grid.</p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="screen-2-symptoms-v2.html" class="fk-btn-primary flex-1 text-center justify-center">Dropdown (v2) — primary flow</a>
+          <a href="screen-2-symptoms.html" class="fk-btn-secondary flex-1 text-center justify-center">Card grid — alternate</a>
+        </div>
+      </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
         <a href="screen-1-device.html" class="fk-card group">
@@ -116,10 +124,6 @@
           <p class="text-body-sm text-fk-grey-700 mt-1">Reference number, what-happens-next, calendar download.</p>
         </a>
       </div>
-      <p class="text-body-sm text-fk-grey-700 mt-6 max-w-3xl">
-        <strong class="font-medium text-fk-black">Step 2 alternate:</strong>
-        card-grid prototype (<a href="screen-2-symptoms.html" class="underline font-medium text-fk-black">screen-2-symptoms.html</a>).
-      </p>
     </section>
 
     <!-- Quick links -->
@@ -140,17 +144,6 @@
             <p class="text-body-sm text-fk-grey-700 mt-1">Open any HTML file directly in a browser. Resize the window between 375 px (mobile) and 1440 px (desktop) to verify responsive behaviour.</p>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Specs at a glance -->
-    <section class="mt-16">
-      <h2 class="font-anybody font-bold text-h2 mb-6">At a glance</h2>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="fk-card"><p class="text-body-xs uppercase tracking-widest text-fk-grey-700 font-medium">Brand colors</p><p class="font-anybody font-bold text-h4 mt-2">2 + greys</p><p class="text-body-sm text-fk-grey-700 mt-1">FK Yellow #FFEB00, FK Black, 6 greys, 3 feedback colors.</p></div>
-        <div class="fk-card"><p class="text-body-xs uppercase tracking-widest text-fk-grey-700 font-medium">Type families</p><p class="font-anybody font-bold text-h4 mt-2">Anybody · Inter</p><p class="text-body-sm text-fk-grey-700 mt-1">Anybody for headings, Inter for body.</p></div>
-        <div class="fk-card"><p class="text-body-xs uppercase tracking-widest text-fk-grey-700 font-medium">Spacing grid</p><p class="font-anybody font-bold text-h4 mt-2">8px base</p><p class="text-body-sm text-fk-grey-700 mt-1">8 / 16 / 24 / 32 / 40 / 48 / 64 / 80.</p></div>
-        <div class="fk-card"><p class="text-body-xs uppercase tracking-widest text-fk-grey-700 font-medium">Breakpoints</p><p class="font-anybody font-bold text-h4 mt-2">375 → 1440</p><p class="text-body-sm text-fk-grey-700 mt-1">Tailwind sm / md / lg / xl prefixes used throughout.</p></div>
       </div>
     </section>
   </main>
