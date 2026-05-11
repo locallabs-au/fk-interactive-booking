@@ -11,24 +11,107 @@
   <script src="assets/fk-config.js"></script>
   <link rel="stylesheet" href="assets/fk-base.css">
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="assets/fk-stores.js"></script>
 </head>
 <body class="bg-fk-grey-50 text-fk-black">
-  <main class="min-h-screen flex items-center justify-center px-4">
+  <main class="min-h-screen flex items-center justify-center px-4 py-10">
     <section class="max-w-xl w-full fk-summary">
       <h1 class="font-anybody font-bold text-h2">Device not listed yet</h1>
-      <p class="text-body text-fk-grey-700 mt-3">No stress: our technicians can still help. Send your details and we will call you back with sourcing options and next steps.</p>
-      <form class="mt-6 space-y-4">
-        <label class="fk-label">Name<input class="fk-input" required placeholder="Your name"></label>
-        <label class="fk-label">Phone<input class="fk-input" required placeholder="0412 345 678"></label>
-        <label class="fk-label">Email<input class="fk-input" type="email" required placeholder="you@example.com"></label>
-        <label class="fk-label">Model details<textarea class="fk-input min-h-[120px]" placeholder="Brand, model number, issue"></textarea></label>
-        <div class="flex gap-3">
+      <p class="text-body text-fk-grey-700 mt-3">No stress — tell us what you’ve got and where you’re based. A technician will call back with sourcing options. Requests are sent from our repairs team and <strong class="text-fk-black">CC our warehouse</strong> so everyone who needs to move stock sees it.</p>
+
+      <form id="edgeForm" class="mt-6 space-y-4" novalidate>
+        <label class="fk-label">Name<input id="cbName" name="name" class="fk-input" required placeholder="Your name" autocomplete="name"></label>
+        <label class="fk-label">Phone<input id="cbPhone" name="phone" class="fk-input" required placeholder="0412 345 678" inputmode="tel" autocomplete="tel"></label>
+        <label class="fk-label">Email<input id="cbEmail" name="email" class="fk-input" type="email" required placeholder="you@example.com" autocomplete="email"></label>
+        <label class="fk-label" for="cbStore">Preferred store <span class="text-fk-error" aria-hidden="true">*</span></label>
+        <span class="relative block">
+          <select id="cbStore" name="store" required class="fk-input pr-10 appearance-none"></select>
+          <i data-lucide="chevron-down" class="w-4 h-4 absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+        </span>
+        <label class="fk-label">Model &amp; issue<textarea id="cbModel" name="details" class="fk-input min-h-[120px]" placeholder="Brand, model, what’s wrong"></textarea></label>
+
+        <p class="text-body-xs text-fk-grey-700">Production would email <span class="font-mono">repairs@foneking.com.au</span> with <span class="font-mono">warehouse@foneking.com.au</span> CC’d (placeholder addresses for this prototype).</p>
+
+        <div class="flex flex-wrap gap-3 pt-2">
           <a href="screen-1-device.html" class="fk-btn-ghost">Back</a>
-          <a href="screen-6-success.html?callback=1" class="fk-btn-primary">Submit callback request</a>
+          <button type="button" id="cbContinue" class="fk-btn-primary">Submit callback request</button>
         </div>
       </form>
     </section>
   </main>
-  <script>if(window.lucide) lucide.createIcons();</script>
+
+  <div id="postcodeModal" class="hidden fk-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="pcTitle">
+    <div class="fk-modal-card fk-modal-card-enter max-w-md">
+      <h2 id="pcTitle" class="font-anybody font-bold text-h3">Almost there</h2>
+      <p class="text-body-sm text-fk-grey-700 mt-2">What’s your postcode? We route callbacks to the right region and warehouse.</p>
+      <label class="fk-label mt-6" for="cbPostcode">Postcode</label>
+      <input id="cbPostcode" class="fk-input" inputmode="numeric" maxlength="4" placeholder="e.g. 2000" autocomplete="postal-code" />
+      <p id="pcErr" class="hidden text-body-sm text-fk-error mt-2">Enter a 4-digit Australian postcode.</p>
+      <div class="mt-6 flex gap-3 justify-end">
+        <button type="button" id="pcCancel" class="fk-btn-ghost">Cancel</button>
+        <button type="button" id="pcOk" class="fk-btn-primary">Confirm &amp; send</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    if (typeof fkPopulateStoreSelect === 'function') {
+      fkPopulateStoreSelect(document.getElementById('cbStore'), {
+        placeholder: 'Choose a store…',
+        selected: localStorage.getItem('fkStore') || undefined
+      });
+    }
+
+    const modal = document.getElementById('postcodeModal');
+    const btnContinue = document.getElementById('cbContinue');
+    const pcOk = document.getElementById('pcOk');
+    const pcCancel = document.getElementById('pcCancel');
+    const pcPostcode = document.getElementById('cbPostcode');
+    const pcErr = document.getElementById('pcErr');
+
+    function openModal() {
+      modal.classList.remove('hidden');
+      modal.classList.add('fk-modal-enter');
+      document.body.style.overflow = 'hidden';
+      pcPostcode.value = sessionStorage.getItem('fkEdgePostcode') || '';
+      pcPostcode.focus();
+    }
+    function closeModal() {
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    btnContinue.addEventListener('click', () => {
+      const f = document.getElementById('edgeForm');
+      if (!f.checkValidity()) { f.reportValidity(); return; }
+      openModal();
+    });
+
+    pcCancel.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+    pcOk.addEventListener('click', () => {
+      const pc = (pcPostcode.value || '').replace(/\D/g, '').slice(0, 4);
+      if (!/^\d{4}$/.test(pc)) {
+        pcErr.classList.remove('hidden');
+        return;
+      }
+      pcErr.classList.add('hidden');
+      sessionStorage.setItem('fkEdgePostcode', pc);
+
+      const name = document.getElementById('cbName').value.trim();
+      const phone = document.getElementById('cbPhone').value.trim();
+      const email = document.getElementById('cbEmail').value.trim();
+      const store = document.getElementById('cbStore').value;
+      const details = document.getElementById('cbModel').value.trim();
+      try {
+        sessionStorage.setItem('fkEdgeCallback', JSON.stringify({ name, phone, email, store, postcode: pc, details }));
+      } catch (_) {}
+      /* Production: POST to API; email to repairs@ with warehouse@ CC. */
+      window.location.href = 'screen-6-success.html?callback=1';
+    });
+
+    if (window.lucide) lucide.createIcons();
+  </script>
 </body>
 </html>

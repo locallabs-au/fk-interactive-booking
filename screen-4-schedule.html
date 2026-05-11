@@ -116,6 +116,7 @@
 
     const booking = JSON.parse(localStorage.getItem('fkBooking') || '{}');
     const needsOrdering = booking.needsOrdering === true || booking.needsStaffFollowUp === true;
+    const warehouseTransfer = booking.warehouseTransferPending === true;
     const today = new Date();
     const today0 = startOfDay(today);
     let windowStart = new Date(today0);
@@ -143,7 +144,11 @@
         startOfDay(new Date(booking.partsExpectedBy + 'T12:00:00')).getDate() + ' ' +
         months[startOfDay(new Date(booking.partsExpectedBy + 'T12:00:00')).getMonth()] + ' ' +
         startOfDay(new Date(booking.partsExpectedBy + 'T12:00:00')).getFullYear();
-      etaEl.textContent = 'At least one part needs ordering. The first day you can book is when stock is expected (' + pretty + '), per inventory.';
+      let msg = 'At least one part needs ordering or warehouse transfer. The earliest bookable date aligns with expected stock (' + pretty + ').';
+      if (warehouseTransfer) {
+        msg += ' Warehouse stock moves to your store after your deposit is paid (internal transfer — typically ~2 business days).';
+      }
+      etaEl.textContent = msg;
       etaEl.classList.remove('hidden');
     }
     document.getElementById('slotLabel').textContent = isWalkin ? 'Select a window' : 'Select a time';

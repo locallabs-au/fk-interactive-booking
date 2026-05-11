@@ -3,7 +3,7 @@
    This file holds only what utilities can't easily express. */
 
 :root {
-  --fk-yellow: #FFEB00;
+  --fk-yellow: #EBFF00;
   --fk-black: #000000;
 }
 
@@ -28,14 +28,14 @@ h1, h2, h3, h4 { font-family: 'Anybody', system-ui, sans-serif; }
 /* Native checkbox / radio replacements use input + visual sibling.
    These rules wire the visual to the underlying native input so the
    form remains keyboard accessible and screen-reader friendly. */
-.fk-check input:checked + .fk-check__box { background: #FFEB00; border-color: #000; }
+.fk-check input:checked + .fk-check__box { background: #EBFF00; border-color: #000; }
 .fk-check input:checked + .fk-check__box svg { opacity: 1; }
-.fk-check input:focus-visible + .fk-check__box { box-shadow: 0 0 0 3px rgba(255,235,0,0.30); }
+.fk-check input:focus-visible + .fk-check__box { box-shadow: 0 0 0 3px rgba(235,255,0,0.30); }
 .fk-check input:disabled + .fk-check__box { background: #F5F5F5; border-color: #BDBDBD; }
 
-.fk-radio input:checked + .fk-radio__box { border-color: #000; background: #FFEB00; }
+.fk-radio input:checked + .fk-radio__box { border-color: #000; background: #EBFF00; }
 .fk-radio input:checked + .fk-radio__box::after { transform: scale(1); }
-.fk-radio input:focus-visible + .fk-radio__box { box-shadow: 0 0 0 3px rgba(255,235,0,0.30); }
+.fk-radio input:focus-visible + .fk-radio__box { box-shadow: 0 0 0 3px rgba(235,255,0,0.30); }
 .fk-radio__box::after {
   content: '';
   width: 8px; height: 8px; border-radius: 9999px; background: #000;
@@ -62,14 +62,14 @@ h1, h2, h3, h4 { font-family: 'Anybody', system-ui, sans-serif; }
 /* Focus ring for any interactive element that opts in via .fk-focusable */
 .fk-focusable:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(255,235,0,0.30);
+  box-shadow: 0 0 0 3px rgba(235,255,0,0.30);
   border-color: #000;
 }
 
 /* Skip link */
 .fk-skip-link {
   position: absolute; left: -9999px; top: 8px;
-  background: #000; color: #FFEB00; padding: 8px 16px; border-radius: 8px;
+  background: #000; color: #EBFF00; padding: 8px 16px; border-radius: 8px;
   font-weight: 600; z-index: 9999;
 }
 .fk-skip-link:focus { left: 8px; }
@@ -81,28 +81,28 @@ h1, h2, h3, h4 { font-family: 'Anybody', system-ui, sans-serif; }
    doesn't process directives at runtime. */
 
 /* Buttons */
-.fk-btn-primary{background:#FFEB00;color:#000;font-weight:500;padding:16px 32px;border-radius:8px;transition:transform 120ms ease,background 120ms ease,box-shadow 120ms ease;display:inline-flex;align-items:center;justify-content:center;gap:8px;font:500 16px/24px Inter,sans-serif}
-.fk-btn-primary:hover:not(:disabled){background:#E6D300;transform:scale(1.02)}
-.fk-btn-primary:active:not(:disabled){background:#CCBC00;transform:scale(.98)}
-.fk-btn-primary:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(255,235,0,.30)}
+.fk-btn-primary{background:#EBFF00;color:#000;font-weight:500;padding:16px 32px;border-radius:8px;transition:transform 120ms ease,background 120ms ease,box-shadow 120ms ease;display:inline-flex;align-items:center;justify-content:center;gap:8px;font:500 16px/24px Inter,sans-serif}
+.fk-btn-primary:hover:not(:disabled){background:#C8E800;transform:scale(1.02)}
+.fk-btn-primary:active:not(:disabled){background:#A8C800;transform:scale(.98)}
+.fk-btn-primary:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(235,255,0,.30)}
 .fk-btn-primary:disabled{background:#E0E0E0;color:#BDBDBD;cursor:not-allowed}
 
-.fk-btn-secondary{background:#000;color:#FFEB00;font-weight:500;padding:16px 32px;border-radius:8px;transition:transform 120ms ease,background 120ms ease;display:inline-flex;align-items:center;justify-content:center;gap:8px;font:500 16px/24px Inter,sans-serif}
+.fk-btn-secondary{background:#000;color:#EBFF00;font-weight:500;padding:16px 32px;border-radius:8px;transition:transform 120ms ease,background 120ms ease;display:inline-flex;align-items:center;justify-content:center;gap:8px;font:500 16px/24px Inter,sans-serif}
 .fk-btn-secondary:hover:not(:disabled){background:#333;transform:scale(1.02)}
 .fk-btn-secondary:active:not(:disabled){background:#555;transform:scale(.98)}
-.fk-btn-secondary:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(255,235,0,.30)}
+.fk-btn-secondary:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(235,255,0,.30)}
 .fk-btn-secondary:disabled{background:#E0E0E0;color:#BDBDBD;cursor:not-allowed}
 
 .fk-btn-ghost{background:transparent;border:2px solid #000;color:#000;font-weight:500;padding:14px 30px;border-radius:8px;transition:background 120ms ease;display:inline-flex;align-items:center;justify-content:center;gap:8px;font:500 16px/24px Inter,sans-serif}
 .fk-btn-ghost:hover:not(:disabled){background:#F5F5F5}
 .fk-btn-ghost:active:not(:disabled){background:#E0E0E0}
-.fk-btn-ghost:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(255,235,0,.30)}
+.fk-btn-ghost:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(235,255,0,.30)}
 .fk-btn-ghost:disabled{border-color:#E0E0E0;color:#BDBDBD;cursor:not-allowed}
 
 .fk-btn-icon{background:transparent;color:#000;padding:12px;border-radius:9999px;display:inline-flex;align-items:center;justify-content:center;transition:background 120ms ease}
 .fk-btn-icon:hover{background:#F5F5F5}
 .fk-btn-icon:active{background:#E0E0E0}
-.fk-btn-icon:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(255,235,0,.30)}
+.fk-btn-icon:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(235,255,0,.30)}
 
 /* Inputs */
 .fk-label{display:block;font-size:14px;line-height:20px;font-weight:500;color:#000}
@@ -113,7 +113,7 @@ h1, h2, h3, h4 { font-family: 'Anybody', system-ui, sans-serif; }
 .fk-input{width:100%;height:48px;background:#fff;border:1px solid #E0E0E0;border-radius:8px;padding:14px 16px;font:400 16px/24px Inter,sans-serif;color:#000;transition:border 120ms ease,box-shadow 120ms ease}
 textarea.fk-input{height:auto;min-height:120px;resize:vertical}
 .fk-input::placeholder{color:#BDBDBD}
-.fk-input:focus{outline:none;border-color:#FFEB00;box-shadow:inset 0 0 0 1px #FFEB00, 0 0 0 3px rgba(255,235,0,.30)}
+.fk-input:focus{outline:none;border-color:#EBFF00;box-shadow:inset 0 0 0 1px #EBFF00, 0 0 0 3px rgba(235,255,0,.30)}
 .fk-input:disabled{background:#F5F5F5;color:#BDBDBD;cursor:not-allowed}
 .fk-input--error{border-color:#F44336!important;box-shadow:inset 0 0 0 1px #F44336}
 .fk-input--success{border-color:#4CAF50!important;box-shadow:inset 0 0 0 1px #4CAF50;padding-right:44px}
@@ -124,14 +124,14 @@ textarea.fk-input{height:auto;min-height:120px;resize:vertical}
 
 .fk-card-selectable{background:#fff;border:1px solid #E0E0E0;border-radius:12px;padding:24px;box-shadow:0 2px 4px rgba(0,0,0,.10);transition:all 160ms ease;cursor:pointer;outline:none;text-align:left;width:100%;display:block}
 .fk-card-selectable:hover{border-color:#BDBDBD;box-shadow:0 4px 8px rgba(0,0,0,.15);transform:translateY(-2px)}
-.fk-card-selectable[data-selected="true"]{border:3px solid #FFEB00;background:#FFFEF5;box-shadow:0 8px 24px rgba(0,0,0,.20);padding:22px}
-.fk-card-selectable:focus-visible{box-shadow:0 0 0 3px rgba(255,235,0,.30),0 4px 8px rgba(0,0,0,.15)}
+.fk-card-selectable[data-selected="true"]{border:3px solid #EBFF00;background:#F9FFEE;box-shadow:0 8px 24px rgba(0,0,0,.20);padding:22px}
+.fk-card-selectable:focus-visible{box-shadow:0 0 0 3px rgba(235,255,0,.30),0 4px 8px rgba(0,0,0,.15)}
 .fk-card-selectable:disabled,.fk-card-selectable[aria-disabled="true"]{background:#F5F5F5;border-color:#E0E0E0;opacity:.6;cursor:not-allowed;transform:none;box-shadow:0 2px 4px rgba(0,0,0,.10)}
 
 /* Badges */
 .fk-badge{display:inline-flex;align-items:center;font:500 12px/18px Inter,sans-serif;letter-spacing:.04em;text-transform:uppercase;padding:4px 12px;border-radius:9999px}
 .fk-badge--default{background:#E0E0E0;color:#000}
-.fk-badge--active{background:#FFEB00;color:#000}
+.fk-badge--active{background:#EBFF00;color:#000}
 .fk-badge--success{background:#4CAF50;color:#fff}
 .fk-badge--error{background:#F44336;color:#fff}
 .fk-badge--soft-success{background:#E8F5E9;color:#1B5E20}
@@ -140,9 +140,9 @@ textarea.fk-input{height:auto;min-height:120px;resize:vertical}
 /* Pill toggle buttons */
 .fk-pill{background:#F5F5F5;border:2px solid transparent;color:#000;font:500 14px/20px Inter,sans-serif;padding:10px 20px;border-radius:9999px;transition:all 120ms ease;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
 .fk-pill:hover:not(:disabled){background:#E0E0E0}
-.fk-pill[aria-pressed="true"]{background:#FFEB00;border-color:#000}
+.fk-pill[aria-pressed="true"]{background:#EBFF00;border-color:#000}
 .fk-pill:disabled{background:#E0E0E0;color:#BDBDBD;cursor:not-allowed}
-.fk-pill:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(255,235,0,.30)}
+.fk-pill:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(235,255,0,.30)}
 
 /* Inline alerts */
 .fk-alert{display:flex;gap:12px;align-items:flex-start;padding:16px;border-radius:8px;border-left:4px solid #FF9800;background:#FFF9E6;font:400 14px/20px Inter,sans-serif}
@@ -156,15 +156,15 @@ textarea.fk-input{height:auto;min-height:120px;resize:vertical}
 /* Tab nav */
 .fk-tab{padding:14px 4px;font:500 14px/20px Inter,sans-serif;color:#757575;border-bottom:3px solid transparent;cursor:pointer;transition:color 120ms ease,border-color 120ms ease;background:transparent}
 .fk-tab:hover{color:#000}
-.fk-tab[aria-selected="true"]{color:#000;border-bottom-color:#FFEB00}
-.fk-tab:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(255,235,0,.30);border-radius:4px}
+.fk-tab[aria-selected="true"]{color:#000;border-bottom-color:#EBFF00}
+.fk-tab:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(235,255,0,.30);border-radius:4px}
 
 /* Time slot */
 .fk-slot{height:48px;display:flex;align-items:center;justify-content:center;font:500 14px/20px Inter,sans-serif;background:#fff;border:1px solid #E0E0E0;border-radius:8px;cursor:pointer;transition:all 120ms ease;color:#000}
-.fk-slot:hover:not(:disabled):not([aria-pressed="true"]){border-color:#000;background:#FFFEF5}
-.fk-slot[aria-pressed="true"]{background:#FFEB00;border:2px solid #000;font-weight:600}
+.fk-slot:hover:not(:disabled):not([aria-pressed="true"]){border-color:#000;background:#F9FFEE}
+.fk-slot[aria-pressed="true"]{background:#EBFF00;border:2px solid #000;font-weight:600}
 .fk-slot:disabled{background:#F5F5F5;color:#BDBDBD;cursor:not-allowed}
-.fk-slot:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(255,235,0,.30)}
+.fk-slot:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(235,255,0,.30)}
 
 /* Modal */
 .fk-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:50;padding:16px}
@@ -172,7 +172,7 @@ textarea.fk-input{height:auto;min-height:120px;resize:vertical}
 
 /* Outlined yellow headline: readable on light backgrounds */
 .fk-display-stroke{
-  color:#FFEB00;
+  color:#EBFF00;
   /* Use shadow-based outline for cleaner rendering on Windows. */
   -webkit-text-stroke:0;
   text-shadow:
@@ -185,7 +185,7 @@ textarea.fk-input{height:auto;min-height:120px;resize:vertical}
 /* Stepper / breadcrumb */
 .fk-step{display:inline-flex;align-items:center;gap:8px;font:500 12px/18px Inter,sans-serif;text-transform:uppercase;letter-spacing:.06em;color:#BDBDBD}
 .fk-step__num{width:24px;height:24px;border-radius:9999px;background:#E0E0E0;color:#757575;display:inline-flex;align-items:center;justify-content:center;font-weight:600;font-size:12px}
-.fk-step--done .fk-step__num{background:#000;color:#FFEB00}
+.fk-step--done .fk-step__num{background:#000;color:#EBFF00}
 .fk-step--done{color:#000}
-.fk-step--current .fk-step__num{background:#FFEB00;color:#000;outline:3px solid rgba(255,235,0,.30)}
+.fk-step--current .fk-step__num{background:#EBFF00;color:#000;outline:3px solid rgba(235,255,0,.30)}
 .fk-step--current{color:#000}

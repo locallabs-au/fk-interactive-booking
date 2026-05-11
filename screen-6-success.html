@@ -175,6 +175,12 @@
         document.getElementById('walkinNote').innerHTML =
           'Part is <strong class="text-fk-black">hard-reserved</strong>. Confirmation email sent.';
       }
+      if (params.get('callback') === '1') {
+        document.getElementById('statusBadge').className = 'fk-badge fk-badge--default';
+        document.getElementById('statusBadge').textContent = 'Callback queued';
+        document.getElementById('walkinNote').innerHTML =
+          'Thanks — we\'ve received your device-not-listed request. A technician will call you; production would email <strong class="text-fk-black">repairs@</strong> with <strong class="text-fk-black">warehouse@</strong> CC\'d.';
+      }
     })();
 
     /* Copy reference */
@@ -213,7 +219,7 @@
     /* Subtle confetti */
     (function () {
       const root = document.querySelector('.fk-confetti');
-      const colors = ['#FFEB00','#000','#FFFEF5','#E6D300'];
+      const colors = ['#EBFF00','#000','#F9FFEE','#C8E800'];
       for (let i = 0; i < 40; i++) {
         const s = document.createElement('span');
         s.style.left = Math.random() * 100 + 'vw';

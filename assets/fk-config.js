@@ -7,10 +7,15 @@ tailwind.config = {
   theme: {
     extend: {
       colors: {
-        'fk-yellow': '#FFEB00',
-        'fk-yellow-tint': '#FFFEF5',
-        'fk-yellow-dark': '#E6D300',
+        'fk-yellow': '#EBFF00',
+        'fk-yellow-tint': '#F9FFEE',
+        'fk-yellow-dark': '#C8E800',
         'fk-black': '#000000',
+        'fk-white': '#FFFFFF',
+        'fk-orange': '#FF5C26',
+        'fk-aqua': '#40EFFF',
+        'fk-lavender': '#9966FF',
+        'fk-brand-red': '#FF0000',
         'fk-grey': {
           50: '#FAFAFA',
           100: '#F5F5F5',
@@ -52,7 +57,7 @@ tailwind.config = {
         'fk-light': '0 2px 4px rgba(0,0,0,0.10)',
         'fk-medium': '0 4px 8px rgba(0,0,0,0.15)',
         'fk-heavy': '0 8px 24px rgba(0,0,0,0.20)',
-        'fk-focus': '0 0 0 3px rgba(255,235,0,0.30)',
+        'fk-focus': '0 0 0 3px rgba(235,255,0,0.30)',
       },
     }
   }

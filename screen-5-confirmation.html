@@ -44,8 +44,8 @@
   <main id="main" class="max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-16">
 
     <header class="text-center max-w-2xl mx-auto">
-      <h1 class="font-anybody font-bold text-[36px] leading-[44px] md:text-h1">Thank you and what happens next</h1>
-      <p class="text-body-lg text-fk-grey-700 mt-4">Your booking is created with <strong>part soft-reservation</strong> pending store confirmation.</p>
+      <h1 class="font-anybody font-bold text-[36px] leading-[44px] md:text-h1">Thank you — here’s what happens next</h1>
+      <p class="text-body-lg text-fk-grey-700 mt-4">Your slot is <strong>held</strong> while we confirm parts. Paying the deposit <strong>reserves</strong> stock and your place in the queue — walk-ins can’t always be fitted the same day.</p>
     </header>
 
     <!-- Booking summary -->
@@ -101,16 +101,21 @@
         <span class="inline-flex w-10 h-10 rounded-btn bg-fk-yellow items-center justify-center" aria-hidden="true">
           <i data-lucide="credit-card" class="w-5 h-5"></i>
         </span>
-        Pay deposit to reserve parts and time
+        Pay deposit to lock in parts &amp; time
       </h2>
-      <p class="text-body text-fk-grey-700 mt-3">Secure your appointment with a <strong class="text-fk-black">$59-$69 refundable deposit</strong>. The amount comes off your final bill.</p>
+      <p class="text-body text-fk-grey-700 mt-3">A <strong class="text-fk-black">$59–$69 refundable deposit</strong> is the fastest way to secure parts (including <strong>warehouse transfer</strong> when needed) and your appointment. It comes off your repair total in store.</p>
 
       <ul class="mt-5 space-y-3 text-body">
-        <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 mt-0.5 text-fk-success"></i> Your parts will be put aside</li>
+        <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 mt-0.5 text-fk-success"></i> Parts are staged for you instead of the next walk-in</li>
         <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 mt-0.5 text-fk-success"></i> <span id="depositExpectLine">Your store will be expecting you at your chosen time.</span></li>
+        <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 mt-0.5 text-fk-success"></i> Warehouse moves often start <strong>after payment</strong> — paying now avoids losing your slot</li>
         <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 mt-0.5 text-fk-success"></i> Deposit comes off your final bill</li>
-        <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 mt-0.5 text-fk-success"></i> Fully refundable if you cancel</li>
       </ul>
+
+      <div class="mt-6 rounded-btn border border-fk-grey-200 bg-white p-4 text-body-sm text-fk-grey-800">
+        <p class="font-semibold text-fk-black">Cancellation &amp; refunds</p>
+        <p class="mt-1">Final policy TBC. Example: cancel within <strong>24 hours</strong> for a <strong>full deposit refund</strong> — confirm with your confirmation email or in store.</p>
+      </div>
 
       <div class="mt-6 flex flex-col gap-3">
         <button id="payBtn" class="fk-btn-primary text-[18px] py-5"><i data-lucide="lock" class="w-5 h-5"></i> Pay deposit now</button>
@@ -143,7 +148,7 @@
       </div>
 
       <p class="text-body-sm text-fk-grey-700 mt-3">
-        Payment reserves your parts. You don't have to pay now if you'd rather just turn up.
+        Payment activates warehouse transfers where applicable and locks in your booking. You can still choose walk-in from the previous screen if you prefer not to pay now.
       </p>
       <p class="text-body-xs text-fk-grey-700 mt-1">If payment is not completed, we can send a reminder email with links to continue or switch to walk-in.</p>
 

@@ -180,7 +180,10 @@
           </div>
           <div id="partsStockWarning" class="hidden fk-alert fk-alert--warning mt-5">
             <i data-lucide="package-search" class="w-5 h-5 shrink-0"></i>
-            <p>At least one selected line <strong>needs ordering</strong>. We’ll confirm parts before your visit. Your schedule will start from the expected in-stock date.</p>
+            <p id="partsOrderingMsg">At least one selected line <strong>needs ordering</strong>. We’ll confirm parts before your visit. Your schedule will start from the expected in-stock date.</p>
+          </div>
+          <div id="partsWarehouseNote" class="hidden mt-5 rounded-btn border-l-4 border-fk-aqua bg-fk-grey-50 p-4 text-body-sm">
+            <p><strong class="text-fk-black">Warehouse stock:</strong> at least one part is in our warehouse. Transfer to your store starts after your deposit is paid (typically ~2 business days).</p>
           </div>
         </div>
 
@@ -244,9 +247,18 @@
       }
 
       const needsOrd = !!(booking.needsOrdering || booking.needsStaffFollowUp);
+      const warehouseT = booking.warehouseTransferPending === true;
+      const partsWarehouseNote = document.getElementById('partsWarehouseNote');
+      const partsOrderingMsg = document.getElementById('partsOrderingMsg');
       if (partsStockSuccess && partsStockWarning) {
         partsStockSuccess.classList.toggle('hidden', needsOrd);
         partsStockWarning.classList.toggle('hidden', !needsOrd);
+      }
+      if (partsWarehouseNote) {
+        partsWarehouseNote.classList.toggle('hidden', !warehouseT || !needsOrd);
+      }
+      if (partsOrderingMsg && warehouseT && needsOrd) {
+        partsOrderingMsg.innerHTML = 'Ordering or <strong>warehouse transfer</strong> applies. We’ll confirm timing; scheduling aligns with when stock can be at your store.';
       }
       if (mobilePartsStockLine) {
         if (needsOrd) {

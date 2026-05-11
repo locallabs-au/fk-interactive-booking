@@ -24,80 +24,123 @@
   <main id="main" class="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16">
     <div class="max-w-3xl">
       <p id="deviceLabel" class="font-inter font-medium text-fk-grey-700 uppercase tracking-widest text-body-xs mb-3">Your device</p>
-      <h1 class="font-anybody font-bold text-[36px] leading-[44px] md:text-h1">What is your issue?</h1>
+      <h1 class="font-anybody font-bold text-[36px] leading-[44px] md:text-h1">What’s going wrong?</h1>
+      <p class="text-body text-fk-grey-700 mt-2">Start with your issue. If your repair involves a <strong class="text-fk-black">screen or camera</strong>, you can compare original vs compatible parts below.</p>
     </div>
 
     <div class="mt-10 grid lg:grid-cols-[1fr_370px] gap-8 items-start">
       <section class="space-y-8">
-        <article id="part-quality" class="fk-summary scroll-mt-28 ring-2 ring-fk-black ring-offset-4 rounded-card">
-          <p class="text-body-xs font-medium uppercase tracking-widest text-fk-grey-700">Part quality</p>
-          <h2 class="font-anybody font-bold text-h3 mt-2">Aftermarket vs OEM</h2>
-          <p class="text-body-sm text-fk-grey-700 mt-1">Pick one: line prices below update from the same payload the card UI used.</p>
-          <div class="mt-4 grid sm:grid-cols-2 gap-4">
-            <button type="button" class="fk-card-selectable" data-quality="oem" data-selected="true">
-              <p class="font-anybody font-semibold text-h4">OEM</p>
-              <p class="font-anybody font-bold text-[22px] sm:text-[28px] leading-8 mt-2">Original Parts</p>
-              <p class="text-body-sm text-fk-grey-700 mt-3">12-month warranty</p>
-            </button>
-            <button type="button" class="fk-card-selectable" data-quality="aftermarket" data-selected="false">
-              <p class="font-anybody font-semibold text-h4">Aftermarket</p>
-              <p class="font-anybody font-bold text-[22px] sm:text-[28px] leading-8 mt-2">Compatible Parts</p>
-              <p class="text-body-sm text-fk-grey-700 mt-3">12-month warranty</p>
-            </button>
+        <div id="symptomSection" class="fk-summary scroll-mt-28 ring-2 ring-fk-black ring-offset-4 rounded-card space-y-6">
+          <div>
+            <p class="text-body-xs font-medium uppercase tracking-widest text-fk-grey-700">Step 1 · Your issue</p>
+            <h2 class="font-anybody font-bold text-h3 mt-2">Describe the problem</h2>
           </div>
-        </article>
-
-        <div>
-          <p class="font-anybody font-semibold text-h4 mb-3">Step 1 · Symptom (dropdown)</p>
           <div role="tablist" aria-label="Symptom categories" class="border-b border-fk-grey-200 flex gap-4 sm:gap-6 overflow-x-auto fk-scroll pb-px">
-            <button role="tab" type="button" class="fk-tab" aria-selected="true" data-tab="display">Display</button>
-            <button role="tab" type="button" class="fk-tab" aria-selected="false" data-tab="electrical">Electrical</button>
-            <button role="tab" type="button" class="fk-tab" aria-selected="false" data-tab="mechanical">Mechanical</button>
+            <button role="tab" type="button" class="fk-tab" aria-selected="true" data-tab="display">Screen &amp; camera</button>
+            <button role="tab" type="button" class="fk-tab" aria-selected="false" data-tab="electrical">Charging</button>
+            <button role="tab" type="button" class="fk-tab" aria-selected="false" data-tab="mechanical">Buttons &amp; body</button>
             <button role="tab" type="button" class="fk-tab" aria-selected="false" data-tab="power">Power</button>
             <button role="tab" type="button" class="fk-tab" aria-selected="false" data-tab="data">Data</button>
           </div>
 
-          <label class="fk-label mt-6 block" for="symptomSelect">Select to view details and add</label>
-          <select id="symptomSelect" class="fk-input w-full !mt-2 text-body appearance-none bg-white cursor-pointer pr-10 bg-[length:1.25rem] bg-[right_1rem_center] bg-no-repeat" style="background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23111%22 stroke-width=%222%22%3E%3Cpath d=%22m6 9 6 6 6-6%22/%3E%3C/svg%3E');">
-            <option value="">Choose a symptom…</option>
-          </select>
+          <div>
+            <label class="fk-label block" for="symptomSelect">Choose the closest match</label>
+            <select id="symptomSelect" class="fk-input w-full mt-2 text-body appearance-none bg-white cursor-pointer pr-10 bg-[length:1.25rem] bg-[right_1rem_center] bg-no-repeat" style="background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23111%22 stroke-width=%222%22%3E%3Cpath d=%22m6 9 6 6 6-6%22/%3E%3C/svg%3E');">
+              <option value="">Choose a symptom…</option>
+            </select>
+          </div>
 
-          <div id="detailPanel" class="hidden mt-6 fk-summary border border-fk-grey-200">
-            <h3 id="detailTitle" class="font-anybody font-bold text-h4"></h3>
-            <p id="detailDesc" class="text-body text-fk-grey-800 mt-3"></p>
+          <div id="detailPanel" class="hidden fk-summary border border-fk-grey-200">
+            <div class="flex gap-3 items-start">
+              <span id="detailIconWrap" class="shrink-0 w-11 h-11 rounded-btn bg-fk-grey-100 flex items-center justify-center" aria-hidden="true"></span>
+              <div class="min-w-0 flex-1">
+                <h3 id="detailTitle" class="font-anybody font-bold text-h4"></h3>
+                <p id="detailDesc" class="text-body text-fk-grey-800 mt-3"></p>
+              </div>
+            </div>
             <p id="detailStock" class="mt-4 fk-badge fk-badge--soft-success inline-flex items-center gap-1"></p>
             <p id="detailBasePrice" class="mt-3 font-anybody font-bold text-[22px]"></p>
             <div class="mt-5 flex flex-wrap gap-3">
-              <button type="button" id="addSymptomBtn" class="fk-btn-primary">Yes, add this issue</button>
+              <button type="button" id="addSymptomBtn" class="fk-btn-primary">Add this issue</button>
               <button type="button" id="removeSymptomBtn" class="fk-btn-ghost hidden">Remove from list</button>
             </div>
           </div>
+
+          <div id="selectedBlock" class="fk-summary hidden border-dashed border-2 border-fk-grey-200 bg-fk-grey-50">
+            <h3 class="font-anybody font-bold text-h4">Selected issues</h3>
+            <ul id="selectedList" class="mt-4 divide-y divide-fk-grey-200 text-body-sm"></ul>
+          </div>
         </div>
 
-        <div id="selectedBlock" class="fk-summary hidden">
-          <h3 class="font-anybody font-bold text-h4">Selected symptoms</h3>
-          <ul id="selectedList" class="mt-4 divide-y divide-fk-grey-200 text-body-sm"></ul>
+        <div id="callbackAlert" class="hidden fk-alert fk-alert--error">
+          <i data-lucide="phone-call" class="w-5 h-5 shrink-0"></i>
+          <div>
+            <p class="font-medium">We need to talk this one through first</p>
+            <p class="text-body-sm mt-1">This issue isn’t available for online booking yet. Please use <a class="font-semibold underline" href="screen-edge-callback.html">request a callback</a> so a technician can confirm next steps (you may need to visit a store for diagnosis).</p>
+          </div>
+        </div>
+
+        <div id="warehouseNote" class="hidden fk-alert fk-alert--warning">
+          <i data-lucide="truck" class="w-5 h-5 shrink-0"></i>
+          <div>
+            <p class="font-medium">Part in our warehouse</p>
+            <p class="text-body-sm mt-1">Typically <strong>2 business days</strong> to your store after your deposit is paid — warehouse transfer starts once payment is received.</p>
+          </div>
         </div>
 
         <div id="partsMessage" class="fk-alert fk-alert--warning hidden">
           <i data-lucide="package-search" class="w-5 h-5 shrink-0"></i>
           <div>
-            <p class="font-medium">Part not available for instant booking</p>
-            <p class="text-body-sm mt-1">Your selections include a line that needs ordering. Continue to details. We’ll confirm timing once stock is available.</p>
+            <p class="font-medium">Some lines need ordering first</p>
+            <p class="text-body-sm mt-1">Continue to your details — we’ll confirm parts and timing. Your earliest booking date follows stock availability.</p>
           </div>
         </div>
 
+        <p id="compatibleOnlyNote" class="hidden text-body-sm text-fk-grey-700 fk-summary border border-fk-grey-200">
+          <strong class="text-fk-black">Pricing note:</strong> these repairs use <strong>compatible parts</strong> pricing (original vs compatible comparison applies to screen and camera work only).
+        </p>
+
+        <article id="part-quality" class="fk-summary hidden">
+          <p class="text-body-xs font-medium uppercase tracking-widest text-fk-grey-700">Screen &amp; camera · part type</p>
+          <h2 class="font-anybody font-bold text-h3 mt-2">Original (OEM) vs compatible parts</h2>
+          <p class="text-body-sm text-fk-grey-700 mt-1">Only applies to glass, display, and camera repairs. Tap a card to compare.</p>
+          <div class="mt-4 grid sm:grid-cols-2 gap-4 items-stretch">
+            <button type="button" class="fk-card-selectable text-left h-full" data-quality="oem" data-selected="true">
+              <p class="font-anybody font-semibold text-h4 text-fk-black">OEM parts</p>
+              <p class="text-body-xs text-fk-grey-700 mt-1">(Original Equipment Manufacturer)</p>
+              <p class="text-body-sm text-fk-grey-800 mt-3">Same quality as the parts that came with your device — built to match the intended factory design.</p>
+              <ul class="mt-4 space-y-2 text-body-sm text-fk-grey-800">
+                <li class="flex gap-2"><span class="text-fk-success shrink-0">✅</span> Colour — accurate colours, brightness, and contrast</li>
+                <li class="flex gap-2"><span class="text-fk-success shrink-0">✅</span> Function — True Tone, Night Shift, touch sensitivity as intended</li>
+                <li class="flex gap-2"><span class="text-fk-success shrink-0">✅</span> Construction — durable oleophobic coating; resists fingerprints; helps retain water resistance</li>
+              </ul>
+            </button>
+            <button type="button" class="fk-card-selectable text-left h-full" data-quality="aftermarket" data-selected="false">
+              <p class="font-anybody font-semibold text-h4 text-fk-black">Compatible parts</p>
+              <p class="text-body-sm text-fk-grey-800 mt-3">Made by third-party companies. Often more affordable, but quality and fit can vary by brand.</p>
+              <ul class="mt-4 space-y-2 text-body-sm text-fk-grey-800">
+                <li class="flex gap-2"><span class="text-fk-warning shrink-0">⚠️</span> Made by third-party manufacturers</li>
+                <li class="flex gap-2"><span class="text-fk-warning shrink-0">⚠️</span> Quality can vary — some good, some not so much</li>
+                <li class="flex gap-2"><span class="text-fk-warning shrink-0">⚠️</span> May not perform or last like original parts</li>
+                <li class="flex gap-2"><span class="text-fk-warning shrink-0">⚠️</span> Usually includes a 1-year warranty</li>
+              </ul>
+            </button>
+          </div>
+        </article>
+
         <article class="fk-summary">
           <p class="text-body-xs font-medium uppercase tracking-widest text-fk-grey-700">Step 2</p>
-          <h2 class="font-anybody font-bold text-h4 mt-1">Choose your booking option</h2>
+          <h2 class="font-anybody font-bold text-h4 mt-1">How do you want to book?</h2>
+          <p class="text-body-sm text-fk-grey-700 mt-2">Reserving locks in parts and your place in line — popular slots fill fast.</p>
           <div class="mt-4 grid sm:grid-cols-2 gap-4">
-            <button type="button" class="fk-card-selectable" data-path="reserve" data-selected="true">
-              <p class="font-anybody font-semibold text-h4">Option A: Reserve part</p>
-              <p class="text-body-sm text-fk-grey-700 mt-2">$59-$69 refundable deposit, deducted in-store.</p>
+            <button type="button" class="fk-card-selectable text-left" data-path="reserve" data-selected="true">
+              <p class="font-anybody font-semibold text-h4">Reserve with deposit</p>
+              <p class="text-body-sm text-fk-grey-700 mt-2">$59–$69 refundable deposit holds your parts and time. Deducted from your repair bill.</p>
+              <p class="text-body-xs text-fk-orange font-medium mt-3">Recommended — avoids disappointment if stock moves.</p>
             </button>
-            <button type="button" class="fk-card-selectable" data-path="walkin" data-selected="false">
-              <p class="font-anybody font-semibold text-h4">Option B: Walk-in</p>
-              <p class="text-body-sm text-fk-grey-700 mt-2">No deposit. No part guarantee.</p>
+            <button type="button" class="fk-card-selectable text-left" data-path="walkin" data-selected="false">
+              <p class="font-anybody font-semibold text-h4">Walk in</p>
+              <p class="text-body-sm text-fk-grey-700 mt-2">No deposit. No guarantee parts will still be available when you arrive.</p>
             </button>
           </div>
         </article>
@@ -106,12 +149,12 @@
       <aside class="lg:sticky lg:top-24">
         <div class="fk-summary">
           <h2 class="font-anybody font-bold text-h4">Online quote summary</h2>
-          <ul id="summaryList" class="mt-4 divide-y divide-fk-grey-200 text-body-sm"><li class="py-3 text-fk-grey-700">No symptoms selected.</li></ul>
-          <div class="mt-4 pt-4 border-t border-fk-grey-200 text-body-sm flex items-center justify-between"><span>Part quality</span><span id="summaryQuality" class="font-medium">Original parts</span></div>
+          <ul id="summaryList" class="mt-4 divide-y divide-fk-grey-200 text-body-sm"><li class="py-3 text-fk-grey-700">No issues selected yet.</li></ul>
+          <div class="mt-4 pt-4 border-t border-fk-grey-200 text-body-sm flex items-center justify-between"><span>Parts</span><span id="summaryQuality" class="font-medium text-right">—</span></div>
           <div class="pt-2 text-body-sm flex items-center justify-between"><span>Path</span><span id="summaryPath" class="font-medium">Reserve</span></div>
           <div class="mt-4 pt-4 border-t-2 border-fk-black flex items-center justify-between"><span class="font-medium">Estimated total</span><span id="summaryTotal" class="font-anybody font-bold text-h4">$0</span></div>
           <p class="text-body-xs text-fk-grey-700 mt-2">Stacking: highest line at full price; other lines at 50% each.</p>
-          <p id="summaryFollowUp" class="hidden mt-3 text-body-xs text-fk-grey-700 border-t border-fk-grey-200 pt-3">At least one line needs ordering. Earliest booking date follows stock ETA.</p>
+          <p id="summaryFollowUp" class="hidden mt-3 text-body-xs text-fk-grey-700 border-t border-fk-grey-200 pt-3">Ordering or warehouse transfer applies — earliest booking follows availability.</p>
         </div>
       </aside>
     </div>
@@ -123,30 +166,29 @@
   </main>
 
   <script>
-    /**
-     * Mock BE payload: category + public fields + price lines + availability flags per quality.
-     * FE only needs: populate <select> per category, render detail from selected row, POST selected ids.
-     */
     const symptoms = [
-      { id:'screen', cat:'display', name:'Screen Trauma', publicExplained:'Cracked glass, dead pixels, touch failure, or black spots: we inspect and quote exact glass/LCD work.', aftermarket:140, oem:180, amAvailable:true, oemAvailable:true },
-      { id:'camera', cat:'display', name:'Camera lens / module', publicExplained:'Blurry photos, cracked lens glass, or camera app errors: front or rear module replacement.', aftermarket:119, oem:179, amAvailable:true, oemAvailable:true },
-      { id:'port', cat:'electrical', name:'Charging & data port', publicExplained:'Loose Lightning/USB-C port, intermittent charging, or computer not detecting the device.', aftermarket:95, oem:135, amAvailable:true, oemAvailable:true },
-      { id:'button', cat:'mechanical', name:'Buttons & housing', publicExplained:'Stuck or mushy buttons, bent frame, or speaker grille damage affecting assembly.', aftermarket:85, oem:125, amAvailable:true, oemAvailable:false, orderEtaDays:4 },
-      { id:'battery', cat:'power', name:'Power drained', publicExplained:'Poor battery health, unexpected shutdowns, or slow charging: battery service.', aftermarket:89, oem:129, amAvailable:true, oemAvailable:false, orderEtaDays:3 },
-      { id:'data', cat:'data', name:'Memory rescue', publicExplained:'Storage errors, performance issues, or backup assist before other repairs.', aftermarket:99, oem:149, amAvailable:false, oemAvailable:true, orderEtaDays:7 },
-      { id:'data_drive', cat:'data', name:'Get your data onto a drive', publicExplained:'We create a backup of your data onto a portable drive you can take with you (drive capacity priced in-store).', aftermarket:245, oem:295, amAvailable:true, oemAvailable:true }
+      { id:'screen', cat:'display', lucide:'smartphone', name:'My screen is cracked or the display isn’t working', publicExplained:'Visible cracks, black spots, touch not responding, or weird colours — we assess glass and LCD and quote the repair.', aftermarket:140, oem:180, stockTier:'inStore', amAvailable:true, oemAvailable:true },
+      { id:'camera', cat:'display', lucide:'camera', name:'My camera isn’t working properly', publicExplained:'Blurry photos, cracked lens glass, or the camera app misbehaves — front or rear.', aftermarket:119, oem:179, stockTier:'inStore', amAvailable:true, oemAvailable:true },
+      { id:'port', cat:'electrical', lucide:'plug', name:'My phone won’t charge properly', publicExplained:'Loose port, cable falls out, intermittent charging, or your computer doesn’t see the phone.', aftermarket:95, oem:135, stockTier:'warehouse', amAvailable:true, oemAvailable:true },
+      { id:'button', cat:'mechanical', lucide:'smartphone', name:'Buttons or frame feel wrong', publicExplained:'Stuck or mushy buttons, bent frame, or damage that affects how the phone goes back together.', aftermarket:85, oem:125, stockTier:'inStore', amAvailable:true, oemAvailable:false, orderEtaDays:4 },
+      { id:'battery', cat:'power', lucide:'battery', name:'My battery dies too quickly', publicExplained:'Poor battery health, shutting down early, or charging slowly — battery replacement.', aftermarket:89, oem:129, stockTier:'inStore', amAvailable:true, oemAvailable:false, orderEtaDays:3 },
+      { id:'no_boot', cat:'power', lucide:'alert-circle', name:'My phone won’t turn on', publicExplained:'No response when you press power, or stuck on the logo — causes vary; we diagnose in store.', aftermarket:169, oem:199, priceMin:89, priceMax:249, stockTier:'inStore', amAvailable:true, oemAvailable:true },
+      { id:'data', cat:'data', lucide:'hard-drive', name:'I need help with storage or photos', publicExplained:'Storage errors, backups, or getting data off safely before other work.', aftermarket:99, oem:149, stockTier:'none', amAvailable:false, oemAvailable:false, orderEtaDays:7 },
+      { id:'data_drive', cat:'data', lucide:'hard-drive', name:'Copy my data onto a drive', publicExplained:'We back your data onto a portable drive to take home — capacity priced in store.', aftermarket:245, oem:295, stockTier:'inStore', amAvailable:true, oemAvailable:true }
     ];
 
     let activeTab = 'display';
     let quality = 'oem';
     let path = 'reserve';
     const selected = new Set();
+
     const symptomSelect = document.getElementById('symptomSelect');
     const detailPanel = document.getElementById('detailPanel');
     const detailTitle = document.getElementById('detailTitle');
     const detailDesc = document.getElementById('detailDesc');
     const detailStock = document.getElementById('detailStock');
     const detailBasePrice = document.getElementById('detailBasePrice');
+    const detailIconWrap = document.getElementById('detailIconWrap');
     const addSymptomBtn = document.getElementById('addSymptomBtn');
     const removeSymptomBtn = document.getElementById('removeSymptomBtn');
     const selectedBlock = document.getElementById('selectedBlock');
@@ -159,40 +201,120 @@
     const continueBtn = document.getElementById('continueBtn');
     const summaryFollowUp = document.getElementById('summaryFollowUp');
     const deviceLabel = document.getElementById('deviceLabel');
+    const partQualityEl = document.getElementById('part-quality');
+    const compatibleOnlyNote = document.getElementById('compatibleOnlyNote');
+    const callbackAlert = document.getElementById('callbackAlert');
+    const warehouseNote = document.getElementById('warehouseNote');
 
-    function partLineAvailable(s) {
-      return quality === 'aftermarket' ? s.amAvailable !== false : s.oemAvailable !== false;
+    function needsScreenQualityChoice(s) {
+      return s && (s.id === 'screen' || s.id === 'camera');
     }
 
-    function basePrice(s) {
-      return quality === 'aftermarket' ? s.aftermarket : s.oem;
+    function needsCallbackOnly(s) {
+      return s.stockTier === 'none';
     }
 
-    /** Highest base price full; each other line at half its base (scamp rule). */
-    function allocateCharges(chosen) {
-      if (!chosen.length) return [];
-      const rows = chosen.map(s => ({ s, base: basePrice(s) })).sort((a, b) => b.base - a.base);
-      return rows.map((row, i) => ({
-        symptom: row.s,
-        base: row.base,
-        charge: i === 0 ? row.base : row.base * 0.5
-      }));
+    function needsWarehouseTransfer(s) {
+      return s.stockTier === 'warehouse';
     }
 
-    function quoteTotal(chosen) {
-      return allocateCharges(chosen).reduce((n, r) => n + r.charge, 0);
+    function effectiveQuality(s) {
+      return needsScreenQualityChoice(s) ? quality : 'aftermarket';
     }
 
-    /** BE: use expected in-store date per line; prototype uses max(orderEtaDays) for lines that need ordering. */
+    function shelfAvailableForQuality(s) {
+      const q = effectiveQuality(s);
+      return q === 'aftermarket' ? s.amAvailable !== false : s.oemAvailable !== false;
+    }
+
+    function linePrice(s) {
+      return effectiveQuality(s) === 'aftermarket' ? s.aftermarket : s.oem;
+    }
+
+    function needsStaffFollowUpBasket(chosen) {
+      return chosen.some(needsCallbackOnly);
+    }
+
+    function lineNeedsOrderingOrWarehouse(s) {
+      if (needsCallbackOnly(s)) return false;
+      if (needsWarehouseTransfer(s)) return true;
+      return !shelfAvailableForQuality(s);
+    }
+
+    function addBusinessDays(start, businessDays) {
+      const d = new Date(start.getFullYear(), start.getMonth(), start.getDate(), 12, 0, 0, 0);
+      let added = 0;
+      while (added < businessDays) {
+        d.setDate(d.getDate() + 1);
+        const day = d.getDay();
+        if (day !== 0 && day !== 6) added++;
+      }
+      return d;
+    }
+
     function computePartsExpectedBy(chosen) {
-      const orderLines = chosen.filter(s => !partLineAvailable(s));
-      if (!orderLines.length) return null;
-      const days = orderLines.map(s => (typeof s.orderEtaDays === 'number' ? s.orderEtaDays : 3));
-      const maxD = Math.max(...days);
-      const d = new Date();
-      d.setHours(12, 0, 0, 0);
-      d.setDate(d.getDate() + maxD);
-      return d.toISOString().slice(0, 10);
+      const today = new Date();
+      const dates = [];
+      chosen.forEach(s => {
+        if (needsCallbackOnly(s)) return;
+        if (needsWarehouseTransfer(s)) {
+          dates.push(addBusinessDays(today, 2));
+          return;
+        }
+        if (!shelfAvailableForQuality(s)) {
+          const days = typeof s.orderEtaDays === 'number' ? s.orderEtaDays : 3;
+          const d = new Date(today);
+          d.setHours(12, 0, 0, 0);
+          d.setDate(d.getDate() + days);
+          dates.push(d);
+        }
+      });
+      if (!dates.length) return null;
+      return dates.reduce((a, b) => (+a > +b ? a : b)).toISOString().slice(0, 10);
+    }
+
+    function formatPriceDetail(s) {
+      if (typeof s.priceMin === 'number' && typeof s.priceMax === 'number') {
+        const tier = effectiveQuality(s) === 'aftermarket' ? 'Compatible parts estimate' : 'Original parts estimate';
+        return `Typically $${s.priceMin}–$${s.priceMax} (${tier}; exact quote after diagnosis)`;
+      }
+      const tier = effectiveQuality(s) === 'aftermarket' ? 'Compatible parts' : 'Original parts';
+      return `Line price: $${linePrice(s)} (${tier})`;
+    }
+
+    function summaryQualityLabel(chosen) {
+      const needsQ = chosen.some(needsScreenQualityChoice);
+      if (!chosen.length) return '—';
+      if (!needsQ) return 'Compatible parts';
+      const only = chosen.filter(needsScreenQualityChoice);
+      const qLabel = quality === 'aftermarket' ? 'Compatible' : 'Original OEM';
+      if (only.length === chosen.length) return qLabel + ' (all lines)';
+      return 'Mixed — OEM choice applies to screen/camera only';
+    }
+
+    function renderDetailStock(s) {
+      if (needsCallbackOnly(s)) {
+        detailStock.className = 'mt-4 fk-badge fk-badge--error inline-flex items-center gap-1';
+        detailStock.innerHTML = '<i data-lucide="phone-call" class="w-4 h-4"></i> Callback required — not bookable online';
+        return;
+      }
+      if (needsWarehouseTransfer(s)) {
+        detailStock.className = 'mt-4 fk-badge fk-badge--soft-warning inline-flex items-center gap-1';
+        detailStock.innerHTML = '<i data-lucide="truck" class="w-4 h-4"></i> In warehouse · ~2 business days to store after deposit';
+        return;
+      }
+      if (shelfAvailableForQuality(s)) {
+        detailStock.className = 'mt-4 fk-badge fk-badge--soft-success inline-flex items-center gap-1';
+        detailStock.innerHTML = '<i data-lucide="check-circle" class="w-4 h-4"></i> In store — book as usual';
+        return;
+      }
+      detailStock.className = 'mt-4 fk-badge fk-badge--soft-warning inline-flex items-center gap-1';
+      detailStock.innerHTML = '<i data-lucide="alert-circle" class="w-4 h-4"></i> Not on shelf — order first';
+    }
+
+    function setDetailIcon(s) {
+      const name = s.lucide || 'circle-help';
+      detailIconWrap.innerHTML = `<i data-lucide="${name}" class="w-6 h-6"></i>`;
     }
 
     function getSymptomById(id) {
@@ -227,19 +349,27 @@
       detailPanel.classList.remove('hidden');
       detailTitle.textContent = s.name;
       detailDesc.textContent = s.publicExplained;
-      const avail = partLineAvailable(s);
-      if (avail) {
-        detailStock.className = 'mt-4 fk-badge fk-badge--soft-success inline-flex items-center gap-1';
-        detailStock.innerHTML = '<i data-lucide="check-circle" class="w-4 h-4"></i> Parts in store now';
-      } else {
-        detailStock.className = 'mt-4 fk-badge fk-badge--soft-warning inline-flex items-center gap-1';
-        detailStock.innerHTML = '<i data-lucide="alert-circle" class="w-4 h-4"></i> Not on shelf · order / confirm';
-      }
-      detailBasePrice.textContent = `Line price: $${basePrice(s)} (${quality === 'aftermarket' ? 'Compatible parts' : 'Original parts'})`;
+      setDetailIcon(s);
+      renderDetailStock(s);
+      detailBasePrice.textContent = formatPriceDetail(s);
       const on = selected.has(s.id);
       addSymptomBtn.classList.toggle('hidden', on);
       removeSymptomBtn.classList.toggle('hidden', !on);
       if (window.lucide) lucide.createIcons();
+    }
+
+    function allocateCharges(chosen) {
+      if (!chosen.length) return [];
+      const rows = chosen.map(s => ({ s, base: linePrice(s) })).sort((a, b) => b.base - a.base);
+      return rows.map((row, i) => ({
+        symptom: row.s,
+        base: row.base,
+        charge: i === 0 ? row.base : row.base * 0.5
+      }));
+    }
+
+    function quoteTotal(chosen) {
+      return allocateCharges(chosen).reduce((n, r) => n + r.charge, 0);
     }
 
     function render() {
@@ -247,37 +377,56 @@
       const chosen = symptoms.filter(s => selected.has(s.id));
       const allocated = allocateCharges(chosen);
       const total = quoteTotal(chosen);
-      const needsOrdering = chosen.some(s => !partLineAvailable(s));
+      const needsOrdering = chosen.some(lineNeedsOrderingOrWarehouse);
+      const staffFollow = needsStaffFollowUpBasket(chosen);
+      const warehousePending = chosen.some(needsWarehouseTransfer);
+
+      partQualityEl.classList.toggle('hidden', !chosen.some(needsScreenQualityChoice));
+      compatibleOnlyNote.classList.toggle('hidden', !chosen.length || chosen.some(needsScreenQualityChoice));
+
+      callbackAlert.classList.toggle('hidden', !staffFollow);
+      warehouseNote.classList.toggle('hidden', !warehousePending || staffFollow);
+      partsMessage.classList.toggle('hidden', staffFollow || !needsOrdering);
 
       selectedBlock.classList.toggle('hidden', !chosen.length);
       selectedList.innerHTML = allocated.map(({ symptom: s, charge }) => {
-        const ok = partLineAvailable(s);
-        const tag = ok ? '' : ' <span class="text-fk-warning text-body-xs">(needs ordering)</span>';
+        const ok = !lineNeedsOrderingOrWarehouse(s) && !needsCallbackOnly(s);
+        const tag = needsCallbackOnly(s)
+          ? ' <span class="text-fk-error text-body-xs">(callback)</span>'
+          : (!ok ? ' <span class="text-fk-warning text-body-xs">(ordering / warehouse)</span>' : '');
         const safe = (s.name || '').replace(/"/g, '&quot;');
+        const priceLabel = (typeof s.priceMin === 'number' && typeof s.priceMax === 'number')
+          ? `$${s.priceMin}–$${s.priceMax}`
+          : `$${Math.round(charge)}`;
         return `<li class="py-3 flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
           <span class="flex items-start gap-2 min-w-0"><i data-lucide="check" class="w-5 h-5 text-fk-success shrink-0 mt-0.5"></i><span>${s.name}${tag}</span></span>
-          <span class="flex items-center gap-3 shrink-0"><span class="font-medium whitespace-nowrap">$${Math.round(charge)}</span><button type="button" class="font-semibold text-body-sm underline decoration-2 underline-offset-2 hover:text-fk-grey-800" data-remove-symptom="${s.id}" aria-label="Remove ${safe}">Remove</button></span>
+          <span class="flex items-center gap-3 shrink-0"><span class="font-medium whitespace-nowrap">${priceLabel}</span><button type="button" class="font-semibold text-body-sm underline decoration-2 underline-offset-2 hover:text-fk-grey-800" data-remove-symptom="${s.id}" aria-label="Remove ${safe}">Remove</button></span>
         </li>`;
       }).join('');
 
       if (!chosen.length) {
-        summaryList.innerHTML = '<li class="py-3 text-fk-grey-700">No symptoms selected.</li>';
+        summaryList.innerHTML = '<li class="py-3 text-fk-grey-700">No issues selected yet.</li>';
         summaryTotal.textContent = '$0';
       } else {
         summaryList.innerHTML = allocated.map(({ symptom: s, charge }) => {
-          const ok = partLineAvailable(s);
-          const tag = ok ? '' : ' <span class="text-fk-warning text-body-xs">(needs ordering)</span>';
+          const ok = !lineNeedsOrderingOrWarehouse(s) && !needsCallbackOnly(s);
+          const tag = needsCallbackOnly(s)
+            ? ' <span class="text-fk-error text-body-xs">(callback)</span>'
+            : (!ok ? ' <span class="text-fk-warning text-body-xs">(ordering / warehouse)</span>' : '');
           const safe = (s.name || '').replace(/"/g, '&quot;');
-          return `<li class="py-3 flex flex-wrap items-center justify-between gap-x-3 gap-y-2"><span class="min-w-0 flex-1">${s.name}${tag}</span><span class="flex items-center gap-3 shrink-0"><span class="font-medium whitespace-nowrap">$${Math.round(charge)}</span><button type="button" class="font-semibold text-body-sm underline decoration-2 underline-offset-2 hover:text-fk-grey-800" data-remove-symptom="${s.id}" aria-label="Remove ${safe}">Remove</button></span></li>`;
+          const priceLabel = (typeof s.priceMin === 'number' && typeof s.priceMax === 'number')
+            ? `$${s.priceMin}–$${s.priceMax}`
+            : `$${Math.round(charge)}`;
+          return `<li class="py-3 flex flex-wrap items-center justify-between gap-x-3 gap-y-2"><span class="min-w-0 flex-1">${s.name}${tag}</span><span class="flex items-center gap-3 shrink-0"><span class="font-medium whitespace-nowrap">${priceLabel}</span><button type="button" class="font-semibold text-body-sm underline decoration-2 underline-offset-2 hover:text-fk-grey-800" data-remove-symptom="${s.id}" aria-label="Remove ${safe}">Remove</button></span></li>`;
         }).join('');
         summaryTotal.textContent = `$${Math.round(total)}`;
       }
-      summaryQuality.textContent = quality === 'aftermarket' ? 'Compatible parts' : 'Original parts';
-      summaryPath.textContent = path === 'reserve' ? 'Reserve with deposit' : 'Walk-in';
-      partsMessage.classList.toggle('hidden', !needsOrdering);
-      summaryFollowUp.classList.toggle('hidden', !needsOrdering);
 
-      const ready = chosen.length > 0;
+      summaryQuality.textContent = summaryQualityLabel(chosen);
+      summaryPath.textContent = path === 'reserve' ? 'Reserve with deposit' : 'Walk-in';
+      summaryFollowUp.classList.toggle('hidden', staffFollow || !needsOrdering);
+
+      const ready = chosen.length > 0 && !staffFollow;
       continueBtn.classList.toggle('opacity-50', !ready);
       continueBtn.classList.toggle('pointer-events-none', !ready);
       continueBtn.setAttribute('aria-disabled', ready ? 'false' : 'true');
@@ -336,11 +485,11 @@
       if (continueBtn.getAttribute('aria-disabled') === 'true') { e.preventDefault(); return; }
       const chosen = symptoms.filter(s => selected.has(s.id));
       const total = quoteTotal(chosen);
-      const needsOrdering = chosen.some(s => !partLineAvailable(s));
+      const needsOrdering = chosen.some(lineNeedsOrderingOrWarehouse);
       const partsExpectedBy = computePartsExpectedBy(chosen);
+      const warehouseTransferPending = chosen.some(needsWarehouseTransfer);
       let booking = {};
       try { booking = JSON.parse(localStorage.getItem('fkBooking') || '{}'); } catch (_) {}
-      delete booking.needsStaffFollowUp;
       delete booking.quoteEmail;
       Object.assign(booking, {
         symptoms: chosen.map(s => s.name),
@@ -350,6 +499,8 @@
         total: Math.round(total),
         needsOrdering,
         partsExpectedBy: needsOrdering ? partsExpectedBy : null,
+        warehouseTransferPending,
+        needsStaffFollowUp: false,
         quoteRule: 'max_full_rest_half'
       });
       localStorage.setItem('fkBooking', JSON.stringify(booking));
