@@ -19,22 +19,14 @@
 
   <a href="#main" class="fk-skip-link">Skip to content</a>
 
-  <!-- Page header -->
-  <header class="bg-white border-b border-fk-grey-200">
-    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-3">
-        <span class="inline-flex items-center justify-center w-12 h-12 bg-fk-yellow rounded-btn font-anybody font-extrabold text-xl">FK</span>
-        <span class="font-anybody font-bold text-lg leading-tight">Fone King<br><span class="font-inter font-medium text-body-sm text-fk-grey-700">Design System</span></span>
-      </a>
-      <nav class="text-body-sm font-medium flex gap-6">
-        <a href="index.html" class="hover:underline">Booking flow</a>
-        <a href="#tokens" class="hover:underline">Tokens</a>
-        <a href="#components" class="hover:underline">Components</a>
-      </nav>
-    </div>
-  </header>
+  <div id="fk-booking-header-root" data-fk-step="0"></div>
 
   <main id="main" class="max-w-7xl mx-auto px-6 py-16 space-y-20">
+    <nav class="flex flex-wrap items-center gap-6 text-body-sm font-medium border-b border-fk-grey-200 pb-4 -mt-2" aria-label="Design system sections">
+      <a href="index.html" class="hover:underline">Booking flow</a>
+      <a href="#tokens" class="hover:underline">Tokens</a>
+      <a href="#components" class="hover:underline">Components</a>
+    </nav>
 
     <!-- Hero -->
     <section>
@@ -233,6 +225,7 @@
     Fone King · Design System v1 · 22 years of phone resurrection
   </footer>
 
+  <script src="assets/fk-booking-nav.js"></script>
   <script>
     if (typeof fkPopulateStoreSelect === 'function') {
       fkPopulateStoreSelect(document.getElementById('dsStoreSelect'), { selected: 'Bondi Junction' });

@@ -1,4 +1,4 @@
-# FK Repairs booking flow — copy document
+# FK Repairs booking flow: copy document
 
 Single reference for **user-facing strings** across static HTML prototypes in this folder.  
 **Last aligned to repo:** generated as a snapshot; update when pages change.
@@ -20,7 +20,7 @@ Single reference for **user-facing strings** across static HTML prototypes in th
 
 ---
 
-## `index.html` — overview
+## `index.html`: overview
 
 | Element | Copy |
 |---------|------|
@@ -29,7 +29,7 @@ Single reference for **user-facing strings** across static HTML prototypes in th
 | H1 | Your Phone **Reborn**: Booking Flow |
 | Intro | Six interactive screens plus a full design system. Open any screen to walk through it, or load design-system.html to see every component on one page. |
 | Section: The 6 booking screens | (card titles and blurbs; see page) |
-| Step 1 card | Your Phone Reborn · Pick device + store · **Device & store** · Hero, category & brand pills, scrollable device list. |
+| Step 1 card | Repairs-style hero · Image + lavender panel, H2-sized title + 3 numbered steps · **Device & store** · Category & brand pills, scrollable device list. |
 | Step 2 card | Symptom dropdown · Category tabs + select, detail panel, add · **Symptoms & parts (v2)** · Easier BE mapping: one control per category list. |
 | Step 3 | Begin the resurrection · Contact form with conditional fields & live validation. |
 | Step 4 | Schedule appointment · Date dropdown + 15-min time slot grid. |
@@ -42,17 +42,18 @@ Single reference for **user-facing strings** across static HTML prototypes in th
 
 ---
 
-## `screen-1-device.html` — Step 1: device
+## `screen-1-device.html`: Step 1: device
 
 | Element | Copy |
 |---------|------|
 | Meta title | FK Repairs · Step 1: Choose your device |
 | Meta description | Pick your device to start a Fone King repair booking. Choose your store on the details step. |
-| Hero kicker | Phone repairs · Australia-wide |
-| H1 | Your Phone **Reborn** |
-| Hero sub | We don't just fix phones. We bring them back to life. |
-| Trust row | 22 years · 7,000+ reviews · Lifetime warranty |
-| H2 | Select a category of your device |
+| Hero image | Repairs hero (CDN): technician hands / phone internals |
+| H1 (H2 token sizing) | Your repair starts here |
+| Hero steps (outlined circles) | 1 Choose your device · 2 Describe what's wrong · 3 Pick a time to head in store |
+| Store nav (mock) | Black top rule · yellow bar · FK + stacked FONE KING · Shop ⌄ · Repairs · Stores ⌄ · pill Search + user + cart |
+| Trust strip | Compact black bar (py-2.5–3): **22** / Years Resurrecting Devices · **1M+** / Phones Reborn · **1HR** / To Resurrection · **7,000** / Reviews — no icons; 2×2 grid on narrow screens, four columns with vertical dividers from 520px up |
+| H2 | Select category of device you want to repair |
 | Category pills | Phones · Computers · Tablets · Wearables |
 | H3 | Select from major brands |
 | Brand pills | Apple · Google · Samsung · Other |
@@ -66,20 +67,24 @@ Single reference for **user-facing strings** across static HTML prototypes in th
 
 ---
 
-## `screen-2-symptoms-v2.html` — Step 2 (dropdown, canonical)
+## `screen-2-symptoms-v2.html`: Step 2 (dropdown, canonical)
 
 | Element | Copy |
 |---------|------|
 | Title | FK Repairs · Step 2: Symptoms (dropdown v2) |
 | Eyebrow | Your device (dynamic: device name from storage when set) |
-| H1 | What is your issue? |
-| Step 1 label | Step 1 · Part quality |
-| H2 | Aftermarket vs OEM |
-| Intro | Pick one: line prices below update from the same payload the card UI used. |
-| OEM tile | OEM · **Original Parts** · 12-month warranty |
-| Aftermarket tile | Aftermarket · **Compatible Parts** · 12-month warranty |
-| Step 2 label | Step 2 · Symptom (dropdown) |
-| Tabs | Display · Electrical · Mechanical · Power · Data |
+| H1 | What’s going wrong? |
+| Step 1 label | Step 1 · Your issue |
+| Part-quality eyebrow | Screen repair · part type |
+| Part-quality H2 | Original (OEM) vs aftermarket parts |
+| Part-quality intro | Only applies to glass and display repairs. Tap a card to compare. |
+| Intro (page) | Tell us what&rsquo;s wrong with your device. You can add multiple issues to your quote. |
+| OEM tile | Brochure-aligned body + ✅ bullets (Colour / Function / Construction) |
+| Aftermarket tile | Brochure-aligned intro + ⚠️ bullets (third-party / quality varies / performance / 1-year warranty) |
+| Pricing note (no toggle) | Standard quote; OEM vs aftermarket comparison applies to **screen repairs only** |
+| Step 2 label | Step 2 · How do you want to book? |
+| Reserve · orange line | Recommended: Stock cannot be guaranteed for walk ins |
+| Tabs | Screen & camera · Charging · Buttons & body · Power · Data |
 | Dropdown label | Select to view details and add |
 | Dropdown placeholder option | Choose a symptom… |
 | Detail CTAs | Yes, add this issue · Remove from list |
@@ -91,10 +96,11 @@ Single reference for **user-facing strings** across static HTML prototypes in th
 | Path H2 | Choose your booking option |
 | Option A | Option A: Reserve part · $59-$69 refundable deposit, deducted in-store. |
 | Option B | Option B: Walk-in · No deposit. No part guarantee. |
-| Sidebar title | Online quote summary |
-| Empty state | No symptoms selected. |
-| Sidebar rows | Part quality · Path · Estimated total |
-| Sidebar footnote | Stacking: highest line at full price; other lines at 50% each. |
+| Sidebar title | Quote |
+| Empty state | No issues selected yet (v2) · No issues selected (card grid) |
+| Sidebar rows | Parts · Path · Estimated total (hidden when any selection requires callback) |
+| Walk-in footnote | Stock cannot be guaranteed for walk ins |
+| Callback sidebar | Callback required, not bookable online · **Request callback** (→ `screen-edge-callback.html`) |
 | Sidebar conditional | At least one line needs ordering. Earliest booking date follows stock ETA. |
 | Footer | Back · Continue to details |
 
@@ -104,10 +110,13 @@ Single reference for **user-facing strings** across static HTML prototypes in th
 |---------|------|
 | Stock: available | Parts in store now |
 | Stock: not available | Not on shelf · order / confirm |
-| Line price label pattern | Line price: $**X** (Original parts \| Compatible parts) |
-| Tag on line item when ordering | (needs ordering) |
+| Price (screen, OEM toggle) | Price: $**X** (OEM parts \| Aftermarket parts) |
+| Price (non-screen) | Price: $**X** (estimated repair) |
+| Range (non-screen) | Typically $**min** to $**max** (estimated range; exact quote after diagnosis) |
+| Tag on line item (order / warehouse path) | (order from warehouse) |
+| Tag on line item (callback path) | (callback) |
 | Summary path values | Reserve with deposit · Walk-in |
-| Summary part quality values | Original parts · Compatible parts |
+| Summary part quality values | Standard quote · Aftermarket (screen) · OEM (screen) · Mixed: OEM vs aftermarket applies to screen repair only |
 
 ### Mock symptom content (CMS-style fields)
 
@@ -125,13 +134,13 @@ Single reference for **user-facing strings** across static HTML prototypes in th
 
 ---
 
-## `screen-2-symptoms.html` — Step 2 (legacy card grid)
+## `screen-2-symptoms.html`: Step 2 (legacy card grid)
 
-Same product framing as v2 for part quality tiles (**Original Parts** / **Compatible Parts**), path options, warnings, and online summary. Card body adds per-symptom short **desc**, **In stock · ready to book** / **Not on shelf · order / confirm**, and a **Public explanation + helpful media** disclosure. **Remove** appears on summary lines; cards still toggle select on click.
+Aligned with v2: OEM vs aftermarket tiles (**screen-only**), path options (reserve card includes orange **Recommended: Stock cannot be guaranteed for walk ins**), warnings, and online summary. Card grid uses **(estimated repair)** for non-screen lines and OEM/Aftermarket labels only for screen.
 
 ---
 
-## `screen-3-details.html` — Step 3: your details
+## `screen-3-details.html`: Step 3: your details
 
 | Element | Copy |
 |---------|------|
@@ -160,7 +169,7 @@ Please enter your name · Enter a valid Australian phone number · Enter a valid
 
 ---
 
-## `screen-4-schedule.html` — Step 4: schedule
+## `screen-4-schedule.html`: Step 4: schedule
 
 | Element | Copy |
 |---------|------|
@@ -191,7 +200,7 @@ Please enter your name · Enter a valid Australian phone number · Enter a valid
 
 ---
 
-## `screen-5-confirmation.html` — Step 5: confirm & pay
+## `screen-5-confirmation.html`: Step 5: confirm & pay
 
 | Element | Copy |
 |---------|------|
@@ -217,11 +226,12 @@ Please enter your name · Enter a valid Australian phone number · Enter a valid
 | Form labels | Cardholder name · Card number · Expiry · CVC |
 | Modal primary | Take payment · Processing… |
 | Modal footer | Secure payment via Eway / Square. Confirmation email sent immediately after payment. |
+| Cancellation & refunds | **Cancellation & refunds** · **Cancellation policy:** Cancel within 24 hours for a full deposit refund. Confirm with your confirmation email or in store. (Final Policy TBD) |
 | Abandon hint (on modal close) | Draft booking saved. Reminder email trigger queued for ~15 minutes if no payment. |
 
 ---
 
-## `screen-6-success.html` — Booking confirmed
+## `screen-6-success.html`: Booking confirmed
 
 | Element | Copy |
 |---------|------|
@@ -236,14 +246,13 @@ Please enter your name · Enter a valid Australian phone number · Enter a valid
 | Walk-in variant (query) | You're booked in as a walk-in. No part guarantee is applied until technician confirmation. · Walk-in: part availability checked on arrival. |
 | Confirmed variant | Part is **hard-reserved**. Confirmation email sent. |
 | What happens next | Check your email · Prepare your device · We'll remind you |
-| Automated follow-ups | T+1hr / T+24hrs / T+6 months / T+11 months (see page) |
 | CTAs | Access your portal · Add to calendar |
 | Footer links | Need to reschedule? Manage booking · Cancel booking · Questions? Call us: 1800 FK REBORN |
 | Page footer | Fone King · 22 years of phone resurrection · Lifetime warranty on every repair |
 
 ---
 
-## `screen-edge-callback.html` — Device not listed
+## `screen-edge-callback.html`: Device not listed
 
 | Element | Copy |
 |---------|------|

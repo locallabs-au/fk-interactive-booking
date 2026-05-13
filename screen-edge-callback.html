@@ -14,10 +14,15 @@
   <script src="assets/fk-stores.js"></script>
 </head>
 <body class="bg-fk-grey-50 text-fk-black">
-  <main class="min-h-screen flex items-center justify-center px-4 py-10">
+  <a href="#edge-main" class="fk-skip-link">Skip to content</a>
+  <div id="fk-booking-header-root"
+       data-fk-step="1"
+       data-fk-back-href="screen-1-device.html"
+       data-fk-back-label="Back to device"></div>
+  <main id="edge-main" class="min-h-screen flex items-center justify-center px-4 py-10">
     <section class="max-w-xl w-full fk-summary">
       <h1 class="font-anybody font-bold text-h2">Device not listed yet</h1>
-      <p class="text-body text-fk-grey-700 mt-3">No stress — tell us what you’ve got and where you’re based. A technician will call back with sourcing options. Requests are sent from our repairs team and <strong class="text-fk-black">CC our warehouse</strong> so everyone who needs to move stock sees it.</p>
+      <p class="text-body text-fk-grey-700 mt-3">No stress. Tell us what you’ve got and where you’re based. A technician will call back with sourcing options. Requests are sent from our repairs team and <strong class="text-fk-black">CC our warehouse</strong> so everyone who needs to move stock sees it.</p>
 
       <form id="edgeForm" class="mt-6 space-y-4" novalidate>
         <label class="fk-label">Name<input id="cbName" name="name" class="fk-input" required placeholder="Your name" autocomplete="name"></label>
@@ -54,6 +59,7 @@
     </div>
   </div>
 
+  <script src="assets/fk-booking-nav.js"></script>
   <script>
     if (typeof fkPopulateStoreSelect === 'function') {
       fkPopulateStoreSelect(document.getElementById('cbStore'), {

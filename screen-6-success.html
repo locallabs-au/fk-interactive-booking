@@ -30,17 +30,13 @@
   <!-- Confetti decoration -->
   <div class="fk-confetti pointer-events-none fixed inset-0 overflow-hidden" aria-hidden="true"></div>
 
-  <header class="bg-white border-b border-fk-grey-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
-      <a href="index.html" class="flex items-center gap-3">
-        <span class="inline-flex items-center justify-center w-12 h-12 bg-fk-yellow rounded-btn font-anybody font-extrabold text-xl">FK</span>
-        <span class="hidden sm:inline font-anybody font-bold text-h4">Fone King</span>
-      </a>
-      <span id="statusBadge" class="fk-badge fk-badge--active">Soft-Reserved</span>
-    </div>
-  </header>
+  <div id="fk-booking-header-root" data-fk-step="6"></div>
 
   <main id="main" class="max-w-2xl mx-auto px-4 sm:px-6 py-12 md:py-16 text-center">
+
+    <div class="flex justify-end mb-4">
+      <span id="statusBadge" class="fk-badge fk-badge--active">Soft-Reserved</span>
+    </div>
 
     <!-- Success indicator -->
     <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-fk-yellow shadow-fk-medium fk-success-pop" aria-hidden="true">
@@ -123,16 +119,6 @@
       </div>
     </section>
 
-    <section class="mt-8 fk-summary text-left">
-      <h3 class="font-anybody font-semibold text-h4">Automated follow-ups</h3>
-      <ul class="mt-3 text-body-sm text-fk-grey-700 space-y-2">
-        <li>T+1hr: Thank-you email with warranty details</li>
-        <li>T+24hrs: Satisfaction survey</li>
-        <li>T+6 months: Health check offer</li>
-        <li>T+11 months: Warranty expiry warning</li>
-      </ul>
-    </section>
-
     <!-- Primary actions -->
     <div class="mt-10 grid gap-3">
       <a href="#" class="fk-btn-primary w-full text-[18px] py-5"><i data-lucide="user-circle" class="w-5 h-5"></i> Access your portal</a>
@@ -148,6 +134,7 @@
     Fone King · 22 years of phone resurrection · Lifetime warranty on every repair
   </footer>
 
+  <script src="assets/fk-booking-nav.js"></script>
   <script>
     (function () {
       try {
@@ -179,7 +166,7 @@
         document.getElementById('statusBadge').className = 'fk-badge fk-badge--default';
         document.getElementById('statusBadge').textContent = 'Callback queued';
         document.getElementById('walkinNote').innerHTML =
-          'Thanks — we\'ve received your device-not-listed request. A technician will call you; production would email <strong class="text-fk-black">repairs@</strong> with <strong class="text-fk-black">warehouse@</strong> CC\'d.';
+          'Thanks. We\'ve received your device-not-listed request. A technician will call you; production would email <strong class="text-fk-black">repairs@</strong> with <strong class="text-fk-black">warehouse@</strong> CC\'d.';
       }
     })();
 
