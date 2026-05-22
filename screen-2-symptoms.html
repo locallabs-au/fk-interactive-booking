@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en-AU">
 <head>
   <meta charset="UTF-8" />
@@ -23,7 +23,7 @@
     <div class="max-w-3xl">
       <p id="deviceLabel" class="font-inter font-medium text-fk-grey-700 uppercase tracking-widest text-body-xs mb-3">Your device</p>
       <h1 class="font-anybody font-bold text-[36px] leading-[44px] md:text-h1">What’s going wrong?</h1>
-      <p class="text-body text-fk-grey-700 mt-2">Tap everything that applies. <strong class="text-fk-black">Screen (glass/display)</strong> repairs let you choose OEM vs aftermarket below; other issues use a standard quote.</p>
+      <p class="text-body text-fk-grey-700 mt-2">Tap everything that applies. <strong class="text-fk-black">Screen (glass/display)</strong> repairs let you choose Original Equipment Manufacturer (OEM) vs aftermarket below; other issues use a standard quote.</p>
     </div>
 
     <div class="mt-10 grid lg:grid-cols-[1fr_370px] gap-8 items-start">
@@ -65,18 +65,13 @@
           </div>
         </div>
 
-        <p id="compatibleOnlyNote" class="hidden text-body-sm text-fk-grey-700 fk-summary border border-fk-grey-200">
-          <strong class="text-fk-black">Pricing:</strong> standard quote on these repairs (OEM vs aftermarket applies to <strong>screen repairs only</strong>).
-        </p>
-
         <article id="part-quality" class="fk-summary hidden">
           <p class="text-body-xs font-medium uppercase tracking-widest text-fk-grey-700">Screen repair · part type</p>
-          <h2 class="font-anybody font-bold text-h3 mt-2">Original (OEM) vs aftermarket</h2>
+          <h2 class="font-anybody font-bold text-h3 mt-2">Original Equipment Manufacturer vs Aftermarket</h2>
           <p class="text-body-sm text-fk-grey-700 mt-1">Glass and display only. Tap a card to compare.</p>
           <div class="mt-4 grid sm:grid-cols-2 gap-4 items-stretch">
             <button type="button" class="fk-card-selectable text-left h-full" data-quality="oem" data-selected="true">
-              <p class="font-anybody font-semibold text-h4">OEM parts</p>
-              <p class="text-body-xs text-fk-grey-700 mt-1">(Original Equipment Manufacturer)</p>
+              <p class="font-anybody font-semibold text-h4">Original Equipment Manufacturer (OEM)</p>
               <p class="text-body-sm text-fk-grey-800 mt-3">Same quality as the parts that come with your device, upholding the highest standards to match the intended factory design.</p>
               <ul class="mt-3 space-y-1.5 text-body-sm text-fk-grey-800">
                 <li>✅ Colour — Accurate colours, brightness, and contrast</li>
@@ -86,27 +81,10 @@
             </button>
             <button type="button" class="fk-card-selectable text-left h-full" data-quality="aftermarket" data-selected="false">
               <p class="font-anybody font-semibold text-h4">Aftermarket parts</p>
-              <p class="text-body-sm text-fk-grey-800 mt-3">Made by third-party companies; quality can range from below to above OEM standards. More affordable and widely available, but fit and performance can vary.</p>
+              <p class="text-body-sm text-fk-grey-800 mt-3">Made by third-party companies; quality can range from below to above Original Equipment Manufacturer standards. More affordable and widely available, but fit and performance can vary.</p>
               <ul class="mt-3 space-y-1.5 text-body-sm text-fk-grey-800">
                 <li>⚠️ Third-party manufacturers · ⚠️ Quality varies · ⚠️ May not match original · ⚠️ Often 1-year warranty</li>
               </ul>
-            </button>
-          </div>
-        </article>
-
-        <article class="fk-summary">
-          <p class="text-body-xs font-medium uppercase tracking-widest text-fk-grey-700">Step 2</p>
-          <h2 class="font-anybody font-bold text-h4 mt-1">How do you want to book?</h2>
-          <p class="text-body-sm text-fk-grey-700 mt-2">Hot slots fill fast; deposit reserves parts.</p>
-          <div class="mt-4 grid sm:grid-cols-2 gap-4">
-            <button type="button" class="fk-card-selectable text-left" data-path="reserve" data-selected="true">
-              <p class="font-anybody font-semibold text-h4">Reserve with deposit</p>
-              <p class="text-body-sm text-fk-grey-700 mt-2">$59 to $69 refundable · holds parts &amp; time</p>
-              <p class="text-body-xs text-fk-orange font-medium mt-3">Recommended: Stock cannot be guaranteed for walk ins</p>
-            </button>
-            <button type="button" class="fk-card-selectable text-left" data-path="walkin" data-selected="false">
-              <p class="font-anybody font-semibold text-h4">Walk in</p>
-              <p class="text-body-sm text-fk-grey-700 mt-2">No deposit · no part guarantee</p>
             </button>
           </div>
         </article>
@@ -136,26 +114,25 @@
 
     <div class="mt-10 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-6 border-t border-fk-grey-200">
       <a href="screen-1-device.html" class="fk-btn-ghost"><i data-lucide="arrow-left" class="w-5 h-5"></i> Back</a>
-      <a id="continueBtn" href="screen-3-details.html" class="fk-btn-primary opacity-50 pointer-events-none" aria-disabled="true">Continue to details <i data-lucide="arrow-right" class="w-5 h-5"></i></a>
+      <a id="continueBtn" href="screen-3-details.html" class="fk-btn-primary opacity-50 pointer-events-none" aria-disabled="true">Continue to book <i data-lucide="arrow-right" class="w-5 h-5"></i></a>
     </div>
   </main>
 
   <script src="assets/fk-booking-nav.js"></script>
   <script>
     const symptoms = [
-      { id:'screen', cat:'display', lucide:'smartphone', name:'My screen is cracked or not working', desc:'Glass, touch, or picture problems.', aftermarket:140, oem:180, stockTier:'inStore', amAvailable:true, oemAvailable:true },
-      { id:'camera', cat:'display', lucide:'camera', name:'My camera isn’t right', desc:'Blurry shots, cracked lens, app errors.', aftermarket:119, oem:179, stockTier:'inStore', amAvailable:true, oemAvailable:true },
-      { id:'port', cat:'electrical', lucide:'plug', name:'Charging issues', desc:'Loose port or won’t charge reliably.', aftermarket:95, oem:135, stockTier:'warehouse', amAvailable:true, oemAvailable:true },
-      { id:'button', cat:'mechanical', lucide:'smartphone', name:'Buttons or frame', desc:'Stuck buttons or bent body.', aftermarket:85, oem:125, stockTier:'inStore', amAvailable:true, oemAvailable:false, orderEtaDays:4 },
-      { id:'battery', cat:'power', lucide:'battery', name:'Battery dies too fast', desc:'Poor health or shuts down early.', aftermarket:89, oem:129, stockTier:'inStore', amAvailable:true, oemAvailable:false, orderEtaDays:3 },
-      { id:'no_boot', cat:'power', lucide:'alert-circle', name:'Phone won’t turn on', desc:'Black screen, no response, stuck on logo.', aftermarket:169, oem:199, priceMin:89, priceMax:249, stockTier:'inStore', amAvailable:true, oemAvailable:true },
-      { id:'data', cat:'data', lucide:'hard-drive', name:'Storage or photo help', desc:'Backups and storage errors.', aftermarket:99, oem:149, stockTier:'none', amAvailable:false, oemAvailable:false, orderEtaDays:7 },
-      { id:'data_drive', cat:'data', lucide:'hard-drive', name:'Copy data to a drive', desc:'Backup onto a drive to take home.', aftermarket:245, oem:295, stockTier:'inStore', amAvailable:true, oemAvailable:true }
+      { id:'screen', cat:'display', lucide:'smartphone', name:'My screen is cracked or not working', desc:'Glass, touch, or picture problems.', aftermarket:140, oem:180, stockTier:'inStore', amAvailable:true, oemAvailable:true, stockCount:3 },
+      { id:'camera', cat:'display', lucide:'camera', name:'My camera isn’t right', desc:'Blurry shots, cracked lens, app errors.', aftermarket:119, oem:179, stockTier:'inStore', amAvailable:true, oemAvailable:true, stockCount:8 },
+      { id:'port', cat:'electrical', lucide:'plug', name:'Charging issues', desc:'Loose port or won’t charge reliably.', aftermarket:95, oem:135, stockTier:'warehouse', amAvailable:true, oemAvailable:true, stockCount:0 },
+      { id:'button', cat:'mechanical', lucide:'smartphone', name:'Buttons or frame', desc:'Stuck buttons or bent body.', aftermarket:85, oem:125, stockTier:'inStore', amAvailable:true, oemAvailable:false, orderEtaDays:4, stockCount:2 },
+      { id:'battery', cat:'power', lucide:'battery', name:'Battery dies too fast', desc:'Poor health or shuts down early.', aftermarket:89, oem:129, stockTier:'inStore', amAvailable:true, oemAvailable:false, orderEtaDays:3, stockCount:6 },
+      { id:'no_boot', cat:'power', lucide:'alert-circle', name:'Phone won’t turn on', desc:'Black screen, no response, stuck on logo.', aftermarket:169, oem:199, priceMin:89, priceMax:249, stockTier:'inStore', amAvailable:true, oemAvailable:true, stockCount:5 },
+      { id:'data', cat:'data', lucide:'hard-drive', name:'Storage or photo help', desc:'Backups and storage errors.', aftermarket:99, oem:149, stockTier:'none', amAvailable:false, oemAvailable:false, orderEtaDays:7, stockCount:0 },
+      { id:'data_drive', cat:'data', lucide:'hard-drive', name:'Copy data to a drive', desc:'Backup onto a drive to take home.', aftermarket:245, oem:295, stockTier:'inStore', amAvailable:true, oemAvailable:true, stockCount:10 }
     ];
 
     let activeTab = 'all';
     let quality = 'oem';
-    let path = 'reserve';
     const selected = new Set();
     const grid = document.getElementById('symptomGrid');
     const summaryList = document.getElementById('summaryList');
@@ -231,15 +208,21 @@
     function summaryQualityLabel(chosen) {
       if (!chosen.length) return 'N/A';
       if (!chosen.some(needsScreenQualityChoice)) return 'Standard quote';
-      const qLabel = quality === 'aftermarket' ? 'Aftermarket' : 'OEM';
+      const qLabel = quality === 'aftermarket' ? 'Aftermarket' : 'Original Equipment Manufacturer';
       if (chosen.every(needsScreenQualityChoice)) return qLabel + ' (screen)';
-      return 'Mixed: OEM vs aftermarket applies to screen only';
+      return 'Mixed: Original Equipment Manufacturer vs aftermarket applies to screen only';
     }
 
     function stockBadgeFor(s) {
       if (needsCallbackOnly(s)) return '<span class="fk-badge fk-badge--error mt-2 inline-flex">Callback required</span>';
       if (needsWarehouseTransfer(s)) return '<span class="fk-badge fk-badge--soft-warning mt-2 inline-flex">Warehouse · ~2bd after deposit</span>';
-      if (shelfAvailableForQuality(s)) return '<span class="fk-badge fk-badge--soft-success mt-2 inline-flex">In store</span>';
+      const count = typeof s.stockCount === 'number' ? s.stockCount : null;
+      if (shelfAvailableForQuality(s)) {
+        if (count !== null && count <= 4 && count > 0) {
+          return `<span class="fk-badge fk-badge--soft-warning mt-2 inline-flex">Only ${count} left — lock in your parts</span>`;
+        }
+        return '<span class="fk-badge fk-badge--soft-success mt-2 inline-flex">In store</span>';
+      }
       return '<span class="fk-badge fk-badge--soft-warning mt-2 inline-flex">Order first</span>';
     }
 
@@ -251,7 +234,7 @@
       if (!needsScreenQualityChoice(s)) {
         return `$${p} <span class="text-body-sm font-normal text-fk-grey-700">(estimated repair)</span>`;
       }
-      const lab = effectiveQuality(s) === 'aftermarket' ? 'Aftermarket' : 'OEM';
+      const lab = effectiveQuality(s) === 'aftermarket' ? 'Aftermarket' : 'Original Equipment Manufacturer (OEM)';
       return `$${p} <span class="text-body-sm font-normal text-fk-grey-700">(${lab})</span>`;
     }
 
@@ -279,7 +262,8 @@
       const staffFollow = needsStaffFollowUpBasket(chosen);
 
       partQualityEl.classList.toggle('hidden', !chosen.some(needsScreenQualityChoice));
-      compatibleOnlyNote.classList.toggle('hidden', !chosen.length || chosen.some(needsScreenQualityChoice));
+      const compatibleOnlyNote = document.getElementById('compatibleOnlyNote');
+      if (compatibleOnlyNote) compatibleOnlyNote.classList.add('hidden');
       callbackAlert.classList.toggle('hidden', !staffFollow);
       warehouseNote.classList.toggle('hidden', !chosen.some(needsWarehouseTransfer) || staffFollow);
       partsMessage.classList.toggle('hidden', staffFollow || !needsOrdering);
@@ -298,18 +282,22 @@
         summaryTotal.textContent = `$${Math.round(total)}`;
       }
       summaryQuality.textContent = summaryQualityLabel(chosen);
-      summaryPath.textContent = path === 'reserve' ? 'Reserve with deposit' : 'Walk-in';
       summaryFollowUp.classList.toggle('hidden', staffFollow || !needsOrdering);
 
       const callbackAside = chosen.length > 0 && staffFollow;
       summaryPricingBlock.classList.toggle('hidden', callbackAside);
       summaryCallbackAside.classList.toggle('hidden', !callbackAside);
-      if (callbackAside) {
-        summaryFootnote.textContent = '';
-        summaryFootnote.classList.add('hidden');
-      } else if (chosen.length > 0 && path === 'walkin') {
-        summaryFootnote.textContent = 'Stock cannot be guaranteed for walk ins';
-        summaryFootnote.classList.remove('hidden');
+      if (!callbackAside && chosen.length > 0) {
+        const urgentLines = chosen.filter(s => !needsCallbackOnly(s) && !needsWarehouseTransfer(s) && typeof s.stockCount === 'number' && s.stockCount > 0 && s.stockCount <= 4);
+        if (urgentLines.length) {
+          summaryFootnote.textContent = urgentLines.length === 1
+            ? `Only ${urgentLines[0].stockCount} part${urgentLines[0].stockCount === 1 ? '' : 's'} left — lock in your parts.`
+            : 'Limited stock on some repairs — lock in your parts.';
+          summaryFootnote.classList.remove('hidden');
+        } else {
+          summaryFootnote.textContent = '';
+          summaryFootnote.classList.add('hidden');
+        }
       } else {
         summaryFootnote.textContent = '';
         summaryFootnote.classList.add('hidden');
@@ -354,13 +342,6 @@
       render();
     }));
 
-    document.querySelectorAll('[data-path]').forEach(btn => btn.addEventListener('click', () => {
-      document.querySelectorAll('[data-path]').forEach(x => x.dataset.selected = 'false');
-      btn.dataset.selected = 'true';
-      path = btn.dataset.path;
-      render();
-    }));
-
     continueBtn.addEventListener('click', (e) => {
       if (continueBtn.getAttribute('aria-disabled') === 'true') { e.preventDefault(); return; }
       const chosen = symptoms.filter(s => selected.has(s.id));
@@ -368,11 +349,12 @@
       const partsExpectedBy = computePartsExpectedBy(chosen);
       let booking = {};
       try { booking = JSON.parse(localStorage.getItem('fkBooking') || '{}'); } catch (_) {}
+      const existingPath = booking.path || 'reserve';
       Object.assign(booking, {
         symptoms: chosen.map(s => s.name),
         symptomIds: chosen.map(s => s.id),
         quality,
-        path,
+        path: existingPath,
         total: Math.round(quoteTotal(chosen)),
         needsOrdering,
         partsExpectedBy: needsOrdering ? partsExpectedBy : null,

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en-AU">
 <head>
   <meta charset="UTF-8" />
@@ -32,6 +32,25 @@
           <div>
             <p class="text-body-xs font-medium uppercase tracking-widest text-fk-grey-700">Step 1 · Your issue</p>
             <h2 class="font-anybody font-bold text-h3 mt-2">Describe the problem</h2>
+          </div>
+
+          <!-- OEM vs Aftermarket inline selector — only shown when screen repair is selected -->
+          <div id="part-quality-inline" class="hidden rounded-card border-2 border-fk-yellow bg-fk-yellow-tint p-5 space-y-4">
+            <div>
+              <p class="text-body-xs font-medium uppercase tracking-widest text-fk-grey-700">Screen repair · part type</p>
+              <h3 class="font-anybody font-bold text-h4 mt-1">Original Equipment Manufacturer vs Aftermarket</h3>
+              <p class="text-body-sm text-fk-grey-700 mt-1">Choose the part quality for your screen repair.</p>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-3">
+              <button type="button" class="fk-card-selectable text-left" data-quality="oem" data-selected="true">
+                <p class="font-anybody font-semibold text-fk-black">Original Equipment Manufacturer (OEM)</p>
+                <p class="text-body-sm text-fk-grey-700 mt-1">Factory-quality parts. Same standard as what came with your device.</p>
+              </button>
+              <button type="button" class="fk-card-selectable text-left" data-quality="aftermarket" data-selected="false">
+                <p class="font-anybody font-semibold text-fk-black">Aftermarket</p>
+                <p class="text-body-sm text-fk-grey-700 mt-1">Third-party parts. More affordable; quality may vary.</p>
+              </button>
+            </div>
           </div>
           <div role="tablist" aria-label="Symptom categories" class="border-b border-fk-grey-200 flex gap-4 sm:gap-6 overflow-x-auto fk-scroll pb-px">
             <button role="tab" type="button" class="fk-tab" aria-selected="true" data-tab="display">Screen &amp; camera</button>
@@ -94,18 +113,13 @@
           </div>
         </div>
 
-        <p id="compatibleOnlyNote" class="hidden text-body-sm text-fk-grey-700 fk-summary border border-fk-grey-200">
-          <strong class="text-fk-black">Pricing note:</strong> these repairs use our <strong>standard quote</strong> (OEM vs aftermarket comparison applies to <strong>screen repairs only</strong>).
-        </p>
-
         <article id="part-quality" class="fk-summary hidden">
           <p class="text-body-xs font-medium uppercase tracking-widest text-fk-grey-700">Screen repair · part type</p>
-          <h2 class="font-anybody font-bold text-h3 mt-2">Original (OEM) vs aftermarket parts</h2>
+          <h2 class="font-anybody font-bold text-h3 mt-2">Original Equipment Manufacturer vs Aftermarket</h2>
           <p class="text-body-sm text-fk-grey-700 mt-1">Only applies to glass and display repairs. Tap a card to compare.</p>
           <div class="mt-4 grid sm:grid-cols-2 gap-4 items-stretch">
             <button type="button" class="fk-card-selectable text-left h-full" data-quality="oem" data-selected="true">
-              <p class="font-anybody font-semibold text-h4 text-fk-black">OEM parts</p>
-              <p class="text-body-xs text-fk-grey-700 mt-1">(Original Equipment Manufacturer)</p>
+              <p class="font-anybody font-semibold text-h4 text-fk-black">Original Equipment Manufacturer (OEM)</p>
               <p class="text-body-sm text-fk-grey-800 mt-3">Same quality as the parts that come with your device, upholding the highest standards to match the intended factory design.</p>
               <ul class="mt-4 space-y-2 text-body-sm text-fk-grey-800">
                 <li class="flex gap-2"><span class="text-fk-success shrink-0">✅</span> Colour — Accurate colours, brightness, and contrast</li>
@@ -115,30 +129,13 @@
             </button>
             <button type="button" class="fk-card-selectable text-left h-full" data-quality="aftermarket" data-selected="false">
               <p class="font-anybody font-semibold text-h4 text-fk-black">Aftermarket parts</p>
-              <p class="text-body-sm text-fk-grey-800 mt-3">Made by third-party companies; quality can range from below to above OEM standards. More affordable and widely available, but fit and performance can vary by brand.</p>
+              <p class="text-body-sm text-fk-grey-800 mt-3">Made by third-party companies; quality can range from below to above Original Equipment Manufacturer standards. More affordable and widely available, but fit and performance can vary by brand.</p>
               <ul class="mt-4 space-y-2 text-body-sm text-fk-grey-800">
                 <li class="flex gap-2"><span class="text-fk-warning shrink-0">⚠️</span> Made by third-party manufacturers</li>
                 <li class="flex gap-2"><span class="text-fk-warning shrink-0">⚠️</span> Quality can vary — some good, some not so much</li>
                 <li class="flex gap-2"><span class="text-fk-warning shrink-0">⚠️</span> May not perform or last like original parts</li>
                 <li class="flex gap-2"><span class="text-fk-warning shrink-0">⚠️</span> Usually comes with a 1-year warranty</li>
               </ul>
-            </button>
-          </div>
-        </article>
-
-        <article class="fk-summary">
-          <p class="text-body-xs font-medium uppercase tracking-widest text-fk-grey-700">Step 2</p>
-          <h2 class="font-anybody font-bold text-h4 mt-1">How do you want to book?</h2>
-          <p class="text-body-sm text-fk-grey-700 mt-2">Reserving locks in parts and your place in line; popular slots fill fast.</p>
-          <div class="mt-4 grid sm:grid-cols-2 gap-4">
-            <button type="button" class="fk-card-selectable text-left" data-path="reserve" data-selected="true">
-              <p class="font-anybody font-semibold text-h4">Reserve with deposit</p>
-              <p class="text-body-sm text-fk-grey-700 mt-2">$59 to $69 refundable deposit holds your parts and time. Deducted from your repair bill.</p>
-              <p class="text-body-xs text-fk-orange font-medium mt-3">Recommended: Stock cannot be guaranteed for walk ins</p>
-            </button>
-            <button type="button" class="fk-card-selectable text-left" data-path="walkin" data-selected="false">
-              <p class="font-anybody font-semibold text-h4">Walk in</p>
-              <p class="text-body-sm text-fk-grey-700 mt-2">No deposit. No guarantee parts will still be available when you arrive.</p>
             </button>
           </div>
         </article>
@@ -168,26 +165,25 @@
 
     <div class="mt-10 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-6 border-t border-fk-grey-200">
       <a href="screen-1-device.html" class="fk-btn-ghost"><i data-lucide="arrow-left" class="w-5 h-5"></i> Back</a>
-      <a id="continueBtn" href="screen-3-details.html" class="fk-btn-primary opacity-50 pointer-events-none" aria-disabled="true">Continue to details <i data-lucide="arrow-right" class="w-5 h-5"></i></a>
+      <a id="continueBtn" href="screen-3-details.html" class="fk-btn-primary opacity-50 pointer-events-none" aria-disabled="true">Continue to book <i data-lucide="arrow-right" class="w-5 h-5"></i></a>
     </div>
   </main>
 
   <script src="assets/fk-booking-nav.js"></script>
   <script>
     const symptoms = [
-      { id:'screen', cat:'display', lucide:'smartphone', name:'My screen is cracked or the display isn’t working', publicExplained:'Visible cracks, black spots, touch not responding, or weird colours. We assess glass and LCD and quote the repair.', aftermarket:140, oem:180, stockTier:'inStore', amAvailable:true, oemAvailable:true },
-      { id:'camera', cat:'display', lucide:'camera', name:'My camera isn’t working properly', publicExplained:'Blurry photos, cracked lens glass, or the camera app misbehaves: front or rear.', aftermarket:119, oem:179, stockTier:'inStore', amAvailable:true, oemAvailable:true },
-      { id:'port', cat:'electrical', lucide:'plug', name:'My phone won’t charge properly', publicExplained:'Loose port, cable falls out, intermittent charging, or your computer doesn’t see the phone.', aftermarket:95, oem:135, stockTier:'warehouse', amAvailable:true, oemAvailable:true },
-      { id:'button', cat:'mechanical', lucide:'smartphone', name:'Buttons or frame feel wrong', publicExplained:'Stuck or mushy buttons, bent frame, or damage that affects how the phone goes back together.', aftermarket:85, oem:125, stockTier:'inStore', amAvailable:true, oemAvailable:false, orderEtaDays:4 },
-      { id:'battery', cat:'power', lucide:'battery', name:'My battery dies too quickly', publicExplained:'Poor battery health, shutting down early, or charging slowly: battery replacement.', aftermarket:89, oem:129, stockTier:'inStore', amAvailable:true, oemAvailable:false, orderEtaDays:3 },
-      { id:'no_boot', cat:'power', lucide:'alert-circle', name:'My phone won’t turn on', publicExplained:'No response when you press power, or stuck on the logo. Causes vary; we diagnose in store.', aftermarket:169, oem:199, priceMin:89, priceMax:249, stockTier:'inStore', amAvailable:true, oemAvailable:true },
-      { id:'data', cat:'data', lucide:'hard-drive', name:'I need help with storage or photos', publicExplained:'Storage errors, backups, or getting data off safely before other work.', aftermarket:99, oem:149, stockTier:'none', amAvailable:false, oemAvailable:false, orderEtaDays:7 },
-      { id:'data_drive', cat:'data', lucide:'hard-drive', name:'Copy my data onto a drive', publicExplained:'We back your data onto a portable drive to take home; capacity priced in store.', aftermarket:245, oem:295, stockTier:'inStore', amAvailable:true, oemAvailable:true }
+      { id:'screen', cat:'display', lucide:'smartphone', name:'My screen is cracked or the display isn’t working', publicExplained:'Visible cracks, black spots, touch not responding, or weird colours. We assess glass and LCD and quote the repair.', aftermarket:140, oem:180, stockTier:'inStore', amAvailable:true, oemAvailable:true, stockCount:3 },
+      { id:'camera', cat:'display', lucide:'camera', name:'My camera isn’t working properly', publicExplained:'Blurry photos, cracked lens glass, or the camera app misbehaves: front or rear.', aftermarket:119, oem:179, stockTier:'inStore', amAvailable:true, oemAvailable:true, stockCount:8 },
+      { id:'port', cat:'electrical', lucide:'plug', name:'My phone won’t charge properly', publicExplained:'Loose port, cable falls out, intermittent charging, or your computer doesn’t see the phone.', aftermarket:95, oem:135, stockTier:'warehouse', amAvailable:true, oemAvailable:true, stockCount:0 },
+      { id:'button', cat:'mechanical', lucide:'smartphone', name:'Buttons or frame feel wrong', publicExplained:'Stuck or mushy buttons, bent frame, or damage that affects how the phone goes back together.', aftermarket:85, oem:125, stockTier:'inStore', amAvailable:true, oemAvailable:false, orderEtaDays:4, stockCount:2 },
+      { id:'battery', cat:'power', lucide:'battery', name:'My battery dies too quickly', publicExplained:'Poor battery health, shutting down early, or charging slowly: battery replacement.', aftermarket:89, oem:129, stockTier:'inStore', amAvailable:true, oemAvailable:false, orderEtaDays:3, stockCount:6 },
+      { id:'no_boot', cat:'power', lucide:'alert-circle', name:'My phone won’t turn on', publicExplained:'No response when you press power, or stuck on the logo. Causes vary; we diagnose in store.', aftermarket:169, oem:199, priceMin:89, priceMax:249, stockTier:'inStore', amAvailable:true, oemAvailable:true, stockCount:5 },
+      { id:'data', cat:'data', lucide:'hard-drive', name:'I need help with storage or photos', publicExplained:'Storage errors, backups, or getting data off safely before other work.', aftermarket:99, oem:149, stockTier:'none', amAvailable:false, oemAvailable:false, orderEtaDays:7, stockCount:0 },
+      { id:'data_drive', cat:'data', lucide:'hard-drive', name:'Copy my data onto a drive', publicExplained:'We back your data onto a portable drive to take home; capacity priced in store.', aftermarket:245, oem:295, stockTier:'inStore', amAvailable:true, oemAvailable:true, stockCount:10 }
     ];
 
     let activeTab = 'display';
     let quality = 'oem';
-    let path = 'reserve';
     const selected = new Set();
 
     const symptomSelect = document.getElementById('symptomSelect');
@@ -210,6 +206,7 @@
     const summaryFollowUp = document.getElementById('summaryFollowUp');
     const deviceLabel = document.getElementById('deviceLabel');
     const partQualityEl = document.getElementById('part-quality');
+    const partQualityInline = document.getElementById('part-quality-inline');
     const compatibleOnlyNote = document.getElementById('compatibleOnlyNote');
     const callbackAlert = document.getElementById('callbackAlert');
     const warehouseNote = document.getElementById('warehouseNote');
@@ -290,13 +287,13 @@
         if (!needsScreenQualityChoice(s)) {
           return `Typically $${s.priceMin} to $${s.priceMax} (estimated range; exact quote after diagnosis)`;
         }
-        const tier = effectiveQuality(s) === 'aftermarket' ? 'Aftermarket parts estimate' : 'OEM parts estimate';
+        const tier = effectiveQuality(s) === 'aftermarket' ? 'Aftermarket parts estimate' : 'Original Equipment Manufacturer parts estimate';
         return `Typically $${s.priceMin} to $${s.priceMax} (${tier}; exact quote after diagnosis)`;
       }
       if (!needsScreenQualityChoice(s)) {
         return `Price: $${linePrice(s)} (estimated repair)`;
       }
-      const tier = effectiveQuality(s) === 'aftermarket' ? 'Aftermarket parts' : 'OEM parts';
+      const tier = effectiveQuality(s) === 'aftermarket' ? 'Aftermarket parts' : 'Original Equipment Manufacturer (OEM) parts';
       return `Price: $${linePrice(s)} (${tier})`;
     }
 
@@ -305,9 +302,20 @@
       if (!chosen.length) return 'N/A';
       if (!needsQ) return 'Standard quote';
       const only = chosen.filter(needsScreenQualityChoice);
-      const qLabel = quality === 'aftermarket' ? 'Aftermarket' : 'OEM';
+      const qLabel = quality === 'aftermarket' ? 'Aftermarket' : 'Original Equipment Manufacturer';
       if (only.length === chosen.length) return qLabel + ' (screen)';
-      return 'Mixed: OEM vs aftermarket applies to screen repair only';
+      return 'Mixed: Original Equipment Manufacturer vs aftermarket applies to screen repair only';
+    }
+
+    function stockUrgencyBadge(s) {
+      const count = typeof s.stockCount === 'number' ? s.stockCount : null;
+      if (count !== null && count <= 4 && count > 0) {
+        return `<i data-lucide="flame" class="w-4 h-4"></i> Only ${count} part${count === 1 ? '' : 's'} left — lock in your parts`;
+      }
+      if (count !== null && count === 0 && s.stockTier === 'inStore') {
+        return '<i data-lucide="alert-circle" class="w-4 h-4"></i> Not on shelf; order first';
+      }
+      return '<i data-lucide="check-circle" class="w-4 h-4"></i> IN STORE';
     }
 
     function renderDetailStock(s) {
@@ -321,9 +329,15 @@
         detailStock.innerHTML = '<i data-lucide="truck" class="w-4 h-4"></i> In warehouse · ~2 business days to store after deposit';
         return;
       }
+      const count = typeof s.stockCount === 'number' ? s.stockCount : null;
       if (shelfAvailableForQuality(s)) {
-        detailStock.className = 'mt-4 fk-badge fk-badge--soft-success inline-flex items-center gap-1';
-        detailStock.innerHTML = '<i data-lucide="check-circle" class="w-4 h-4"></i> IN STORE';
+        if (count !== null && count <= 4 && count > 0) {
+          detailStock.className = 'mt-4 fk-badge fk-badge--soft-warning inline-flex items-center gap-1';
+          detailStock.innerHTML = `<i data-lucide="flame" class="w-4 h-4"></i> Only ${count} part${count === 1 ? '' : 's'} left — lock in your parts`;
+        } else {
+          detailStock.className = 'mt-4 fk-badge fk-badge--soft-success inline-flex items-center gap-1';
+          detailStock.innerHTML = '<i data-lucide="check-circle" class="w-4 h-4"></i> IN STORE';
+        }
         return;
       }
       detailStock.className = 'mt-4 fk-badge fk-badge--soft-warning inline-flex items-center gap-1';
@@ -399,8 +413,10 @@
       const staffFollow = needsStaffFollowUpBasket(chosen);
       const warehousePending = chosen.some(needsWarehouseTransfer);
 
-      partQualityEl.classList.toggle('hidden', !chosen.some(needsScreenQualityChoice));
-      compatibleOnlyNote.classList.toggle('hidden', !chosen.length || chosen.some(needsScreenQualityChoice));
+      const hasScreen = chosen.some(needsScreenQualityChoice);
+      partQualityEl.classList.toggle('hidden', !hasScreen);
+      if (partQualityInline) partQualityInline.classList.toggle('hidden', !hasScreen);
+      if (compatibleOnlyNote) compatibleOnlyNote.classList.add('hidden');
 
       callbackAlert.classList.toggle('hidden', !staffFollow);
       warehouseNote.classList.toggle('hidden', !warehousePending || staffFollow);
@@ -441,18 +457,25 @@
       }
 
       summaryQuality.textContent = summaryQualityLabel(chosen);
-      summaryPath.textContent = path === 'reserve' ? 'Reserve with deposit' : 'Walk-in';
+      if (summaryPath) summaryPath.closest('.pt-2')?.classList.add('hidden');
       summaryFollowUp.classList.toggle('hidden', staffFollow || !needsOrdering);
 
       const callbackAside = chosen.length > 0 && staffFollow;
       summaryPricingBlock.classList.toggle('hidden', callbackAside);
       summaryCallbackAside.classList.toggle('hidden', !callbackAside);
-      if (callbackAside) {
-        summaryFootnote.textContent = '';
-        summaryFootnote.classList.add('hidden');
-      } else if (chosen.length > 0 && path === 'walkin') {
-        summaryFootnote.textContent = 'Stock cannot be guaranteed for walk ins';
-        summaryFootnote.classList.remove('hidden');
+
+      // Urgency footnote: show low-stock warning for in-basket items
+      if (!callbackAside && chosen.length > 0) {
+        const urgentLines = chosen.filter(s => !needsCallbackOnly(s) && !needsWarehouseTransfer(s) && typeof s.stockCount === 'number' && s.stockCount > 0 && s.stockCount <= 4);
+        if (urgentLines.length) {
+          summaryFootnote.textContent = urgentLines.length === 1
+            ? `Only ${urgentLines[0].stockCount} part${urgentLines[0].stockCount === 1 ? '' : 's'} left for this repair — lock in your parts to avoid missing out.`
+            : 'Limited stock on some repairs — lock in your parts to avoid missing out.';
+          summaryFootnote.classList.remove('hidden');
+        } else {
+          summaryFootnote.textContent = '';
+          summaryFootnote.classList.add('hidden');
+        }
       } else {
         summaryFootnote.textContent = '';
         summaryFootnote.classList.add('hidden');
@@ -506,13 +529,6 @@
       render();
     }));
 
-    document.querySelectorAll('[data-path]').forEach(btn => btn.addEventListener('click', () => {
-      document.querySelectorAll('[data-path]').forEach(x => { x.dataset.selected = 'false'; });
-      btn.dataset.selected = 'true';
-      path = btn.dataset.path;
-      render();
-    }));
-
     continueBtn.addEventListener('click', (e) => {
       if (continueBtn.getAttribute('aria-disabled') === 'true') { e.preventDefault(); return; }
       const chosen = symptoms.filter(s => selected.has(s.id));
@@ -523,11 +539,13 @@
       let booking = {};
       try { booking = JSON.parse(localStorage.getItem('fkBooking') || '{}'); } catch (_) {}
       delete booking.quoteEmail;
+      // path is chosen on the schedule page; preserve any existing value
+      const existingPath = booking.path || 'reserve';
       Object.assign(booking, {
         symptoms: chosen.map(s => s.name),
         symptomIds: chosen.map(s => s.id),
         quality,
-        path,
+        path: existingPath,
         total: Math.round(total),
         needsOrdering,
         partsExpectedBy: needsOrdering ? partsExpectedBy : null,

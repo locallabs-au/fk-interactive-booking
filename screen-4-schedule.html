@@ -35,6 +35,19 @@
       </div>
     </div>
 
+    <!-- Reserve vs Walk-in selection (moved from symptoms step) -->
+    <div class="mt-8 grid sm:grid-cols-2 gap-4" id="bookingPathSelector">
+      <button type="button" class="fk-card-selectable text-left" data-path="reserve" data-selected="true">
+        <p class="font-anybody font-semibold text-h4">Reserve parts</p>
+        <p class="text-body-sm text-fk-grey-700 mt-2">$59 to $69 refundable deposit holds your parts and your place in the queue. Deducted from your repair bill.</p>
+        <p id="reserveUrgencyNote" class="text-body-xs text-fk-orange font-medium mt-3"></p>
+      </button>
+      <button type="button" class="fk-card-selectable text-left" data-path="walkin" data-selected="false">
+        <p class="font-anybody font-semibold text-h4">Walk in</p>
+        <p class="text-body-sm text-fk-grey-700 mt-2">No deposit required. Parts cannot be guaranteed to still be available when you arrive.</p>
+      </button>
+    </div>
+
     <div class="mt-10 grid lg:grid-cols-2 gap-10 items-start">
 
       <!-- LEFT: date picker -->
@@ -96,7 +109,7 @@
       return new Date(d.getFullYear(), d.getMonth(), d.getDate());
     }
 
-    const booking = JSON.parse(localStorage.getItem('fkBooking') || '{}');
+    let booking = JSON.parse(localStorage.getItem('fkBooking') || '{}');
     const needsOrdering = booking.needsOrdering === true || booking.needsStaffFollowUp === true;
     const warehouseTransfer = booking.warehouseTransferPending === true;
     const today = new Date();
@@ -116,10 +129,50 @@
     const storeLabel = (booking.customer && booking.customer.store) || localStorage.getItem('fkStore') || 'Miranda';
     const scheduleStoreEl = document.getElementById('scheduleStoreName');
     if (scheduleStoreEl) scheduleStoreEl.textContent = 'FK ' + storeLabel;
-    const isWalkin = booking.path === 'walkin';
-    document.getElementById('scheduleMode').textContent = isWalkin
-      ? 'Walk-in path selected: choose your intended arrival window (no part guarantee).'
-      : 'Reserve path selected: choose a precise appointment time.';
+
+    // path defaults to 'reserve'; user may change via selector on this page
+    if (!booking.path) booking.path = 'reserve';
+    let currentPath = booking.path;
+
+    // Restore path selector state from booking
+    document.querySelectorAll('[data-path]').forEach(btn => {
+      btn.dataset.selected = btn.dataset.path === currentPath ? 'true' : 'false';
+    });
+
+    // Set urgency note on Reserve card
+    const urgencyNote = document.getElementById('reserveUrgencyNote');
+    if (urgencyNote) {
+      if (needsOrdering || warehouseTransfer) {
+        urgencyNote.textContent = 'Recommended: parts need ordering — reserve to lock in your slot.';
+      } else {
+        urgencyNote.textContent = 'Recommended: lock in your parts before someone else does.';
+      }
+    }
+
+    function updateScheduleMode() {
+      const isWalkin = currentPath === 'walkin';
+      const scheduleMode = document.getElementById('scheduleMode');
+      if (scheduleMode) {
+        scheduleMode.textContent = isWalkin
+          ? 'Walk-in path selected: choose your intended arrival window (no part guarantee).'
+          : 'Reserve parts path selected: choose a precise appointment time.';
+      }
+      return isWalkin;
+    }
+
+    let isWalkin = updateScheduleMode();
+
+    document.querySelectorAll('[data-path]').forEach(btn => btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-path]').forEach(x => { x.dataset.selected = 'false'; });
+      btn.dataset.selected = 'true';
+      currentPath = btn.dataset.path;
+      booking.path = currentPath;
+      localStorage.setItem('fkBooking', JSON.stringify(booking));
+      isWalkin = updateScheduleMode();
+      selectedSlot = null;
+      render();
+      updateSummary();
+    }));
     const etaEl = document.getElementById('orderingEtaNote');
     if (etaEl && needsOrdering && booking.partsExpectedBy) {
       const pretty = longDays[startOfDay(new Date(booking.partsExpectedBy + 'T12:00:00')).getDay()] + ', ' +
@@ -133,7 +186,7 @@
       etaEl.textContent = msg;
       etaEl.classList.remove('hidden');
     }
-    document.getElementById('slotLabel').textContent = isWalkin ? 'Select a window' : 'Select a time';
+    document.getElementById('slotLabel').textContent = currentPath === 'walkin' ? 'Select a window' : 'Select a time';
     const tomorrow0 = new Date(today0);
     tomorrow0.setDate(tomorrow0.getDate() + 1);
     datePicker.innerHTML = days.map((d, i) => {
@@ -181,6 +234,7 @@
     let selectedSlot = null;
 
     function render() {
+      document.getElementById('slotLabel').textContent = currentPath === 'walkin' ? 'Select a window' : 'Select a time';
       if (isWalkin) {
         const windows = [
           { label: 'Morning (9:00 AM-12:00 PM)', disabled: false },
@@ -212,7 +266,7 @@
         reserveBtn.setAttribute('aria-disabled','true');
         return;
       }
-      const slots = isWalkin ? [{label:'Morning (9:00 AM-12:00 PM)'},{label:'Midday (12:00 PM-3:00 PM)'},{label:'Afternoon (3:00 PM-6:00 PM)'}] : generateSlots(selectedDay);
+      const slots = currentPath === 'walkin' ? [{label:'Morning (9:00 AM-12:00 PM)'},{label:'Midday (12:00 PM-3:00 PM)'},{label:'Afternoon (3:00 PM-6:00 PM)'}] : generateSlots(selectedDay);
       summaryDate.textContent = `${longDays[d.getDay()]}, ${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
       summaryTime.textContent = slots[selectedSlot].label;
       booking.day = summaryDate.textContent;

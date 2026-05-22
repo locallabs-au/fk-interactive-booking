@@ -145,6 +145,32 @@
           </div>
           <button id="clearDevice" class="fk-btn-icon" aria-label="Clear selected device"><i data-lucide="x" class="w-5 h-5"></i></button>
         </div>
+
+        <!-- Postcode entry (appears once a device is selected) -->
+        <div id="postcodeWrap" class="mt-6 p-6 bg-white rounded-card border border-fk-grey-200 shadow-fk-light space-y-4">
+          <div>
+            <p class="text-body-xs font-medium uppercase tracking-widest text-fk-grey-700">Your location</p>
+            <h3 class="font-anybody font-bold text-h4 mt-1">What's your postcode?</h3>
+            <p class="text-body-sm text-fk-grey-700 mt-1">We use this to check what parts are available at stores near you.</p>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-end">
+            <label class="fk-label flex-1 !mb-0" for="postcodeInput">
+              Postcode
+              <input id="postcodeInput" type="text" inputmode="numeric" maxlength="4" autocomplete="postal-code"
+                class="fk-input !mt-1 w-full" placeholder="e.g. 2000" />
+            </label>
+            <button type="button" id="postcodeConfirmBtn"
+              class="fk-btn-primary shrink-0 opacity-50 pointer-events-none"
+              aria-disabled="true">
+              Confirm postcode
+            </button>
+          </div>
+          <p id="postcodeErr" class="hidden text-body-sm text-fk-error">Please enter a valid 4-digit Australian postcode.</p>
+          <div id="postcodeConfirmed" class="hidden fk-alert fk-alert--success">
+            <i data-lucide="check-circle" class="w-5 h-5 shrink-0"></i>
+            <p>Postcode confirmed. Stock availability checked for your area.</p>
+          </div>
+        </div>
       </div>
 
       <div id="deviceEdgeAlert" class="hidden fk-alert fk-alert--warning">
@@ -186,6 +212,38 @@
 
     let currentBrand = 'apple';
     let selectedDevice = null;
+    let postcodeOk = false;
+
+    const postcodeInput = document.getElementById('postcodeInput');
+    const postcodeConfirmBtn = document.getElementById('postcodeConfirmBtn');
+    const postcodeErr = document.getElementById('postcodeErr');
+    const postcodeConfirmedEl = document.getElementById('postcodeConfirmed');
+    const postcodeWrap = document.getElementById('postcodeWrap');
+
+    function validatePostcode(v) { return /^\d{4}$/.test((v || '').trim()); }
+
+    postcodeInput.addEventListener('input', () => {
+      const ok = validatePostcode(postcodeInput.value);
+      postcodeConfirmBtn.classList.toggle('opacity-50', !ok);
+      postcodeConfirmBtn.classList.toggle('pointer-events-none', !ok);
+      postcodeConfirmBtn.setAttribute('aria-disabled', ok ? 'false' : 'true');
+      postcodeErr.classList.add('hidden');
+    });
+
+    postcodeConfirmBtn.addEventListener('click', () => {
+      const v = (postcodeInput.value || '').trim();
+      if (!validatePostcode(v)) { postcodeErr.classList.remove('hidden'); return; }
+      postcodeErr.classList.add('hidden');
+      postcodeOk = true;
+      localStorage.setItem('fkPostcode', v);
+      postcodeConfirmedEl.classList.remove('hidden');
+      postcodeConfirmBtn.classList.remove('opacity-50','pointer-events-none');
+      postcodeConfirmBtn.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i> Confirmed';
+      postcodeConfirmBtn.disabled = true;
+      postcodeInput.readOnly = true;
+      updateNextButton();
+      if (window.lucide) lucide.createIcons();
+    });
     /** When true, user chose “not listed”: list is inactive and Next goes to callback flow. */
     let notListedMode = false;
 
@@ -196,7 +254,7 @@
     }
 
     function updateNextButton() {
-      const ok = notListedMode || (selectedDevice !== null);
+      const ok = notListedMode || (selectedDevice !== null && postcodeOk);
       if (ok) {
         nextBtn.classList.remove('opacity-50','pointer-events-none');
         nextBtn.removeAttribute('aria-disabled');
@@ -247,6 +305,16 @@
         selectedCard.classList.remove('hidden');
         selectedName.textContent = name;
         localStorage.setItem('fkDevice', name);
+        // reset postcode state when device changes
+        postcodeOk = false;
+        postcodeInput.value = '';
+        postcodeInput.readOnly = false;
+        postcodeConfirmedEl.classList.add('hidden');
+        postcodeConfirmBtn.disabled = false;
+        postcodeConfirmBtn.innerHTML = 'Confirm postcode';
+        postcodeConfirmBtn.classList.add('opacity-50','pointer-events-none');
+        postcodeConfirmBtn.setAttribute('aria-disabled','true');
+        postcodeErr.classList.add('hidden');
       } else {
         selectedCard.classList.add('hidden');
         localStorage.removeItem('fkDevice');
